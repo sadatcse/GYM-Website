@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 const Root = () => {
     return (
         <div>
-            <p>I am root page</p>
+            <Navbar />
             {/* Dynamic section */}
             <div>
-                <Outlet />
+                {/* <Outlet /> */}
             </div>
         </div>
     );
