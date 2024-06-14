@@ -1,6 +1,6 @@
 const News = () => {
     return (
-        <div>
+        <div className="screen mt-4">
             <p>I am news page</p>
         </div>
     );

@@ -1,6 +1,6 @@
 const Trainers = () => {
     return (
-        <div>
+        <div className="screen mt-4">
             <p>I am trainers page</p>
         </div>
     );

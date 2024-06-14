@@ -1,6 +1,6 @@
 const About_us = () => {
     return (
-        <div>
+        <div className="screen mt-4">
             <p>I am about us page</p>
         </div>
     );

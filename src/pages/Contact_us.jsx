@@ -1,6 +1,6 @@
 const Contact_us = () => {
     return (
-        <div>
+        <div className="screen mt-4">
             <p>I am contact us page</p>
         </div>
     );
