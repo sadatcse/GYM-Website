@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../AuthProvider';
+import Banner from '../components/Banner';
 
 const Home = () => {
     return (
         <div>
-            <p>I am Home page</p>
+            <Banner/>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 /* General styles for menu links */
-a {
+.menu-link {
     color: black;
     text-decoration: none;
     position: relative;
@@ -7,12 +7,12 @@ a {
 }
 
 /* Styles for the active link */
-a.active {
+.menu-link.active {
     color: red;
 }
 
 /* Underline effect */
-a::after {
+.menu-link::after {
     content: '';
     position: absolute;
     left: 0;
@@ -24,11 +24,11 @@ a::after {
 }
 
 /* Underline for the active link */
-a.active::after {
+.menu-link.active::after {
     width: 100%;
 }
 
 /* Hover effect to show underline smoothly */
-a:hover::after {
+.menu-link:hover::after {
     width: 100%;
 }
