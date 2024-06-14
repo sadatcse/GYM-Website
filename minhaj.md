@@ -3,3 +3,5 @@
 # added routes file in routes folder for whole website's route
 # added website's Root file in source(src) folder
 # added auth context (global state)
+# added navbar
+# completed all routes

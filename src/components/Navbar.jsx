@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-
+import "../css/navbar.css"
 const Navbar = () => {
 
     const user = false;
@@ -7,17 +7,17 @@ const Navbar = () => {
     // Menu and route links are here
     const menu =
         <>
-            <NavLink className="text-red-600" to="/">Home</NavLink>
-            <NavLink to="/">Trainers</NavLink>
-            <NavLink to="/">News</NavLink>
-            <NavLink to="/">Explore</NavLink>
-            <NavLink to="/">About Us</NavLink>
-            <NavLink to="/">Contact Us</NavLink>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/trainers">Trainers</NavLink>
+            <NavLink to="/news">News</NavLink>
+            <NavLink to="/explore">Explore</NavLink>
+            <NavLink to="/aboutus">About Us</NavLink>
+            <NavLink to="/contactus">Contact Us</NavLink>
         </>
-    const avatar = <div className="navbar-end">
+    const avatar = <div>
         <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle hover:rounded-lg hover:bg-transparent avatar">
+                <div className="w-10 rounded-lg">
                     <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                 </div>
             </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
     </div>
 
     const buttons = <div className="">
-        <Link><button className="btn px-6 font-semibold text-white bg-red-600 rounded-md border hover:text-red-600 hover:bg-transparent  hover:border-red-600">Sign Up</button></Link>
+        <Link><button className="btn px-6 font-medium text-white bg-red-600 rounded-md border hover:text-red-600 hover:bg-transparent  hover:border-red-600 poppins">Sign Up</button></Link>
     </div>
 
     return (
@@ -52,25 +52,28 @@ const Navbar = () => {
                     </div>
                     <a className="btn btn-ghost text-xl">Multigym</a>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 space-x-3 font-semibold text-sm flex items-center">
-                        {menu}
-                    </ul>
-                </div>
 
-                {
-                    // If user exists then show avatar else sign up
-                    user ?
-                        <>
-                            {avatar}
-                        </>
-                        :
-                        <>
-                            <div className="navbar-end">
-                                {buttons}
-                            </div>
-                        </>
-                }
+                <div className="navbar-end flex justify-end gap-5">
+                    <div className="hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1 space-x-6 font-medium text-sm flex items-center poppins">
+                            {menu}
+                        </ul>
+                    </div>
+
+                    {
+                        // If user exists then show avatar else sign up
+                        user ?
+                            <>
+                                {avatar}
+                            </>
+                            :
+                            <>
+                                <div className="">
+                                    {buttons}
+                                </div>
+                            </>
+                    }
+                </div>
             </div>
         </div>
     );

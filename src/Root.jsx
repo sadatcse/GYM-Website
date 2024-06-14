@@ -9,7 +9,7 @@ const Root = () => {
             </div>
             {/* Dynamic section */}
             <div>
-                {/* <Outlet /> */}
+                <Outlet />
             </div>
         </div>
     );

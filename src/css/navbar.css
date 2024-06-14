@@ -1,0 +1,5 @@
+/* This file is only to style navbar */
+a.active{
+    color: red;
+    text-decoration: underline;
+}
