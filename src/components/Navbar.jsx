@@ -2,17 +2,17 @@ import { Link, NavLink } from "react-router-dom";
 import "../css/navbar.css"
 const Navbar = () => {
 
-    const user = false;
+    const user = true;
 
     // Menu and route links are here
     const menu =
         <>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/trainers">Trainers</NavLink>
-            <NavLink to="/news">News</NavLink>
-            <NavLink to="/explore">Explore</NavLink>
-            <NavLink to="/aboutus">About Us</NavLink>
-            <NavLink to="/contactus">Contact Us</NavLink>
+            <NavLink  to="/">Home</NavLink>
+            <NavLink  to="/trainers">Trainers</NavLink>
+            <NavLink  to="/news">News</NavLink>
+            <NavLink  to="/explore">Explore</NavLink>
+            <NavLink  to="/aboutus">About Us</NavLink>
+            <NavLink  to="/contactus">Contact Us</NavLink>
         </>
     const avatar = <div>
         <div className="dropdown dropdown-end">
@@ -35,7 +35,7 @@ const Navbar = () => {
     </div>
 
     const buttons = <div className="">
-        <Link><button className="btn px-6 font-medium text-white bg-red-600 rounded-md border hover:text-red-600 hover:bg-transparent  hover:border-red-600 poppins">Sign Up</button></Link>
+        <button className="btn  px-6 font-medium text-white bg-red-600 rounded-md border hover:text-red-600 hover:bg-transparent  hover:border-red-600 poppins">Sign Up</button>
     </div>
 
     return (
