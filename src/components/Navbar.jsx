@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import "../css/navbar.css"
 const Navbar = () => {
 
-    const user = true;
+    const user = false;
 
     // Menu and route links are here
     const menu =
