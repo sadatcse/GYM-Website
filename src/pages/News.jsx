@@ -10,7 +10,7 @@ const News = () => {
     });
 
     return (
-        <div className="screen mt-4">
+        <div className="screen my-2">
             
             {/* <p>I am news page
                 check the link copy whole use fake data and follow the design
@@ -19,7 +19,7 @@ const News = () => {
 
 
             {/* News Cards */}
-            <section>
+            <section className="grid grid-cols-4 gap-4">
                 {
                     news.map((news)=><NewsCard key={news.title} news={news}/>)
                 }
