@@ -7,12 +7,12 @@ const Navbar = () => {
     // Menu and route links are here
     const menu =
         <>
-            <NavLink className="menu-link" activeClassName="active" to="/">Home</NavLink>
-            <NavLink className="menu-link" activeClassName="active" to="/trainers">Trainers</NavLink>
-            <NavLink className="menu-link" activeClassName="active" to="/news">News</NavLink>
-            <NavLink className="menu-link" activeClassName="active" to="/explore">Explore</NavLink>
-            <NavLink className="menu-link" activeClassName="active" to="/aboutus">About Us</NavLink>
-            <NavLink className="menu-link" activeClassName="active" to="/contactus">Contact Us</NavLink>
+            <NavLink className="menu-link" activeclassName="active" to="/">Home</NavLink>
+            <NavLink className="menu-link" activeclassName="active" to="/trainers">Trainers</NavLink>
+            <NavLink className="menu-link" activeclassName="active" to="/news">News</NavLink>
+            <NavLink className="menu-link" activeclassName="active" to="/explore">Explore</NavLink>
+            <NavLink className="menu-link" activeclassName="active" to="/aboutus">About Us</NavLink>
+            <NavLink className="menu-link" activeclassName="active" to="/contactus">Contact Us</NavLink>
         </>
     const avatar = <div>
         <div className="dropdown dropdown-end">
@@ -40,7 +40,7 @@ const Navbar = () => {
 
     return (
         <div >
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 px-0">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
