@@ -16,7 +16,6 @@ const Home = () => {
             <Sucessful></Sucessful>
             <OurTrainer></OurTrainer>
             <Photo_galary></Photo_galary>
-            <Footer></Footer>
         </div>
     );
 };

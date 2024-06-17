@@ -3,7 +3,7 @@ import { useState } from "react";
 import NewsCard from "../components/Newspage/NewsCard";
 const News = () => {
     const [news ,setNews] = useState([]);
-
+    const api = "https://multigym-premium-server.vercel.app/news/get-all"
     const fakeData = "../../public/news.json";
     axios.get(fakeData).then(data=>{
         setNews(data.data);
@@ -11,12 +11,6 @@ const News = () => {
 
     return (
         <div className="screen my-2">
-            
-            {/* <p>I am news page
-                check the link copy whole use fake data and follow the design
-                https://www.pharmasolutions.com.bd/news
-            </p> */}
-
 
             {/* News Cards */}
             <section className="grid grid-cols-4 gap-4">
