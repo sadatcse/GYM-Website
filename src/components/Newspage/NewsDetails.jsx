@@ -6,9 +6,21 @@ import { SlSocialTwitter } from "react-icons/sl";
 import { RiFacebookFill } from "react-icons/ri";
 import { CiFacebook } from "react-icons/ci";
 
-
 import Footer from "../Footer";
+import { Link } from "react-router-dom";
 const NewsDetails = () => {
+
+
+
+    // related data fetch
+    const [news, setNews] = useState([]);
+    const api = "https://multigym-premium-server.vercel.app/news/get-all"
+    const fakeData = "../../../public/news.json";
+    axios.get(fakeData).then(data => {
+        setNews(data.data);
+    });
+
+
 
     const ob = {
         title: "IOC implements AI for athlete safety at Paris Olympics",
@@ -23,7 +35,7 @@ const NewsDetails = () => {
         <div>
             <div className="screen px-6 mt-4 mb-3  border-gray-300 rounded-lg">
                 <div className="">
-                    <div className="text-sm breadcrumbs">
+                    <div className="text-base text-gray-500 breadcrumbs poppins">
                         <ul>
                             <li><a>Gym</a></li>
                             <li><a>News</a></li>
@@ -31,14 +43,16 @@ const NewsDetails = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 mt-10 gap-10">
+                <div className="grid md:grid-cols-3 mt-10 gap-10">
                     <div className="col-span-2 pr-20">
-                        <p className="text-4xl font-semibold mb-5">{ob.title}</p>
+                        <p className="text-4xl font-semibold mb-5 poppins">{ob.title}</p>
                         <p className="text-2xl font-thin mb-2">{ob.date}</p>
                         {/* <p className="italic mb-5">{ob.subtitle}</p> */}
                         <p className="text-2xl font-thin leading-8 mt-3">{ob.description}</p>
                         <p className="text-red-500 mt-3 text-lg font-thin  cursor-pointer max-w-fit">Go Back</p>
                     </div>
+
+                    {/* image part */}
                     <div className="pl-5">
                         <img className="w-full rounded-t-md" src={ob.cover} alt="" />
                         <div className="bg-slate-50 p-8">
@@ -52,10 +66,10 @@ const NewsDetails = () => {
                             </div>
                             <p className="font-bold text-red-600 mt-3 text-lg">FOLLOW THE LATEST</p>
                             <div className="flex my-5 mb-7 justify-start gap-4 items-center text-4xl">
-                                <CiFacebook className="text-gray-600" />
-                                <SlSocialTwitter className="text-gray-600 text-3xl" />
-                                <SlSocialReddit className="text-gray-600" />
-                                <TiSocialPinterestCircular className="text-gray-600" />
+                                <CiFacebook className="text-gray-600 cursor-pointer hover:text-red-600" />
+                                <SlSocialTwitter className="text-gray-600 cursor-pointer hover:text-red-600 text-3xl" />
+                                <SlSocialReddit className="text-gray-600 cursor-pointer hover:text-red-600" />
+                                <TiSocialPinterestCircular className="text-gray-600 cursor-pointer hover:text-red-600" />
                             </div>
                             <p className="font-bold text-red-600 text-lg">GET UPDATES</p>
                             <input type="text" placeholder="Email" className="outline-none p-2 px-3 w-full rounded my-4 border" />
@@ -63,6 +77,31 @@ const NewsDetails = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* related news */}
+                <section className="mt-20 mb-9">
+                    <div>
+                        <p className="text-3xl mb-7 ">Related News & Stories</p>
+                    </div>
+                    {/* News Cards */}
+                    <section className="grid grid-cols-4 gap-4">
+                        {
+                            news.slice(news.length-4, news.length).map((news) => {
+                                return (
+                                    <div>
+                                        <img src={news.cover} className='rounded-t h-48 object-cover w-full hover:opacity-95' alt="" />
+                                        <div className='p-3 flex flex-col justify-around gap-3 border border-t-0 rounded'>
+                                            <div className='flex flex-col gap-2'>
+                                                <p className='text-sm font-medium hover:text-red-700 cursor-pointer'>{news.title}</p>
+                                                <p className='text-xs'>{news.description.length > 60 ? news.description.slice(0, 60) : news.description} ... <Link className='text-red-600 hover:text-red-800'>details</Link></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </section>
+                </section>
             </div>
             <Footer />
         </div>
