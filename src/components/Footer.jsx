@@ -1,7 +1,7 @@
 import logo from "../assets/gymlogo.jpg"
 const Footer = () => {
     return (
-        <div className="poppins">
+        <div className="poppins mt-10">
             <footer className=" bg-neutral-900 text-white">
                 <div className="footer py-10 mx-auto w-[95%] flex justify-between">
                     <nav>
