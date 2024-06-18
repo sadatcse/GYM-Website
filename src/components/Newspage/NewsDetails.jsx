@@ -86,16 +86,22 @@ const NewsDetails = () => {
                     {/* News Cards */}
                     <section className="grid grid-cols-4 gap-4">
                         {
-                            news.slice(news.length-4, news.length).map((news) => {
+                            news.slice(news.length - 4, news.length).map((news) => {
                                 return (
-                                    <div>
-                                        <img src={news.cover} className='rounded-t h-48 object-cover w-full hover:opacity-95' alt="" />
-                                        <div className='p-3 flex flex-col justify-around gap-3 border border-t-0 rounded'>
+                                    <div className="relative">
+                                        <img src={news.cover} className='rounded h-48 object-cover w-full hover:opacity-95' alt="" />
+                                        {/* <div className="flex my-1 absolute bottom-14 left-2 -ml-1 gap-2 font-thin">
+                                            {
+                                                news.tags.slice(0,2).map(tag => <p className="text-sm bg-transparent text-black ml-1">{tag}</p>)
+                                            }
+                                        </div> */}
+                                        <div className='flex flex-col justify-around gap-3 mt-1 border-t-0 rounded'>
                                             <div className='flex flex-col gap-2'>
-                                                <p className='text-sm font-medium hover:text-red-700 cursor-pointer'>{news.title}</p>
-                                                <p className='text-xs'>{news.description.length > 60 ? news.description.slice(0, 60) : news.description} ... <Link className='text-red-600 hover:text-red-800'>details</Link></p>
+                                                <p className='text-base font-semibold hover:text-red-700 cursor-pointer'>{news.title}</p>
+                                                {/* <p className='text-xs'>{news.description.length > 60 ? news.description.slice(0, 60) : news.description} ... <Link className='text-red-600 hover:text-red-800'>details</Link></p> */}
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 )
                             })
