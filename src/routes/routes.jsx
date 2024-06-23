@@ -28,12 +28,12 @@ export const router = createBrowserRouter([
       {
         path: "/trainers",
         element: <Trainers />,
-        loader: () => fetch('')
+        loader: () => fetch('https://multigym-premium-server.vercel.app/trainer/get-all')
       },
       {
         path: '/trainers/:name',
         element: <Trainers_Details />,
-        loader: ({ params }) => fetch(`/${params.name}`)
+        loader: ({ params }) => fetch(`https://multigym-premium-server.vercel.app/trainer/get-name/${params.name}`)
       },
       {
         path: "/service",
