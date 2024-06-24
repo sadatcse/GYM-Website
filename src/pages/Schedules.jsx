@@ -2,8 +2,8 @@ import React from 'react';
 
 const Schedules = () => {
     return (
-        <div>
-            
+        <div className='md:h-96'>
+            <p>Shedules</p>
         </div>
     );
 };

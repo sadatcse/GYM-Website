@@ -15,31 +15,34 @@ const Navbar = () => {
 
   const menu = (
     <>
-      <li><NavLink className="menu-link" activeClassName="active" to="/">Home</NavLink></li>
-      <li>
-        <NavLink className="menu-link" activeClassName="active" to="/aboutus/about">About</NavLink>
-        {/* <ul className="p-2">
-          <li><NavLink className="menu-link" activeClassName="active" to="/aboutus/about">About us</NavLink></li>
-          <li><NavLink className="menu-link" activeClassName="active" to="/aboutus/meettheteam">Meet the team</NavLink></li>
-          <li><NavLink className="menu-link" activeClassName="active" to="/aboutus/package">Price & package</NavLink></li>
-          <li><NavLink className="menu-link" activeClassName="active" to="/aboutus/schedules">Schedules</NavLink></li>
-        </ul> */}
+      <NavLink className="menu-link" activeClassName="active" to="/">Home</NavLink>
+      <NavLink className="menu-link" activeClassName="active" to="/service">Service</NavLink>
+      <NavLink className="menu-link" activeClassName="active" to="/trainers">Trainer</NavLink>
+      <NavLink className="menu-link" activeClassName="active" to="/news">News</NavLink>
+      <NavLink className="menu-link" activeClassName="active" to="/contactus">Contact Us</NavLink>
+      <li >
+        <details>
+          <summary>About</summary>
+          <ul className="p-2 z-10 md:border md:w-40">
+            <li><NavLink  to="/aboutus/about">About us</NavLink></li>
+            <li><NavLink  to="/aboutus/meettheteam">Meet the team</NavLink></li>
+            <li><NavLink  to="/aboutus/package">Price & package</NavLink></li>
+            <li><NavLink  to="/aboutus/schedules">Schedules</NavLink></li>
+          </ul>
+        </details>
       </li>
-      <li>
-        <NavLink className="menu-link" activeClassName="active" to="/explore/leg">Explore</NavLink>
-        {/* <ul className="p-2">
-          <li><NavLink className="menu-link" activeClassName="active" to="/explore/chest">Chest</NavLink></li>
-          <li><NavLink className="menu-link" activeClassName="active" to="/explore/back">Back</NavLink></li>
-          <li><NavLink className="menu-link" activeClassName="active" to="/explore/leg">Leg</NavLink></li>
-        </ul> */}
+
+      <li >
+        <details>
+          <summary>Explore</summary>
+          <ul className="p-2 z-10 md:border">
+            <li><NavLink  to="/explore/chest">Chest</NavLink></li>
+            <li><NavLink  to="/explore/back">Back</NavLink></li>
+            <li><NavLink  to="/explore/leg">Leg</NavLink></li>
+          </ul>
+        </details>
       </li>
-      <li><NavLink className="menu-link" activeClassName="active" to="/service">Service</NavLink></li>
-      <li><NavLink className="menu-link" activeClassName="active" to="/trainers">Trainer</NavLink></li>
- 
-      <li><NavLink className="menu-link" activeClassName="active" to="/news">News</NavLink></li>
-     
-      <li><NavLink className="menu-link" activeClassName="active" to="/contactus">Contact Us</NavLink></li>
-      
+
     </>
   );
 
@@ -89,7 +92,7 @@ const Navbar = () => {
         </div>
         <div className="flex navbar-end w-full justify-end ">
           <div className="hidden lg:flex ">
-            <ul className="menu menu-horizontal px-1 space-x-6 font-medium text-sm flex items-center poppins">
+            <ul className="menu menu-horizontal px-1 space-x-6 font-medium text-sm flex mr-3 items-center poppins">
               {menu}
             </ul>
           </div>
