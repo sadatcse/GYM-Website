@@ -1,9 +1,56 @@
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+
 const Contact_us = () => {
     return (
         <div className="screen mt-4">
-            <div className="flex justify-center">
+            <div className="grid border grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-10 p-7">
+                <div className="flex flex-col justify-center">
+                    <p className="text-3xl font-bold poppins">MULTIGYM PREMIUM DHAKA CITY</p>
+                    <div className="grid  grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <div className="flex items-center mt-8 mb-3 gap-3">
+                                <div>
+                                    <FaPhoneAlt />
+                                </div>
+                                <p className="font-bold text-lg">(+880) 1313-197435</p>
+                            </div>
+                            <div className="flex  items-start gap-3">
+                                <FaLocationDot className="mt-1 text-3xl text-red-700" />
+                                <div className="flex flex-col gap-5">
+                                    <p>24/1,24/2(3rd & 4th floor) , Ring Road , Shia Masjid Mor, Mohammadpur , Dhaka 1207</p>
+                                    <Link className="font-bold  text-red-600 text-xl" to="" target="_blank" >GET DIRECTION</Link>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div>
+                            <div className="flex items-center mt-8 mb-3 gap-3">
+                                <div>
+                                    <FaPhoneAlt />
+                                </div>
+                                <p className="font-bold text-lg">(+880) 1313-197427</p>
+                            </div>
+                            <div className="flex  items-start gap-3">
+                                <FaLocationDot className="mt-1 text-3xl text-red-700" />
+                                <div className="flex flex-col gap-5">
+                                    <p>Lalmatia Shopping Center (2nd floor), Lalmatia New Coloni  Beside of Fire Service & Civil Defence , Dhaka </p>
+                                    <Link className="font-bold  text-red-600 text-xl" to="" target="_blank" >GET DIRECTION</Link>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
                 <div>
-                    <h1 className="text-6xl font-bold">Contact Us</h1>
+                    <h1 className="text-4xl font-bold">GET IN TOUCH</h1>
                     <h4 className="mt-6">
                         Have a comment or general question? Fill out the form below and a member of our <br />team will reach out to you shortly.
                     </h4>
