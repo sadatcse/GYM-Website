@@ -64,10 +64,10 @@ const Contact_us = () => {
                             <input type="text" placeholder="Phone Number" className="outline-none rounded w-full border-2  focus:border-b-red-800 p-3 border-b-red-600 shadow" />
                         </div>
                         <input type="text" placeholder="Zip/Postal Code" className="outline-none rounded w-full border-2  focus:border-b-red-800 p-3 border-b-red-600 shadow" />
-                        <textarea placeholder="Comments/Questions" name="" className="outline-none rounded w-full border-2  focus:border-b-red-800 p-3 border-b-red-600 shadow resize-none  h-14" id=""></textarea>
+                        <textarea placeholder="Comments/Questions" name="" className="outline-none rounded w-full border-2  focus:border-b-red-800 p-3 border-b-red-600 shadow resize-none  h-24" id=""></textarea>
                     </div>
                     <p className="mt-3 text-sm">By clicking SUBMIT below, you. agree to the <span className="text-red-600">Privacy Policy</span> and authorize Multi Gym Premium.</p>
-                    <button className="btn rounded mt-4 bg-red-600 text-white text-lg hover:text-red-600 hover:bg-white hover:border-red-600 w-1/3">Submit</button>
+                    <button className="btn rounded-md mt-4 bg-red-600 text-white text-lg hover:text-red-600 hover:bg-white hover:border-red-600 w-1/3">Submit</button>
                 </div>
             </div>
 

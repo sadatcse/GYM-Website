@@ -73,7 +73,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar border border-green-500 bg-base-100 px-0">
+      <div className="navbar   bg-base-100 px-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -87,8 +87,8 @@ const Navbar = () => {
           </div>
           <a className="btn btn-ghost text-xl"><img className='h-12 w-24' src={Logo}></img></a>
         </div>
-        <div className="flex navbar-end w-full justify-end border border-red-500 gap-5">
-          <div className="hidden lg:flex border border-blue-500">
+        <div className="flex navbar-end w-full justify-end ">
+          <div className="hidden lg:flex ">
             <ul className="menu menu-horizontal px-1 space-x-6 font-medium text-sm flex items-center poppins">
               {menu}
             </ul>
