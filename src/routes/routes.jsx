@@ -44,10 +44,7 @@ export const router = createBrowserRouter([
         element: <News />,
         loader: () => fetch('')
       },
-      {
-        path: "/test",
-        element: <NewsDetails />
-      },
+      
       {
         path: "/explore/:name",
         element: <Explore />,
@@ -80,6 +77,10 @@ export const router = createBrowserRouter([
         element: <Contact_us />
       }
     ]
+  },
+  {
+    path: "/test",
+    element: <NewsDetails />
   },
 
 ]);

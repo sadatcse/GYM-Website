@@ -13,7 +13,7 @@ const News = () => {
         <div className="screen my-2">
 
             {/* News Cards */}
-            <section className="grid grid-cols-4 gap-4">
+            <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {
                     news.map((news)=><NewsCard key={news.title} news={news}/>)
                 }

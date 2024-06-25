@@ -37,8 +37,8 @@ const NewsDetails = () => {
                 <div className="">
                     <div className="text-base text-gray-500 breadcrumbs poppins">
                         <ul>
-                            <li><a>Gym</a></li>
-                            <li><a>News</a></li>
+                            <li><a><Link to="/">Gym</Link></a></li>
+                            <li><a><Link to="/news">News</Link></a></li>
                             <li>{ob.title}</li>
                         </ul>
                     </div>
@@ -84,7 +84,7 @@ const NewsDetails = () => {
                         <p className="text-3xl mb-7 ">Related News & Stories</p>
                     </div>
                     {/* News Cards */}
-                    <section className="grid grid-cols-4 gap-4">
+                    <section className="grid grid-cols-1 md:grid-cols-4 gap-4">
                         {
                             news.slice(news.length - 4, news.length).map((news) => {
                                 return (
