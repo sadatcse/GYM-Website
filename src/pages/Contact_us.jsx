@@ -3,6 +3,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Contact_us = () => {
+    const location1 = "https://www.google.com/maps/place/Multi+Gym+Premium,+Shia+Masjid/@23.7627561,90.3565433,17z/data=!3m1!4b1!4m6!3m5!1s0x3755bf2476ff0fd5:0x55d28ddfdbff1096!8m2!3d23.7627561!4d90.3591182!16s%2Fg%2F11vdqj2fhv?entry=ttu"
+    const location2 = "https://www.google.com/maps/place/Multi+Gym+Premium,+Lalmatia+Branch/@23.7583751,90.3683927,17z/data=!3m1!4b1!4m6!3m5!1s0x3755bf213d5bc75f:0xf5a881e8d0507a36!8m2!3d23.7583703!4d90.3732636!16s%2Fg%2F11w3d__h9_?entry=ttu"
     return (
         <div className="screen mt-4">
             <div className="grid border grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-10 p-7">
@@ -20,7 +22,7 @@ const Contact_us = () => {
                                 <FaLocationDot className="mt-1 text-3xl text-red-700" />
                                 <div className="flex flex-col gap-5">
                                     <p>24/1,24/2(3rd & 4th floor) , Ring Road , Shia Masjid Mor, Mohammadpur , Dhaka 1207</p>
-                                    <Link className="font-bold  text-red-600 text-xl" to="" target="_blank" >GET DIRECTION</Link>
+                                    <Link className="font-bold  text-red-600 text-xl" to={location1} target="_blank" >GET DIRECTION</Link>
                                 </div>
 
                             </div>
@@ -37,7 +39,7 @@ const Contact_us = () => {
                                 <FaLocationDot className="mt-1 text-3xl text-red-700" />
                                 <div className="flex flex-col gap-5">
                                     <p>Lalmatia Shopping Center (2nd floor), Lalmatia New Coloni  Beside of Fire Service & Civil Defence , Dhaka </p>
-                                    <Link className="font-bold  text-red-600 text-xl" to="" target="_blank" >GET DIRECTION</Link>
+                                    <Link className="font-bold  text-red-600 text-xl" to={location2} target="_blank" >GET DIRECTION</Link>
                                 </div>
 
 
