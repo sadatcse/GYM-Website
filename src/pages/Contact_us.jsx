@@ -36,13 +36,11 @@ const Contact_us = () => {
                                 <p className="font-bold text-lg">(+880) 1313-197427</p>
                             </div>
                             <div className="flex  items-start gap-3">
-                                <FaLocationDot className="mt-1 text-3xl text-red-700" />
+                                <FaLocationDot className="mt-1 text-3xl md:text-4xl text-red-700" />
                                 <div className="flex flex-col gap-5">
                                     <p>Lalmatia Shopping Center (2nd floor), Lalmatia New Coloni  Beside of Fire Service & Civil Defence , Dhaka </p>
                                     <Link className="font-bold  text-red-600 text-xl" to={location2} target="_blank" >GET DIRECTION</Link>
                                 </div>
-
-
                             </div>
 
                         </div>
