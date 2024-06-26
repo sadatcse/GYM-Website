@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { FiMail, FiInstagram, FiFacebook } from 'react-icons/fi';
+import { FaFacebookF, FaPhoneAlt } from "react-icons/fa";
+import { FaInstagram } from 'react-icons/fa6';
+import { MdOutlineEmail } from "react-icons/md";
 
 const Trainers_Details = () => {
     const data = useLoaderData();
@@ -77,14 +79,20 @@ const Trainers_Details = () => {
         //         </div>
         //     </div>
         // </div>
-        <div className='border screen flex flex-col relative lg:flex-row  items-center'>
+        <div className=' border-b overflow-x-hidden screen flex flex-col relative lg:flex-row  items-center'>
             <div className='w-1/2'>
                 <img src={data.image_url} className='' alt="" />
             </div>
             <div className=''>
                 <p className='font-bold text-5xl'>{data.full_name} </p>
-                <p className='text-3xl mt-4 font-semibold'>{data.certification}</p>
+                <p className=' text-3xl mt-4 font-semibold'>{data.certification}</p>
                 <p className='text-xl mt-3 max-w-[700px] font-normal text-gray-500'>{data.bio}</p>
+                <div className='flex gap-5 mt-5 text-2xl'>
+                    <FaFacebookF />
+                    <FaInstagram />
+                    <FaPhoneAlt />
+                    <MdOutlineEmail />
+                </div>
             </div>
             <p className='absolute text-9xl font-extrabold -z-10 top-0 uppercase  left-0 opacity-10 lg:block hidden'>{data.short_name}</p>
         </div>
