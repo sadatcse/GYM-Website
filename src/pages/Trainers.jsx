@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 const Trainers = () => {
     const [data, setData] = useState([]);
     // const data = useLoaderData();
@@ -52,11 +52,13 @@ const Trainers = () => {
                             data.map((trainer, index) => (
                                 <section key={index} >
                                     <div className="bg-gray-100 pt-3 text-gray-300 rounded overflow-hidden">
-                                        <img
-                                            src={trainer.image_url}
-                                            alt={trainer.full_name}
-                                            className="w-full h-96 cursor-pointer object-cover rounded hover:scale-105 transition-transform duration-300"
-                                        />
+                                        <Link to={`/trainers/${trainer.short_name}`}>
+                                            <img
+                                                src={trainer.image_url}
+                                                alt={trainer.full_name}
+                                                className="w-full h-96 cursor-pointer object-cover rounded hover:scale-105 transition-transform duration-300"
+                                            />
+                                        </Link>
                                     </div>
                                     <div className='text-center'>
                                         <p className='font-semibold text-2xl mt-2 uppercase'>{trainer.full_name}</p>
