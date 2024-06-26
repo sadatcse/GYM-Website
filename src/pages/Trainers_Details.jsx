@@ -84,9 +84,9 @@ const Trainers_Details = () => {
                 <img src={data.image_url} className='' alt="" />
             </div>
             <div className=''>
-                <p className='font-bold text-5xl'>{data.full_name} </p>
-                <p className=' text-3xl mt-4 font-semibold'>{data.certification}</p>
-                <p className='text-xl mt-3 max-w-[700px] font-normal text-gray-500'>{data.bio}</p>
+                <p className='font-bold text-6xl'>{data.full_name} </p>
+                <p className=' text-3xl mt-5 font-semibold'>{data.certification}</p>
+                <p className='text-xl mt-5 max-w-[700px] font-normal text-gray-500'>{data.bio}</p>
                 <div className='flex gap-5 mt-5 text-2xl'>
                     <FaFacebookF />
                     <FaInstagram />
