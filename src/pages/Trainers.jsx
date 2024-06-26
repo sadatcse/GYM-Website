@@ -1,12 +1,15 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 const Trainers = () => {
-    const data = useLoaderData();
+    const [data, setData] = useState([]);
+    // const data = useLoaderData();
+    useEffect(() => {
+        axios.get("https://multigym-premium-server.vercel.app/trainer/get-all")
+            .then(data => setData(data.data));
+    }, [])
 
-
-
-
-    console.log(data)
+    console.log("hi" + data)
     return (
         <div className="screen mt-4">
             <h2 className="text-3xl font-bold text-center mb-6">Meet the Trainers</h2>
@@ -31,28 +34,51 @@ const Trainers = () => {
                 {/* // image_url
                 // full_name
                 // certification */}
-                {
-                    data.map((trainer, index) => (
-                        <section key={index}  >
-                            <div className="bg-gray-100 pt-3 text-gray-300 rounded overflow-hidden">
-                                <img
-                                    src={trainer.image_url}
-                                    alt={trainer.full_name}
-                                    className="w-full h-96 cursor-pointer object-cover rounded hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                            <div className='text-center'>
-                                <p className='font-semibold text-2xl mt-2 uppercase'>{trainer.full_name}</p>
-                                <p className='font-semibold text-xl text-gray-500'>Personal Coach</p>
-                                {/* <p className=''>{trainer.certification}</p> */}
-                            </div>
-                        </section>
-                    ))
+                {data.length == 0 &&
+                    <>
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                    </>
+                }
+
+                {data &&
+                    // if data available
+                    <>
+                        {
+                            data.map((trainer, index) => (
+                                <section key={index} >
+                                    <div className="bg-gray-100 pt-3 text-gray-300 rounded overflow-hidden">
+                                        <img
+                                            src={trainer.image_url}
+                                            alt={trainer.full_name}
+                                            className="w-full h-96 cursor-pointer object-cover rounded hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                    <div className='text-center'>
+                                        <p className='font-semibold text-2xl mt-2 uppercase'>{trainer.full_name}</p>
+                                        <p className='font-semibold text-lg mt-1 text-gray-500'>PERSONAL COACH</p>
+                                        {/* <p className=''>{trainer.certification}</p> */}
+                                    </div>
+                                </section>
+                            ))
+                        }
+                    </>
                 }
 
             </div>
         </div>
     );
 };
+
+const Skeleton = () => {
+    return (
+        <div className='skeleton w-full h-96 '>
+        </div>
+    )
+}
 
 export default Trainers;
