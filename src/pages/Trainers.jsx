@@ -76,7 +76,7 @@ const Trainers = () => {
 
 const Skeleton = () => {
     return (
-        <div className='skeleton w-full h-96 '>
+        <div className=' skeleton bg-gray-100 w-full rounded h-96 '>
         </div>
     )
 }
