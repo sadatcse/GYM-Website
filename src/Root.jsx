@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 const Root = () => {
     return (
         <div>
-            <div className="mx-auto w-[95%]">
+            <div className="mx-auto">
                 <Navbar />
             </div>
             {/* Dynamic section */}
