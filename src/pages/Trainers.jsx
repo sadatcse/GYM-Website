@@ -53,11 +53,13 @@ const Trainers = () => {
                                 <section key={index} >
                                     <div className="bg-gray-100 pt-3 text-gray-300 rounded overflow-hidden">
                                         <Link to={`/trainers/${trainer.short_name}`}>
-                                            <img
-                                                src={trainer.image_url}
-                                                alt={trainer.full_name}
-                                                className="w-full h-96 cursor-pointer object-cover rounded hover:scale-105 transition-transform duration-300"
-                                            />
+                                            <div className='flex justify-center'>
+                                                <img
+                                                    src={trainer.image_url}
+                                                    alt={trainer.full_name}
+                                                    className="h-96 cursor-pointer object-cover rounded hover:scale-105 transition-transform duration-300"
+                                                />
+                                            </div>
                                         </Link>
                                     </div>
                                     <div className='text-center'>
