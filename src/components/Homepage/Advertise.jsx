@@ -2,7 +2,7 @@ import React from 'react';
 import { FaChevronRight } from "react-icons/fa6";
 const Advertise = () => {
     return (
-        <div className='text-center py-24 bg-black text-white space-y-4'>
+        <div className='text-center py-24  space-y-4'>
             <h1 className='text-4xl italic font-bold '>WE'RE READY TO GUIDE YOU ON YOUR JOURNEY!</h1>
             <h3 className='text-2xl italic font-bold'>NO MATTER YOUR SKILL LEVEL OR EXPERIENCE!</h3>
             <div className='flex justify-center'>
