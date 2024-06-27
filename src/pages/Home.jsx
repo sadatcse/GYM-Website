@@ -1,20 +1,25 @@
 import React, { useContext } from 'react';
-import Banner from '../components/Homepage/Banner';
-import Advertise from '../components/Homepage/Advertise';
-import Whychoice from '../components/Homepage/Whychoice';
-import Sucessful from '../components/Homepage/Sucessful';
-import OurTrainer from '../components/Homepage/OurTrainer';
+import About from '../components/Homepage/About';
+import Hero from '../components/Homepage/Hero';
+import Classes from '../components/Homepage/Classes';
+import Team from '../components/Homepage/Team';
+import Membership from '../components/Homepage/Membership';
+import Testimonial from '../components/Homepage/Testimonial';
+import Blog from '../components/Homepage/Blog';
+
 import Photo_galary from '../components/Homepage/Photo_galary';
-import Footer from '../components/Footer';
+
 
 const Home = () => {
     return (
         <div>
-            <Banner/>
-            <Advertise></Advertise>
-            <Whychoice></Whychoice>
-            <Sucessful></Sucessful>
-            <OurTrainer></OurTrainer>
+            <Hero />
+            <About />
+            <Classes />
+            <Team />
+            <Membership />
+            <Testimonial />
+            <Blog />
             <Photo_galary></Photo_galary>
         </div>
     );

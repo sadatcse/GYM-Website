@@ -5,43 +5,20 @@ import Logo from "../assets/logo.png";
 
 const Navbar = () => {
 
-  const [isExploreOpen, setExploreOpen] = useState(false);
-  const [isAboutOpen, setAboutOpen] = useState(false);
 
-  const toggleExplore = () => setExploreOpen(!isExploreOpen);
-  const toggleAbout = () => setAboutOpen(!isAboutOpen);
 
   const user = false;
 
-  const menu = (
+  const menu  = (
     <>
-      <NavLink className="menu-link" activeClassName="active" to="/">Home</NavLink>
+      <NavLink className="menu-link " activeClassName="active" to="/">Home</NavLink>
+      <NavLink className="menu-link " activeClassName="active" to="/aboutus/about">About us</NavLink>
       <NavLink className="menu-link" activeClassName="active" to="/service">Service</NavLink>
       <NavLink className="menu-link" activeClassName="active" to="/trainers">Trainer</NavLink>
-      <NavLink className="menu-link" activeClassName="active" to="/news">News</NavLink>
+      <NavLink className="menu-link" activeClassName="active" to="/explore/leg">Explore</NavLink>
       <NavLink className="menu-link" activeClassName="active" to="/contactus">Contact Us</NavLink>
-      <li >
-        <details>
-          <summary>About</summary>
-          <ul className="p-2 z-10 md:border md:w-40">
-            <li><NavLink  to="/aboutus/about">About us</NavLink></li>
-            <li><NavLink  to="/aboutus/meettheteam">Meet the team</NavLink></li>
-            <li><NavLink  to="/aboutus/package">Price & package</NavLink></li>
-            <li><NavLink  to="/aboutus/schedules">Schedules</NavLink></li>
-          </ul>
-        </details>
-      </li>
 
-      <li >
-        <details>
-          <summary>Explore</summary>
-          <ul className="p-2 z-10 md:border">
-            <li><NavLink  to="/explore/chest">Chest</NavLink></li>
-            <li><NavLink  to="/explore/back">Back</NavLink></li>
-            <li><NavLink  to="/explore/leg">Leg</NavLink></li>
-          </ul>
-        </details>
-      </li>
+
 
     </>
   );
@@ -76,7 +53,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar   bg-base-100 px-0">
+      <div className="navbar bg-custom-black px-0 px-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,11 +61,11 @@ const Navbar = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow   rounded-box w-52">
               {menu}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl"><img className='h-12 w-24' src={Logo}></img></a>
+          <a className="btn btn-ghost text-xl z-50"><img className='h-24 w-26' src={Logo}></img></a>
         </div>
         <div className="flex navbar-end w-full justify-end ">
           <div className="hidden lg:flex ">
