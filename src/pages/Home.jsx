@@ -7,7 +7,7 @@ import Membership from '../components/Homepage/Membership';
 import Testimonial from '../components/Homepage/Testimonial';
 import Blog from '../components/Homepage/Blog';
 
-// import Photo_galary from '../components/Homepage/Photo_galary';
+import Photo_galary from '../components/Homepage/Photo_galary';
 
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
       <Testimonial />
       <Blog />
    
-            {/* <Photo_galary></Photo_galary> */}
+            <Photo_galary></Photo_galary>
         </div>
     );
 };
