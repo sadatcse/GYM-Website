@@ -54,17 +54,17 @@ const Classes = () => {
             >
               <div className='relative'>
                 {/* overlay */}
-                <div className='bg-black/50 w-full h-full  absolute top-0 z-10'></div>
+                <div className='bg-black/100 w-full h-full  absolute top-0 z-10'></div>
                 <img src={item.img} fill className='object-cover' alt=''></img>
               </div>
               {/* text & btn */}
-              <div className='text-center flex flex-col gap-3 absolute z-50 top-24  md:px-11'>
+              <div className='text-center flex flex-col gap-2 md:gap-3 absolute top-8 z-50 md:top-16 xl:top-24  md:px-11'>
                 <motion.h3
                   variants={fadeIn('up', 0.4)}
                   initial='hidden'
                   whileInView={'show'}
                   viewport={{ once: false, amount: 0.2 }}
-                  className='h3 text-accent'
+                  className='text-xl md:text-3xl text-accent'
                 >
                   {item.name}
                 </motion.h3>
@@ -73,7 +73,7 @@ const Classes = () => {
                   initial='hidden'
                   whileInView={'show'}
                   viewport={{ once: false, amount: 0.2 }}
-                  className='text-white'
+                  className='text-white text-sm md:text-base'
                 >
                   {item.description}
                 </motion.p>
@@ -84,7 +84,7 @@ const Classes = () => {
                   viewport={{ once: false, amount: 0.2 }}
                 >
                   <CustomButton
-                    containerStyles='btn border-none hover:bg-transparent'
+                    containerStyles='btn text-sm md:text-base border-none hover:bg-transparent'
                     text='Read more'
                   />
                 </motion.div>
