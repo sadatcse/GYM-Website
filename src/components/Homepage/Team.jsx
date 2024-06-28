@@ -51,15 +51,16 @@ const Team = () => {
   const shuffledData = trainerData.sort(() => 0.5 - Math.random());
   const selectedTrainers = shuffledData.slice(0, 4);
 
+
   return (
-    <section className='py-12 xl:h-[110vh]' id='team'>
+    <section className='screen py-12 xl:h-[110vh]' id='team'>
       <div className='container mx-auto h-full flex flex-col items-center justify-center'>
         <motion.h2
           variants={fadeIn('up', 0.4)}
           initial='hidden'
           whileInView={'show'}
           viewport={{ once: false, amount: 0.2 }}
-          className='h2 text-center mb-6'
+          className='h2 text-center mb-14'
         >
           Our trainers
         </motion.h2>
@@ -73,41 +74,41 @@ const Team = () => {
               initial='hidden'
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
-              className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12 mb-12'
+              className='w-full grid gap-14 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-4'
             >
               {selectedTrainers.map((trainer) => (
                 <div className='flex flex-col items-center text-center' key={trainer._id}>
                   {/* image */}
-                  <div className='relative w-[320px] h-[360px] mx-auto mb-4'>
-                    <img src={trainer.image_url} alt={trainer.full_name} className='rounded-lg' />
+                  <div className='relative mx-auto '>
+                    <img src={trainer.image_url} alt={trainer.full_name} className='rounded-lg bg-gray-50 w-full border ' />
                   </div>
                   {/* name */}
-                  <h4 className='h4 mb-2'>{trainer.full_name}</h4>
+                  <h4 className='h4 mt-1 mb-2'>{trainer.full_name}</h4>
                   {/* role */}
                   <p className='uppercase text-xs tracking-[3px] mb-2'>Fitness Trainer</p>
                   {/* bio */}
                   {/* certifications */}
-                  <p className='mb-6 max-w-[320px] mx-auto'>{trainer.certification}</p>
+                  <p className='mb-5 px-3 mx-auto text-base'>{trainer.certification}</p>
                   {/* socials */}
-                  <div className='flex gap-12 justify-center'>
+                  <div className='flex justify-center gap-5'>
                     {trainer.Instagram && (
                       <div>
                         <Link to={trainer.Instagram} target='_blank' className='hover:text-accent transition-all'>
-                          <FaInstagram className='text-lg' />
+                          <FaInstagram className='text-2xl' />
                         </Link>
                       </div>
                     )}
                     {trainer.facebook && (
                       <div>
                         <Link to={trainer.facebook} target='_blank' className='hover:text-accent transition-all'>
-                          <FaFacebook className='text-lg' />
+                          <FaFacebook className='text-2xl' />
                         </Link>
                       </div>
                     )}
                     {trainer.mobile && (
                       <div>
                         <a href={`tel:${trainer.mobile}`} className='hover:text-accent transition-all'>
-                          <FaMobileAlt className='text-lg' />
+                          <FaMobileAlt className='text-2xl' />
                         </a>
                       </div>
                     )}
@@ -122,7 +123,7 @@ const Team = () => {
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
             >
-              <CustomButton containerStyles='w-[196px] h-[62px]' text='See all trainers' />
+              <Link to="/trainers" ><CustomButton containerStyles='btn mt-9' text='See all trainers' /></Link>
             </motion.div>
           </>
         )}

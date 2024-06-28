@@ -144,7 +144,7 @@ const MembershipSlider = () => {
       {membershipData.map((item, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className='border border-accent hover:bg-primary-300/80 transition-all duration-300 w-full max-w-sm xl:max-w-none mx-auto'>
+            <div className='border  border-accent hover:bg-primary-300/80 transition-all duration-300 w-full max-w-sm xl:max-w-none mx-auto'>
               <div className='py-5 px-[60px] border-b border-accent'>
                 <h4 className='h4'>{item.title}</h4>
               </div>
@@ -162,12 +162,13 @@ const MembershipSlider = () => {
                 </ul>
                 {/* price & button */}
                 <p className='text-accent mb-8 flex gap-1 items-center'>
-  <sup className='text-4xl'>৳ </sup>
-  <strong className='text-6xl'>{item.price}</strong>
-  <em className='self-end text-2xl'>
-    {item.price <= 600 ? '/day' : '/month'}
-  </em>
-</p>
+                  <sup className='text-4xl'>৳ </sup>
+                  <strong className='text-6xl'>{item.price}</strong>
+                  <em className='self-end text-2xl'>
+                    {item.price <= 600 ? '/day' : '/month'}
+                  </em>
+
+                </p>
                 <CustomButton
                   containerStyles='w-[196px] h-[62px]'
                   text='Buy now'

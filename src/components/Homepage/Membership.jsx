@@ -16,11 +16,11 @@ const Membership = () => {
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        position: 'relative',
+        position: 'relative', 
       }}
       id='prices'
     >
-      <div className='container mx-auto px-0 text-white h-full flex flex-col xl:pt-24 relative z-20'>
+      <div className=' container mx-auto px-0 text-white h-full flex flex-col xl:pt-24 relative z-20'>
         <motion.h2
           variants={fadeIn('up', 0.4)}
           initial='hidden'
