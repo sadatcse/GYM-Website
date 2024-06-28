@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/gymlogo.jpg";
 import CustomButton from './../components/Homepage/CustomButton';
 import { motion } from 'framer-motion';
@@ -54,10 +55,10 @@ const Footer = () => {
                         {/* Services */}
                         <motion.div variants={footerItem} className="flex flex-col gap-4">
                             <h6 className="footer-title">Services</h6>
-                            <a className="hover:text-red-600 cursor-pointer">Branding</a>
-                            <a className="hover:text-red-600 cursor-pointer">Design</a>
-                            <a className="hover:text-red-600 cursor-pointer">Marketing</a>
-                            <a className="hover:text-red-600 cursor-pointer">Advertisement</a>
+                            <a className="hover:text-red-600 cursor-pointer">Personal Training</a>
+                            <a className="hover:text-red-600 cursor-pointer">Steam Bath</a>
+                            <a className="hover:text-red-600 cursor-pointer">Sauna bath</a>
+                            <a className="hover:text-red-600 cursor-pointer">NutrItion Services</a>
                         </motion.div>
 
                
@@ -65,9 +66,11 @@ const Footer = () => {
                         {/* Legal */}
                         <motion.div variants={footerItem} className="flex flex-col gap-4">
                             <h6 className="footer-title">Legal</h6>
-                            <a className="hover:text-red-600 cursor-pointer">Terms of use</a>
-                            <a className="hover:text-red-600 cursor-pointer">Privacy policy</a>
-                            <a className="hover:text-red-600 cursor-pointer">Cookie policy</a>
+                            <Link to="/legal/termsofuse"><a className="hover:text-red-600 cursor-pointer">Terms of use</a></Link>
+                            <Link to="/legal/appprivacypolicy"><a className="hover:text-red-600 cursor-pointer">Privacy policy</a></Link>
+                            <Link to="/legal/cookiepolicy"><a className="hover:text-red-600 cursor-pointer">Cookie policy</a></Link>
+                            <Link to="/legal/refundpolicy"><a className="hover:text-red-600 cursor-pointer">Refund policy</a></Link>
+                          
                         </motion.div>
 
                         {/* Newsletter */}

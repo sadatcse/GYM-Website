@@ -13,6 +13,11 @@ import Schedules from "../pages/Schedules";
 import Explore from "../pages/Explore";
 import Explore_Details from "../pages/Explore_Details";
 import Trainers_Details from './../pages/Trainers_Details';
+import PrivacyPolicy from "../pages/legal/App_Privacy_Policy";
+import TermsOfUse from "../pages/legal/Terms_of_use";
+import CookiePolicy from "../pages/legal/Cookie_policy";
+import PrivacyPolicyfb from "../pages/legal/privacy_policy_ads";
+import RefundPolicy from "../pages/legal/Refund_policy";
 
 export const router = createBrowserRouter([
 
@@ -74,12 +79,37 @@ export const router = createBrowserRouter([
       {
         path: "/contactus",
         element: <Contact_us />
-      }
+      },
+      {
+        path: "/blog/:id",
+        element: <NewsDetails />,
+        loader: ({ params }) => fetch(`https://multigym-premium-server.vercel.app/news/get-id/${params.id}`)
+      },
+      {
+        path: "/legal/appprivacypolicy",
+        element: <PrivacyPolicy />
+      },
+      {
+        path: "/legal/termsofuse",
+        element: <TermsOfUse />
+      },
+      {
+        path: "/legal/refundpolicy",
+        element: <RefundPolicy />
+      },
+ 
+      {
+        path: "/legal/cookiepolicy",
+        element: <CookiePolicy />
+      },
+      {
+        path: "/legal/privacypolicyads",
+        element: <PrivacyPolicyfb />
+      },
+
+
     ]
   },
-  {
-    path: "/test",
-    element: <NewsDetails />
-  },
+
 
 ]);

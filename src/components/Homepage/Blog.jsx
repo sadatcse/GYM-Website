@@ -64,7 +64,7 @@ const Blog = () => {
                     </p>
                     <Link
                       className='hover:text-accent transition-all duration-300'
-                      to={post.href}
+                      to={`/blog/${post._id}`}
                     >
                       <h5 className='h5'>{post.title}</h5>
                     </Link>

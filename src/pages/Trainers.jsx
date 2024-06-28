@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../../lib/variants';
 const Trainers = () => {
     const [data, setData] = useState([]);
     // const data = useLoaderData();
@@ -12,7 +14,26 @@ const Trainers = () => {
     console.log("hi" + data)
     return (
         <div className="screen mt-4">
-            <h2 className="text-3xl font-bold text-center mb-6">Meet the Trainers</h2>
+                    <div className='flex flex-col items-center gap-2 mb-8'>
+          <motion.h2
+            variants={fadeIn('up', 0.4)}
+            initial='hidden'
+            whileInView={'show'}
+            viewport={{ once: false, amount: 0.2 }}
+            className='h2 text-center'
+          >
+           Our Trainer 
+          </motion.h2>
+          <motion.p
+            variants={fadeIn('up', 0.6)}
+            initial='hidden'
+            whileInView={'show'}
+            viewport={{ once: false, amount: 0.2 }}
+            className='max-w-[600px] mx-auto text-center'
+          >
+            Meet the Trainer
+          </motion.p>
+        </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
                 {/* {data.map((trainer, index) => (
                     <div key={index} className="bg-gray-800 text-gray-300 rounded-lg p-6 shadow-lg">
