@@ -11,18 +11,15 @@ import SwiperNavButtons from './SwiperNavButtons';
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
-  const localData = "../../../public/news.json";
-  const api = 'https://multigym-premium-server.vercel.app/news/get-all/'
-  console.log(blogData)
+
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await axios.get(
-          localData
-        );
-        setBlogData(response.data);
+        const response = await axios.get('https://multigym-premium-server.vercel.app/news/get-all/');
+        setBlogData(response.data); 
       } catch (error) {
         console.error('Error fetching blog data:', error);
+    
       }
     };
 
@@ -60,7 +57,7 @@ const Blog = () => {
             {blogData.map((post, index) => (
               <SwiperSlide key={index}>
                 <div className='flex flex-col justify-start h-full max-w-[320px] mx-auto'>
-                  <img src={post.image} width={320} height={266} alt='' className='mb-6' />
+                  <img src={post.image}  alt='' className='mb-6 h-64 w-84' />
                   <div className='flex flex-col items-start'>
                     <p className='max-w-[380px] uppercase text-[12px] tracking-[3px] mb-1'>
                       {post.createdDate}
