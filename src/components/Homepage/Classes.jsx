@@ -54,7 +54,7 @@ const Classes = () => {
             >
               <div className='relative'>
                 {/* overlay */}
-                <div className='bg-black/100 w-full h-full  absolute top-0 z-10'></div>
+                <div className='bg-black/50 w-full h-full  absolute top-0 z-10'></div>
                 <img src={item.img} fill className='object-cover' alt=''></img>
               </div>
               {/* text & btn */}
