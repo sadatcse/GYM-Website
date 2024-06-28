@@ -85,7 +85,7 @@ const Blog = () => {
           whileInView={'show'}
           viewport={{ once: false, amount: 0.2 }}
         >
-          <CustomButton containerStyles='block w-[196px] h-[62px] mx-auto' text='View all' />
+         <Link to="/blog"><CustomButton containerStyles='block w-[196px] h-[62px] mx-auto' text='View all' /></Link> 
         </motion.div>
       </div>
     </section>
