@@ -13,14 +13,13 @@ import Photo_galary from '../components/Homepage/Photo_galary';
 const Home = () => {
     return (
         <div>
-    <Hero />
-      <About />
-      <Classes />
-      <Team />
-      <Membership />
-      <Testimonial />
-      <Blog />
-   
+            <Hero />
+            <About />
+            <Classes />
+            <Team />
+            <Membership />
+            <Testimonial />
+            <Blog />
             <Photo_galary></Photo_galary>
         </div>
     );
