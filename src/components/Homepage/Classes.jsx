@@ -57,7 +57,7 @@ const Classes = () => {
               <div className='bg-black/50 absolute w-full h-full top-0 z-10'></div>
               <img src={item.img} fill className='object-cover' alt=''></img>
               {/* text & btn */}
-              {/* <div className='z-30 max-w-[380px] text-center flex flex-col items-center justify-center gap-4'>
+              <div className='z-30 max-w-[380px] text-center flex flex-col items-center justify-center gap-4'>
                 <motion.h3
                   variants={fadeIn('up', 0.4)}
                   initial='hidden'
@@ -87,7 +87,7 @@ const Classes = () => {
                     text='Read more'
                   />
                 </motion.div>
-              </div> */}
+              </div>
             </div>
           );
         })}

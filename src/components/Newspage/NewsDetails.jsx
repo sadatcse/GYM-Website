@@ -15,21 +15,12 @@ const NewsDetails = () => {
     // related data fetch
     const [news, setNews] = useState([]);
     const api = "https://multigym-premium-server.vercel.app/news/get-all"
-    const fakeData = "../../../public/news.json";
+ 
     axios.get(fakeData).then(data => {
         setNews(data.data);
     });
 
 
-
-    const ob = {
-        title: "IOC implements AI for athlete safety at Paris Olympics",
-        subtitle: "Despite upcoming snap parliamentary elections in France, the IOC remains confident that preparations and the Games will proceed without disruption.",
-        cover: "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/contest-1227639_1280-1024x686.jpg",
-        description: "The International Olympic Committee (IOC) will deploy AI to combat social media abuse directed at 15,000 athletes and officials during the Paris Olympics next month, IOC President Thomas Bach announced on Friday. With the Games set to begin on 26 July, more than 10,500 athletes will compete across 32 sports, generating over half a billion social media engagements.\n\nThe AI system aims to safeguard athletes by monitoring and automatically erasing abusive posts to provide extensive protection against cyber abuse. That initiative comes amid ongoing global conflicts, including the wars in Ukraine and Gaza, which have already led to social media abuse cases.\n\nRussian and Belarusian athletes, who will compete as neutral athletes without their national flags, are included in the protective measures. The IOC did not specify the level of access athletes would need to grant for the AI monitoring.\n\nDespite recent political developments in France, including a snap parliamentary election called by President Emmanuel Macron, Bach assured that preparations for the Olympics remain on track. He emphasised that both the government and opposition are determined to ensure that France presents itself well during the Games.",
-        tags: ["Olympics", "Athlete Safety"],
-        date: "June 10, 2024"
-    };
 
     return (
         <div>

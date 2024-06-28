@@ -40,9 +40,8 @@ export const router = createBrowserRouter([
         element: <Services/>
       },
       {
-        path: "/news",
-        element: <News />,
-        loader: () => fetch('')
+        path: "/blog",
+        element: <News />
       },
       
       {
