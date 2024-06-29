@@ -7,7 +7,7 @@ const Trainers = () => {
     const [data, setData] = useState([]);
     // const data = useLoaderData();
     useEffect(() => {
-        axios.get("https://multigym-premium-server.vercel.app/trainer/get-all")
+        axios.get("https://multigym-premium-server.vercel.app/trainer/get-all/")
             .then(data => setData(data.data));
     }, [])
 

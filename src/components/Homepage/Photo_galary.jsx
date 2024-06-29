@@ -84,7 +84,7 @@ const Photo_galary = () => {
 <Title title="PHOTO GALLERY" subtitle="Watch Real Gym Pictures" />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                 {images.map((src, index) => (
-                    <img data-aos={randomAnimation} data-aos-offset={index*100} data-aos-easing={randomAnimation}  data-aos-duration={index*500}
+                    <img data-aos={randomAnimation} data-aos-offset={index*200} data-aos-easing={randomAnimation}  data-aos-duration={index*300}
                         key={index}
                         src={src}
                         alt={`Gallery Image ${index + 1}`}

@@ -14,19 +14,14 @@ const Team = () => {
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
-        // Check if data is already cached (localStorage or sessionStorage)
         const cachedData = JSON.parse(localStorage.getItem('trainerData'));
         if (cachedData) {
           setTrainerData(cachedData);
           setLoading(false);
           return;
         }
-
-        // Fetch data if not cached or cache expired
         const response = await axios.get('https://multigym-premium-server.vercel.app/trainer/get-role/trainer/');
         const newData = response.data;
-
-        // Store fetched data in localStorage (or sessionStorage for session-based caching)
         localStorage.setItem('trainerData', JSON.stringify(newData));
 
         setTrainerData(newData);

@@ -85,13 +85,13 @@ const Footer = () => {
                     </div>
                     <p>Copyright © 2024 Multigym Premium | All Rights Reserved.</p>
                     <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-                        <a href="#">
+                    <a href="https://www.twitter.com/MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                             <FaTwitter size={24} />
                         </a>
-                        <a href="#">
+                        <a href="https://www.youtube.com/@MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                             <FaYoutube size={24} />
                         </a>
-                        <a href="#">
+                        <a href="https://www.facebook.com/MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <FaFacebook size={24} />
                         </a>
                     </nav>
