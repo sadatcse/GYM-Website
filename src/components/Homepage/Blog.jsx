@@ -9,6 +9,7 @@ import { fadeIn } from '../../../lib/variants';
 import CustomButton from './CustomButton';
 import SwiperNavButtons from './SwiperNavButtons';
 import Title from './Title';
+import Spinner from "../Utility/Spinner"; 
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -43,9 +44,7 @@ const Blog = () => {
       <div className='container mx-auto'>
         <Title title="OUR NEWS" subtitle="LATEST BLOG POSTS" textColor="text-white" />
         {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
-          </div>
+         <Spinner />
         ) : (
           <>
             <motion.div

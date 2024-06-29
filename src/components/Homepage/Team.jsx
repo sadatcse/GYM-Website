@@ -6,7 +6,7 @@ import { fadeIn } from '../../../lib/variants';
 import { Link } from 'react-router-dom';
 import Title from './Title';
 import CustomButton from './CustomButton';
-
+import Spinner from "../Utility/Spinner"; 
 const Team = () => {
   const [trainerData, setTrainerData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,7 +53,7 @@ const Team = () => {
       
       <Title title="TEAM MEMBERS" subtitle="TEAM OF EXPERT COACHES" />
         {loading ? (
-          <p>Loading...</p>
+          <Spinner />
         ) : (
           <>
             {/* trainers grid */}

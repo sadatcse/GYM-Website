@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Marquee from "react-fast-marquee";
 import Title from "./Title";
-
+import Spinner from "../Utility/Spinner"; 
 const Testimonial = () => {
   const [testimonialData, setTestimonialData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,9 +39,7 @@ const Testimonial = () => {
     <div className="py-10 container mx-auto mt-5">
       <Title title="FEEDBACKS" subtitle="Trusted Testimonials" />
       {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
-        </div>
+       <Spinner />
       ) : (
         <Marquee pauseOnHover={true}>
           <div className="flex mt-8">
