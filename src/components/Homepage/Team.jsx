@@ -23,7 +23,7 @@ const Team = () => {
         }
 
         // Fetch data if not cached or cache expired
-        const response = await axios.get('https://multigym-premium-server.vercel.app/trainer/get-all');
+        const response = await axios.get('https://multigym-premium-server.vercel.app/trainer/get-role/trainer/');
         const newData = response.data;
 
         // Store fetched data in localStorage (or sessionStorage for session-based caching)
