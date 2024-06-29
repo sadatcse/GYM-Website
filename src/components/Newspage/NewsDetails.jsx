@@ -1,39 +1,58 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLoaderData, useParams, useNavigate } from "react-router-dom";
 import { SlSocialReddit } from "react-icons/sl";
 import { TiSocialPinterestCircular } from "react-icons/ti";
 import { SlSocialTwitter } from "react-icons/sl";
 import { CiFacebook } from "react-icons/ci";
 import { FaClock } from "react-icons/fa";
+import Spinner from "../Utility/Spinner"; 
 import Footer from "../Footer";
 
 const NewsDetails = () => {
     const [news, setNews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { id } = useParams();
     const ob = useLoaderData();
+    const navigate = useNavigate();
     
     const api = "https://multigym-premium-server.vercel.app/news/get-all";
 
-    useEffect(() => {
-        axios.get(api)
-            .then(response => {
-                setNews(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching news:', error);
-            });
-    }, []);
 
-    // Function to calculate reading time
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(api);
+            setNews(response.data);
+            setLoading(false);
+        } catch (error) {
+            setError('Error fetching news');
+            setLoading(false);
+        }
+    };
+
+
+    if (loading) {
+        fetchData();
+    }
+
+
     const calculateReadingTime = (text) => {
-        const wordsPerMinute = 100; // Average reading speed
+        const wordsPerMinute = 100;
         const words = text.split(/\s+/).length;
         const minutes = Math.ceil(words / wordsPerMinute);
         return minutes;
     };
 
-    const readingTime = calculateReadingTime(ob.description);
+    const readingTime = ob.description ? calculateReadingTime(ob.description) : 0;
+
+    if (loading) {
+        return <Spinner />; 
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
 
     return (
         <div>
@@ -42,7 +61,7 @@ const NewsDetails = () => {
                     <div className="text-base text-gray-500 breadcrumbs poppins">
                         <ul>
                             <li><Link to="/">Gym</Link></li>
-                            <li><Link to="/news">News</Link></li>
+                            <li><Link to="/blog">News</Link></li>
                             <li>{ob.title}</li>
                         </ul>
                     </div>
@@ -53,10 +72,10 @@ const NewsDetails = () => {
                         <p className="text-2xl mb-2 font-bold">
                             {ob.date} <FaClock className="inline-block ml-2 mr-1" /> {readingTime} min read
                         </p>
-                        {ob.description.split('\n').map((paragraph, index) => (
+                        {ob.description && ob.description.split('\n').map((paragraph, index) => (
                             <p key={index} className="text-2xl font-thin leading-8 mt-3">{paragraph}</p>
                         ))}
-                        <p className="text-red-500 mt-3 text-lg font-thin cursor-pointer max-w-fit">Go Back</p>
+                        <p className="text-red-500 mt-3 text-lg font-thin cursor-pointer max-w-fit" onClick={() => navigate(-1)}>Go Back</p>
                     </div>
 
                     {/* image part */}

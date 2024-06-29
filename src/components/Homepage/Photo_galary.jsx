@@ -42,6 +42,7 @@ const animations = [
     return animations[randomIndex];
   };
 
+
 const images = [
     'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/2-Main-Gym.jpg',
     'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/3-Main-Cardio.jpg',
@@ -60,8 +61,8 @@ const Photo_galary = () => {
         AOS.init(); 
     }, []);
     const [currentImage, setCurrentImage] = useState(null);
-const randomAnimation = getRandomAnimation();
-const randomAnimationend = getRandomAnimation();
+    const randomAnimation = getRandomAnimation();
+
     const openModal = (index) => {
         setCurrentImage(index);
     };
@@ -83,7 +84,7 @@ const randomAnimationend = getRandomAnimation();
 <Title title="PHOTO GALLERY" subtitle="Watch Real Gym Pictures" />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                 {images.map((src, index) => (
-                    <img data-aos={randomAnimation} data-aos-offset={index*100} data-aos-easing={randomAnimationend}  data-aos-duration={index*300}
+                    <img data-aos={randomAnimation} data-aos-offset={index*200} data-aos-easing={randomAnimation}  data-aos-duration={index*300}
                         key={index}
                         src={src}
                         alt={`Gallery Image ${index + 1}`}

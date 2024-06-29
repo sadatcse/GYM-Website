@@ -16,12 +16,14 @@ import CookiePolicy from "../pages/legal/Cookie_policy";
 import PrivacyPolicyfb from "../pages/legal/privacy_policy_ads";
 import RefundPolicy from "../pages/legal/Refund_policy";
 import WebLogin from "../pages/WebLogin";
+import Error404 from "../pages/Error404";
 
 export const router = createBrowserRouter([
 
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error404 />,
     children: [
       {
         path: "/",
@@ -31,7 +33,6 @@ export const router = createBrowserRouter([
       {
         path: "/trainers",
         element: <Trainers />,
-        // loader: () => fetch('https://multigym-premium-server.vercel.app/trainer/get-all')
       },
       {
         path: '/trainers/:name',
@@ -50,12 +51,11 @@ export const router = createBrowserRouter([
       {
         path: "/explore/:name",
         element: <Explore />,
-        loader: ({ params }) => fetch(`/${params.name}`)
       },
       {
         path: "/explore/details/:id",
         element: <Explore_Details/>,
-        loader: ({ params }) => fetch(`/${params.id}`)
+ 
       },
       {
         path: "/aboutus/about",
