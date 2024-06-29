@@ -7,9 +7,6 @@ import News from "../pages/News";
 import NewsDetails from "../components/Newspage/NewsDetails";
 import Services from './../pages/Services';
 import About_us from "../pages/About_us";
-import Package_Membership from "../pages/Package_Membership";
-import Meet from './../pages/Meet-the-team';
-import Schedules from "../pages/Schedules";
 import Explore from "../pages/Explore";
 import Explore_Details from "../pages/Explore_Details";
 import Trainers_Details from './../pages/Trainers_Details';
@@ -63,19 +60,6 @@ export const router = createBrowserRouter([
       {
         path: "/aboutus/about",
         element: <About_us />
-      },
-      {
-        path: "/aboutus/meettheteam",
-        element: <Meet />
-      },
-      {
-        path: "/aboutus/package",
-        element: <Package_Membership />,
-        loader: () => fetch('')
-      },
-      {
-        path: "/aboutus/schedules",
-        element: <Schedules />
       },
       {
         path: "/contactus",
