@@ -7,57 +7,83 @@ import React from 'react';
 const servicesData = [
     {
         title: "Coffeeshop",
-        description: "A premium quality coffee available in our gym. Enjoy a coffee before starting your workout.",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
         icon: "☕",
         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
     },
     {
         title: "Large Free Weight Center",
-        description: "Unlock your inner strength in our state-of-the-art free weight center! Work with our staff to find the right program to power your results.",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
         icon: "🏋️",
         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
     },
     {
         title: "Huge Cardio Center",
-        description: "Whether you love treadmill sprints or prefer winding down on an elliptical, we offer the best cardio equipment to get you moving.",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
         icon: "🏃",
         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
     },
     {
         title: "Group Exercise Classes",
-        description: "We offer a variety of fun, cutting-edge group fitness classes driven by community. Join us and get fit together!",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
         icon: "🧘",
         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
     },
     {
         title: "Personal Training",
-        description: "Meet your goals with personalized training and Ignite group fitness. Our trainers customize programs to suit your needs.",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
         icon: "🏅",
         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
     },
     {
         title: "Any",
-        description: "Any service description goes here.",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
         icon: "✨",
         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
     },
 ];
 
 const Services = () => {
+    // icon
+    // title
+    // description
+    // image
     return (
-        <div className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-12 screen">
             <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">Our Services</h2>
             <p className="text-center mb-10">We're more than just a fitness club — we provide the tools, support, and resources you need to achieve your goals.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-3">
                 {servicesData.map((service, index) => (
-                    <div key={index} className="flex flex-col items-center text-center p-4 border rounded-lg shadow-lg">
-                        
-                        <div className="text-6xl">{service.icon}</div>
-                        <h3 className="mt-4 text-xl font-semibold text-red-600">{service.title}</h3>
-                        <p className="mt-2 text-gray-600">{service.description}</p>
-                        <img src={service.image} alt={service.title} className="w-full h-64 object-cover rounded-t-lg mb-4"/>
-                    
-                    </div>
+                    index % 2 == 0 ?
+                        <>
+                            <div key={index} className="grid grid-cols-1 md:grid-cols-2  border rounded-lg shadow-lg">
+                                <div className='p-4 px-9'>
+                                    <div className='flex items-center mt-4 gap-4'>
+                                        <h3 className="text-3xl font-semibold text-red-600">{service.title}</h3>
+                                        <div className="text-2xl">{service.icon}</div>
+                                    </div>
+                                    <p className="mt-2 text-gray-600">{service.description}</p>
+                                </div>
+                                <div className='p-4'>
+                                    <img src={service.image} alt={service.title} className="w-full  object-cover h-64 rounded-lg" />
+                                </div>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div key={index} className="grid grid-cols-1 md:grid-cols-2  border rounded-lg shadow-lg">
+                                <div className='p-4'>
+                                    <img src={service.image} alt={service.title} className="w-full  object-cover h-64 rounded-lg" />
+                                </div>
+                                <div className='p-4'>
+                                    <div className='flex items-center mt-4 gap-4'>
+                                        <h3 className="text-3xl font-semibold text-red-600">{service.title}</h3>
+                                        <div className="text-2xl">{service.icon}</div>
+                                    </div>
+                                    <p className="mt-2 text-gray-600">{service.description}</p>
+                                </div>
+                            </div>
+                        </>
                 ))}
             </div>
         </div>
