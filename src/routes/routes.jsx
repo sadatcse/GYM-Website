@@ -18,6 +18,7 @@ import TermsOfUse from "../pages/legal/Terms_of_use";
 import CookiePolicy from "../pages/legal/Cookie_policy";
 import PrivacyPolicyfb from "../pages/legal/privacy_policy_ads";
 import RefundPolicy from "../pages/legal/Refund_policy";
+import WebLogin from "../pages/WebLogin";
 
 export const router = createBrowserRouter([
 
@@ -105,6 +106,10 @@ export const router = createBrowserRouter([
       {
         path: "/legal/privacypolicyads",
         element: <PrivacyPolicyfb />
+      },
+      {
+        path: "/webadmin",
+        element: <WebLogin />
       },
 
 

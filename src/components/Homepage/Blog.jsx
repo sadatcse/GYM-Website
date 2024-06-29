@@ -8,7 +8,7 @@ import axios from 'axios';
 import { fadeIn } from '../../../lib/variants';
 import CustomButton from './CustomButton';
 import SwiperNavButtons from './SwiperNavButtons';
-
+import Title from './Title';
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
 
@@ -29,15 +29,7 @@ const Blog = () => {
   return (
     <section className='bg-primary-300 text-white py-24' id='blog'>
       <div className='container mx-auto'>
-        <motion.h2
-          variants={fadeIn('up', 0.4)}
-          initial='hidden'
-          whileInView={'show'}
-          viewport={{ once: false, amount: 0.2 }}
-          className='h2 text-center mb-8'
-        >
-          Blogs
-        </motion.h2>
+      <Title title="OUR NEWS" subtitle="LATEST BLOG POSTS" textColor="text-white" />
         <motion.div
           variants={fadeIn('up', 0.6)}
           initial='hidden'

@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaMobileAlt, FaTwitter, FaYoutube } from 'reac
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import { Link } from 'react-router-dom';
-
+import Title from './Title';
 import CustomButton from './CustomButton';
 
 const Team = () => {
@@ -55,15 +55,8 @@ const Team = () => {
   return (
     <section className='screen py-12 xl:h-[110vh]' id='team'>
       <div className='container mx-auto h-full flex flex-col items-center justify-center'>
-        <motion.h2
-          variants={fadeIn('up', 0.4)}
-          initial='hidden'
-          whileInView={'show'}
-          viewport={{ once: false, amount: 0.2 }}
-          className='h2 text-center mb-14'
-        >
-          Our trainers
-        </motion.h2>
+      
+      <Title title="TEAM MEMBERS" subtitle="TEAM OF EXPERT COACHES" />
         {loading ? (
           <p>Loading...</p>
         ) : (

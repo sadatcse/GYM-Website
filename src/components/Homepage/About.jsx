@@ -3,6 +3,7 @@ import { IoIosPricetags, IoIosNutrition } from 'react-icons/io';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import Achievements from './Achievements';
+import Title from './Title';
 
 const featured = [
   {
@@ -42,25 +43,7 @@ const About = () => {
     <section className='pt-8 pb-14 lg:pt-16 lg:pb-28' id='about'>
       <div className='container mx-auto'>
         <div className='flex flex-col items-center gap-2 mb-8'>
-          <motion.h2
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView={'show'}
-            viewport={{ once: false, amount: 0.2 }}
-            className='h2 text-center'
-          >
-            About us
-          </motion.h2>
-          <motion.p
-            variants={fadeIn('up', 0.6)}
-            initial='hidden'
-            whileInView={'show'}
-            viewport={{ once: false, amount: 0.2 }}
-            className='max-w-[600px] mx-auto text-center'
-          >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
-            doloremque enim eos dolorem voluptatibus deserunt.
-          </motion.p>
+        <Title title="WHY CHOOSE US" subtitle="BUILD YOUR BEST BODY" />
         </div>
         {/* featured items */}
         <motion.div
@@ -73,10 +56,10 @@ const About = () => {
           {featured.map((feature, index) => {
             return (
               <div
-                className='flex flex-col justify-center items-center gap-4 border p-10'
+                className='flex flex-col justify-center items-center gap-4 border p-10 hover:bg-[#f4cb71] rounded-md  hover: hover:scale-110 transition-all duration-300 dark:text-white dark:hover:text-neutral'
                 key={index}
               >
-                <div className='text-4xl bg-primary-300 text-white w-[80px] h-[80px] rounded-full flex justify-center items-center'>
+                <div className='text-4xl bg-primary-300 text-custom-yellow w-[80px] h-[80px] rounded-full flex justify-center items-center group-hover:rotate-180 transition-all  duration-300 text-3xl'>
                   <feature.icon />
                 </div>
                 <div className='flex flex-col justify-center items-center gap-2 text-center'>

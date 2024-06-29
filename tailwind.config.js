@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        'custom-yellow': '#f4cb71',
         'custom-black': '#131313',
         primary: {
           DEFAULT: '#333',

@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import Marquee from "react-fast-marquee";
 import { useEffect, useState } from "react";
-
+import Title from './Title';
 const Testimonial = () => {
     const [testimonialData, setTestimonialData] = useState([]);
-
+    const maxLength = 260;
     useEffect(() => {
-        // For demonstration purpose, set data directly
+       
         const data = [
             {
               "title": "Software Engineer",
@@ -74,24 +74,16 @@ const Testimonial = () => {
         setTestimonialData(data);
     }, []);
     return (
-        <div className='py-10 container mx-auto'>
-            <motion.h2
-                variants={fadeIn('up', 0.4)}
-                initial='hidden'
-                whileInView={'show'}
-                viewport={{ once: false, amount: 0.2 }}
-                className='pt-5 h3 text-center'
-            >
-                WHAT ARE PEOPLE SAYING
-            </motion.h2>
-            <h1 className='text-center text-5xl pb-9'>SUCCESS STORIES</h1>
+        <div className='py-10 container mx-auto mt-5'>
+<Title title="FEEDBACKS" subtitle="Trusted Testimonials" />
+          
             <Marquee pauseOnHover={true}>
                 <div className="flex mt-8">
                     {testimonialData &&
                         testimonialData.map((item, ind) => (
                             <div
                                 key={ind}
-                                className="flex flex-col justify-center px-8 mx-6 my-12 text-center rounded-md w-96 shadow bg-white transition-all duration-300 hover:bg-neutral-900 text-gray-800 hover:text-gray-100 group"
+                                className="flex flex-col justify-center px-8 mx-6 my-12 text-center rounded-md w-96 shadow bg-white transition-all duration-300 hover:bg-custom-yellow text-gray-800 hover:text-white-100 group"
                             >
                                 <img
                                     className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500 object-cover"
@@ -103,7 +95,8 @@ const Testimonial = () => {
                                     <p>{item?.title}</p>
                                     <p className="mt-4">
                                         <span className="text-3xl font-bold">“</span>
-                                        {item?.comment}
+                                        {item?.comment.length > maxLength ? `${item?.comment.slice(0, maxLength)}...` : item?.comment}
+                                      
                                         <span className="text-3xl font-bold">”</span>
                                     </p>
                                 </div>

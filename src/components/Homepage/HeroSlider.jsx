@@ -31,14 +31,14 @@ const HeroSlider = () => {
               viewport={{ once: false, amount: 0.2 }}
               className='h1 text-center lg:text-left mb-2'
             >
-              <span className='text-accent text-8xl '>Where hard</span> <span className='text-8xl'>work meets success</span> 
+              <span className='text-accent text-8xl '>Where hard</span> <span className='text-8xl text-custom-yellow'>work meets success</span> 
             </motion.h1>
             <motion.p
               variants={fadeIn('up', 0.6)}
               initial='hidden'
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
-              className='text-white italic text-center lg:text-left mb-4'
+              className='text-custom-yellow italic text-center lg:text-left mb-4'
             >
               Hard work meets success: the junction of effort and achievement.
             </motion.p>
@@ -72,14 +72,14 @@ const HeroSlider = () => {
               viewport={{ once: false, amount: 0.2 }}
               className='h1 text-center lg:text-left mb-2'
             >
-              <span className='text-accent text-7xl'>Striving Towards </span> <span className='text-7xl'> Fulfillment and Achievement</span> 
+              <span className='text-accent text-7xl'>Striving Towards </span> <span className='text-7xl text-custom-yellow'> Fulfillment and Achievement</span> 
             </motion.h1>
             <motion.p
               variants={fadeIn('up', 0.6)}
               initial='hidden'
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
-              className='text-white italic text-center lg:text-left mb-4'
+              className='text-custom-yellow italic text-center lg:text-left mb-4'
             >
               Where Persistence and Determination Forge Pathways to Success.
             </motion.p>

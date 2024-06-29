@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import background from "../../assets/img/membership/bg.jpg";
 import MembershipSlider from './MembershipSlider';
-
+import Title from './Title';
 const Membership = () => {
   return (
     <motion.section
@@ -21,14 +21,7 @@ const Membership = () => {
       id='prices'
     >
       <div className=' container mx-auto px-0 text-white h-full flex flex-col xl:pt-24 relative z-20'>
-        <motion.h2
-          variants={fadeIn('up', 0.4)}
-          initial='hidden'
-          whileInView={'show'}
-          className='h2 text-white text-center mb-8'
-        >
-          Membership
-        </motion.h2>
+      <Title title="PRICING TABLES" subtitle="CHOOSE YOUR PRICING PLAN" textColor="text-white" />
         <motion.div
           variants={fadeIn('up', 0.6)}
           initial='hidden'

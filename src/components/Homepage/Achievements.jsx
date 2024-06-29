@@ -82,13 +82,13 @@ const Achievements = () => {
                   >
                     {/* render the CountUp animation only the component is in view (isInView is true) */}
                     {isInView && (
-                      <CountUp start={0} end={item.number} duration={6} />
+                      <CountUp className='text-accent' start={0} end={item.number} duration={6} />
                     )}
                   </div>
                 </div>
                 {/* text */}
                 <div className='flex flex-col justify-center items-center text-center'>
-                  <item.icon className='text-3xl mb-2' />
+                  <item.icon className='text-3xl mb-2 text-custom-yellow' />
                   <h4 className='h4 font-bold'>{item.text}</h4>
                 </div>
               </motion.div>
