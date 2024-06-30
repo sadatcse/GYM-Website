@@ -79,7 +79,7 @@ const Trainers_Details = () => {
         //         </div>
         //     </div>
         // </div>
-        <div className=' border-b overflow-x-hidden screen flex flex-col relative lg:flex-row  items-center'>
+        <div className=' mt-14 border-b overflow-x-hidden screen flex flex-col relative lg:flex-row  items-center'>
             <div className='w-1/2'>
                 <img src={data.image_url} className='' alt="" />
             </div>
