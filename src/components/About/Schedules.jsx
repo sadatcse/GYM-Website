@@ -4,7 +4,7 @@ const Schedules = () => {
     const rowClass = "border text-center font-normal py-6"
     const headClass = "border bg-red-600 text-white font-semibold text-center text-base poppins"
     return (
-        <div className='bg-slate-50 py-16'>
+        <div className='py-16'>
             <div className='screen'>
 
                 <p className='text-6xl font-extrabold text-center text-[#ebc270] mb-10'>SCHEDULE</p>
