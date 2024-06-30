@@ -8,15 +8,12 @@ import MessageFromChairman from '../components/About/Chairman';
 const About_us = () => {
     return (
        <div>
-         <AboutHero />
+         {/* <AboutHero />
          <MessageFromChairman />
          <VisionAndValues />
          <Team />
-         <Package_Membership />
+         <Package_Membership /> */}
          <Schedules />
-         
-         
-       
        </div>
     );
 };
