@@ -7,41 +7,85 @@ const Schedules = () => {
         // remove my-96 after compliting workd
         <div className='screen my-96'>
 
-            {/* heading */}
-            <div className='mb-7 py-3 border'>
-                <p className='text-center font-bold text-red-600 text-3xl'>HOURS OF OPERATION</p>
-            </div>
+            <p className='text-6xl font-extrabold text-center text-[#ebc270] mb-16'>SCHEDULE</p>
 
-            {/* table  for boyz */}
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th  className={`${headClass}`}>Saturday</th>
-                            <th  className={`${headClass}`}>Sunday</th>
-                            <th  className={`${headClass}`}>Monday</th>
-                            <th  className={`${headClass}`}>Tuesday</th>
-                            <th  className={`${headClass}`}>Wednesday</th>
-                            <th  className={`${headClass}`}>Thursday</th>
-                            <th  className={`${headClass}`}>Friday</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody className='border'>
-                        {/* row 1 */}
-                        <tr>
-                            <th  className={`${rowClass}`}>7am - 11pm</th>
-                            <th  className={`${rowClass}`}>7am - 11pm</th>
-                            <th  className={`${rowClass}`}>7am - 11pm</th>
-                            <th  className={`${rowClass}`}>7am - 11pm</th>
-                            <th  className={`${rowClass}`}>7am - 11pm</th>
-                            <th  className={`${rowClass}`}>7am - 11pm</th>
-                            <th  className={`${rowClass}`}>3:30 - 10:30pm</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            {/* For gentelmen */}
+            <section>
+                {/* heading */}
+                <div className='mb-7 py-3 border'>
+                    <p className='text-center font-bold text-red-600 text-3xl'>HOURS OF OPERATION</p>
+                </div>
+                {/* table*/}
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th className={`${headClass}`}>Saturday</th>
+                                <th className={`${headClass}`}>Sunday</th>
+                                <th className={`${headClass}`}>Monday</th>
+                                <th className={`${headClass}`}>Tuesday</th>
+                                <th className={`${headClass}`}>Wednesday</th>
+                                <th className={`${headClass}`}>Thursday</th>
+                                <th className={`${headClass}`}>Friday</th>
+
+                            </tr>
+                        </thead>
+                        <tbody className='border'>
+                            {/* row 1 */}
+                            <tr>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>3:30 - 10:30pm</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            {/* For ladies */}
+            <section className='mt-16'>
+                <p className='text-center font-semibold mb-9'>(EXCEPT “LADIES ONLY HOURS” ALL OTHER TIME WILL BE CO-ED/ MIXED)</p>
+                {/* heading */}
+                <div className='mb-7 py-3 border'>
+                    <p className='text-center font-bold text-red-600 text-3xl'>LADIES ONLY HOURS</p>
+                </div>
+                {/* table*/}
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th className={`${headClass}`}>Saturday</th>
+                                <th className={`${headClass}`}>Sunday</th>
+                                <th className={`${headClass}`}>Monday</th>
+                                <th className={`${headClass}`}>Tuesday</th>
+                                <th className={`${headClass}`}>Wednesday</th>
+                                <th className={`${headClass}`}>Thursday</th>
+                                <th className={`${headClass}`}>Friday</th>
+
+                            </tr>
+                        </thead>
+                        <tbody className='border'>
+                            {/* row 1 */}
+                            <tr>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>7am - 11pm</th>
+                                <th className={`${rowClass}`}>Closed</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
     );
 };
