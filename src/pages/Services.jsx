@@ -74,6 +74,24 @@ const servicesData = [
     }
 ]
 
+const Header = () => {
+    return (
+        <div className="relative h-64">
+            <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: "url('https://www.teambath.com/wp-content/uploads/2023/11/Gym-landscape-for-facilities-page-2023.jpg')" }}
+            ></div>
+            <div className="absolute inset-0 bg-black opacity-70"></div>
+            <div className="relative flex items-center justify-center h-full">
+                <div className='flex flex-col items-center gap-4'>
+                    <h1 className="text-white text-4xl font-bold">Our Services</h1>
+                    <p className="text-center text-white font-semibold text-xl">We're more than just a fitness club — we provide the tools, support, and resources you need to achieve your goals.</p>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 const Services = () => {
     // icon
@@ -81,42 +99,43 @@ const Services = () => {
     // description
     // image
     return (
-        <div className="py-12 screen">
-            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">Our Services</h2>
-            <p className="text-center mb-10">We're more than just a fitness club — we provide the tools, support, and resources you need to achieve your goals.</p>
-            <div className="grid grid-cols-1 gap-28">
-                {servicesData.map((service, index) => (
-                    index % 2 == 0 ?
-                        <>
-                            <div key={index} className="flex flex-row-reverse items-center justify-center gap-7">
-                                <div className=''>
-                                    <img src={service.image} alt={service.title} className="object-cover max-w-[600px] h-80" />
-                                </div>
-                                <div className='p-4'>
-                                    <div className='flex flex-col text-center items-center'>
-                                        <img src={service.icon} alt="" className='w-14 mb-4' />
-                                        <p className="font-normal text-3xl poppins text-red-600">{service.title}</p>
-                                        <p className="mt-2 text-gray-600 font-medium max-w-96">{service.description}</p>
-                                        <p className='uppercase font-bold border-b-2 hover:border-red-700 cursor-pointer mt-4 text-lg text-red-700'>Learn More</p>
+        <div>
+            <Header></Header>
+            <div className="py-12 screen mt-5">
+                <div className="grid grid-cols-1 gap-28">
+                    {servicesData.map((service, index) => (
+                        index % 2 == 0 ?
+                            <>
+                                <div key={index} className="flex  flex-col md:flex-row-reverse items-center justify-center gap-7">
+                                    <div className=''>
+                                        <img src={service.image} alt={service.title} className="object-cover max-w-[600px] h-80" />
+                                    </div>
+                                    <div className='p-4'>
+                                        <div className='flex flex-col text-center items-center'>
+                                            <img src={service.icon} alt="" className='w-14 mb-4' />
+                                            <p className="font-normal text-3xl poppins text-red-600">{service.title}</p>
+                                            <p className="mt-2 text-gray-600 font-medium max-w-96">{service.description}</p>
+                                            <p className='uppercase font-bold border-b-2 hover:border-red-700 cursor-pointer mt-4 text-lg text-red-700'>Learn More</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </> : <>
-                            <div key={index} className="flex items-center justify-center gap-7">
-                                <div className=''>
-                                    <img src={service.image} alt={service.title} className="object-cover max-w-[600px] h-80" />
-                                </div>
-                                <div className='p-4'>
-                                    <div className='flex flex-col text-center items-center'>
-                                        <img src={service.icon} alt="" className='w-14 mb-4' />
-                                        <p className="font-normal text-3xl poppins text-red-600">{service.title}</p>
-                                        <p className="mt-2 text-gray-600 font-medium max-w-96">{service.description}</p>
-                                        <p className='uppercase font-bold border-b-2 hover:border-red-700 cursor-pointer mt-4 text-lg text-red-700'>Learn More</p>
+                            </> : <>
+                                <div key={index} className="flex  flex-col md:flex-row items-center justify-center gap-7">
+                                    <div className=''>
+                                        <img src={service.image} alt={service.title} className="object-cover max-w-[600px] h-80" />
+                                    </div>
+                                    <div className='p-4'>
+                                        <div className='flex flex-col text-center items-center'>
+                                            <img src={service.icon} alt="" className='w-14 mb-4' />
+                                            <p className="font-normal text-3xl poppins text-red-600">{service.title}</p>
+                                            <p className="mt-2 text-gray-600 font-medium max-w-96">{service.description}</p>
+                                            <p className='uppercase font-bold border-b-2 hover:border-red-700 cursor-pointer mt-4 text-lg text-red-700'>Learn More</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </>
-                ))}
+                            </>
+                    ))}
+                </div>
             </div>
         </div>
     );
