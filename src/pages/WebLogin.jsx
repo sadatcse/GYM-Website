@@ -1,29 +1,41 @@
-import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 import { FiLock, FiMail } from 'react-icons/fi';
-import { FcGoogle } from 'react-icons/fc';
+import withReactContent from 'sweetalert2-react-content';
+import { AuthContext } from './../providers/AuthProvider';
 
 const WebLogin = () => {
-    // const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const { signInUser, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const location = useLocation();
+    const MySwal = withReactContent(Swal);
     console.log('location in the login page', location);
 
     const handleLogin = (e) => {
         e.preventDefault();
 
-        // signInUser(email, password)
-        //     .then((result) => {
-        //         toast.success("Login successful!");
-        //         e.target.reset();
-        //         navigate(location.state?.from || "/");
-        //     })
-        //     .catch((error) => {
-        //         toast.error("Login failed. Please check your Email or Password.");
-        //         console.error(error);
-        //     });
+        signInUser(email, password)
+            .then((result) => {
+                MySwal.fire({
+                    icon: 'success',
+                    title: 'Login successful!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                e.target.reset();
+                navigate(location.state?.from || "/dashboard");
+            })
+            .catch((error) => {
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Login failed',
+                    text: 'Please check your Email or Password.',
+                });
+                console.error(error);
+            });
     };
 
     return (

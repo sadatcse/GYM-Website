@@ -17,6 +17,8 @@ import PrivacyPolicyfb from "../pages/legal/privacy_policy_ads";
 import RefundPolicy from "../pages/legal/Refund_policy";
 import WebLogin from "../pages/WebLogin";
 import Error404 from "../pages/Error404";
+import Root_Dashboard from './../pages/Dashboard/Root';
+import RedirectToShopify from "./Fakeadmin";
 
 export const router = createBrowserRouter([
 
@@ -93,12 +95,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/webadmin",
-        element: <WebLogin />
+        element: <WebLogin />  //
       },
-
-
+  
+       
     ]
   },
+  {
+    path: "dashboard",
+    element: <Root_Dashboard></Root_Dashboard>,
+    errorElement: <Error404></Error404>,
+    children: [
+      // {
+      //   path:'profile',
+      //   element:
+      // }
+    ]
 
-
-]);
+  },
+  {
+    path: "/admin",
+    element: <RedirectToShopify />  //
+  },
+]
+);
