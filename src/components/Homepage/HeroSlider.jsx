@@ -1,7 +1,7 @@
 // import swiper react components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Logo from "./../../assets/img/hero/bg.png"
-import Logo1 from "./../../assets/img/hero/bg2.png"
+import bg from "./../../assets/img/hero/bg.png"
+import bg1 from "./../../assets/img/hero/bg2.png"
 // import swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,7 +19,7 @@ const HeroSlider = () => {
       <SwiperSlide>
         <div className='h-full flex justify-end pt-48 relative'>
           <img
-            src={Logo1}
+            src={bg1}
             alt='Slide 1'
             className='absolute inset-0 w-full h-full object-cover z-0'
           />
@@ -31,7 +31,7 @@ const HeroSlider = () => {
               viewport={{ once: false, amount: 0.2 }}
               className='h1 text-center lg:text-left mb-2'
             >
-              <span className='text-accent text-8xl '>Where hard</span> <span className='text-8xl text-custom-yellow'>work meets success</span> 
+              <span className='text-accent sm:text-3xl md:text-5xl lg:text-7xl '>Where hard</span> <span className=' text-custom-yellow sm:text-3xl md:text-5xl lg:text-8xl'>work meets success</span> 
             </motion.h1>
             <motion.p
               variants={fadeIn('up', 0.6)}
@@ -60,7 +60,7 @@ const HeroSlider = () => {
       <SwiperSlide>
         <div className='h-full flex justify-end pt-48 relative'>
           <img
-            src={Logo}
+            src={bg}
             alt='Slide 2'
             className='absolute inset-0 w-full h-full object-cover z-0'
           />
@@ -72,7 +72,8 @@ const HeroSlider = () => {
               viewport={{ once: false, amount: 0.2 }}
               className='h1 text-center lg:text-left mb-2'
             >
-              <span className='text-accent text-7xl'>Striving Towards </span> <span className='text-7xl text-custom-yellow'> Fulfillment and Achievement</span> 
+
+              <span className='text-accent sm:text-3xl md:text-5xl lg:text-7xl '>Striving Towards</span> <span className=' text-custom-yellow sm:text-3xl md:text-5xl lg:text-8xl'>Fulfillment Achievement</span> 
             </motion.h1>
             <motion.p
               variants={fadeIn('up', 0.6)}
