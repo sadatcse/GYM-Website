@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaFacebook, FaInstagram, FaMobileAlt, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import { fadeIn } from '../../../lib/variants';
+import { FaFacebook, FaInstagram, FaMobileAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Title from './Title';
 import CustomButton from './CustomButton';
 import Spinner from "../Utility/Spinner"; 
+
 const Team = () => {
   const [trainerData, setTrainerData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,24 +45,16 @@ const Team = () => {
   const shuffledData = trainerData.sort(() => 0.5 - Math.random());
   const selectedTrainers = shuffledData.slice(0, 4);
 
-
   return (
-    <section className='screen py-12 xl:h-[110vh]' id='team'>
-      <div className='container mx-auto h-full flex flex-col items-center justify-center'>
-      
-      <Title title="TEAM MEMBERS" subtitle="TEAM OF EXPERT COACHES" />
+   
+      <div className='container mx-auto h-full flex flex-col items-center justify-center p-10'>
+        <Title title="TEAM MEMBERS" subtitle="TEAM OF EXPERT COACHES" />
         {loading ? (
           <Spinner />
         ) : (
           <>
             {/* trainers grid */}
-            <motion.div
-              variants={fadeIn('up', 0.6)}
-              initial='hidden'
-              whileInView={'show'}
-              viewport={{ once: false, amount: 0.2 }}
-              className='w-full grid gap-14 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-4'
-            >
+            <div className='w-full grid gap-14 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-4'>
               {selectedTrainers.map((trainer) => (
                 <div className='flex flex-col items-center text-center' key={trainer._id}>
                   {/* image */}
@@ -74,7 +65,6 @@ const Team = () => {
                   <h4 className='h4 mt-1 mb-2'>{trainer.full_name}</h4>
                   {/* role */}
                   <p className='uppercase text-xs tracking-[3px] mb-2'>Fitness Trainer</p>
-                  {/* bio */}
                   {/* certifications */}
                   <p className='mb-5 px-3 mx-auto text-base'>{trainer.certification}</p>
                   {/* socials */}
@@ -103,20 +93,15 @@ const Team = () => {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
             {/* btn */}
-            <motion.div
-              variants={fadeIn('up', 0.6)}
-              initial='hidden'
-              whileInView={'show'}
-              viewport={{ once: false, amount: 0.2 }}
-            >
-              <Link to="/trainers" ><CustomButton containerStyles='btn mt-9' text='See all trainers' /></Link>
-            </motion.div>
+            <div className='mt-9'>
+              <Link to="/trainers"><CustomButton containerStyles='btn' text='See all trainers' /></Link>
+            </div>
           </>
         )}
       </div>
-    </section>
+
   );
 };
 

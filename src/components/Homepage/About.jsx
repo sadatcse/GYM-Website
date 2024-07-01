@@ -1,7 +1,5 @@
 import { FaUser, FaDumbbell, FaHeartbeat, FaUsers, FaSun } from 'react-icons/fa';
 import { IoIosPricetags, IoIosNutrition } from 'react-icons/io';
-import { motion } from 'framer-motion';
-import { fadeIn } from '../../../lib/variants';
 import Achievements from './Achievements';
 import Title from './Title';
 
@@ -43,23 +41,17 @@ const About = () => {
     <section className='pt-8 pb-14 lg:pt-16 lg:pb-28' id='about'>
       <div className='container mx-auto'>
         <div className='flex flex-col items-center gap-2 mb-8'>
-        <Title title="WHY CHOOSE US" subtitle="BUILD YOUR BEST BODY" />
+          <Title title="WHY CHOOSE US" subtitle="BUILD YOUR BEST BODY" />
         </div>
         {/* featured items */}
-        <motion.div
-          variants={fadeIn('up', 0.8)}
-          initial='hidden'
-          whileInView={'show'}
-          viewport={{ once: false, amount: 0.2 }}
-          className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-16'
-        >
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-16'>
           {featured.map((feature, index) => {
             return (
               <div
-                className='flex flex-col justify-center items-center gap-4 border p-10 hover:bg-[#f4cb71] rounded-md  hover: hover:scale-110 transition-all duration-300 dark:text-white dark:hover:text-neutral'
+                className='flex flex-col justify-center items-center gap-4 border p-10 hover:bg-[#f4cb71] rounded-md hover:scale-110 transition-all duration-300 dark:text-white dark:hover:text-neutral'
                 key={index}
               >
-                <div className='text-4xl bg-primary-300 text-custom-yellow w-[80px] h-[80px] rounded-full flex justify-center items-center group-hover:rotate-180 transition-all  duration-300 text-3xl'>
+                <div className='text-4xl bg-primary-300 text-custom-yellow w-[80px] h-[80px] rounded-full flex justify-center items-center'>
                   <feature.icon />
                 </div>
                 <div className='flex flex-col justify-center items-center gap-2 text-center'>
@@ -69,16 +61,9 @@ const About = () => {
               </div>
             );
           })}
-        </motion.div>
+        </div>
         {/* achievements */}
-        <motion.div
-          variants={fadeIn('up', 1)}
-          initial='hidden'
-          whileInView={'show'}
-          viewport={{ once: false, amount: 0.2 }}
-        >
-          <Achievements />
-        </motion.div>
+        <Achievements />
       </div>
     </section>
   );

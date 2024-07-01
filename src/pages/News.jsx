@@ -51,7 +51,7 @@ const News = () => {
                 <Spinner />
             ) : (
                 <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {news.map((newsItem) => (
+                    {news.sort((a, b) => new Date(b.date) - new Date(a.date)).map((newsItem) => (
                         <NewsCard key={newsItem.title} news={newsItem} />
                     ))}
                 </section>

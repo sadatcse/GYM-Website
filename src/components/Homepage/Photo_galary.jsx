@@ -1,47 +1,17 @@
-
-
 import React, { useEffect, useState } from 'react';
-
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import Title from './Title';
 import AOS from 'aos';
 
 const animations = [
-    'fade',
-    'fade-up',
-    'fade-down',
-    'fade-left',
-    'fade-right',
-    'fade-up-right',
-    'fade-up-left',
-    'fade-down-right',
-    'fade-down-left',
-    'flip-up',
-    'flip-down',
-    'flip-left',
-    'flip-right',
-    'slide-up',
-    'slide-down',
-    'slide-left',
-    'slide-right',
     'zoom-in',
-    'zoom-in-up',
-    'zoom-in-down',
-    'zoom-in-left',
-    'zoom-in-right',
-    'zoom-out',
-    'zoom-out-up',
-    'zoom-out-down',
-    'zoom-out-left',
-    'zoom-out-right'
-  ];
-  
-  const getRandomAnimation = () => {
+];
+
+const getRandomAnimation = () => {
     const randomIndex = Math.floor(Math.random() * animations.length);
     return animations[randomIndex];
-  };
-
+};
 
 const images = [
     'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/2-Main-Gym.jpg',
@@ -56,10 +26,15 @@ const images = [
     'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/11-Upstairs-Cardio.jpg'
 ];
 
+const isMobile = () => window.innerWidth <= 768;
+
 const Photo_galary = () => {
     useEffect(() => {
-        AOS.init(); 
+        if (!isMobile()) {
+            AOS.init();
+        }
     }, []);
+
     const [currentImage, setCurrentImage] = useState(null);
     const randomAnimation = getRandomAnimation();
 
@@ -81,10 +56,14 @@ const Photo_galary = () => {
 
     return (
         <div className="mt-10 pt-5 p-4 container mx-auto">
-<Title title="PHOTO GALLERY" subtitle="Watch Real Gym Pictures" />
+            <Title title="PHOTO GALLERY" subtitle="Watch Real Gym Pictures" />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                 {images.map((src, index) => (
-                    <img data-aos={randomAnimation} data-aos-offset={index*200} data-aos-easing={randomAnimation}  data-aos-duration={index*300}
+                    <img
+                        data-aos={isMobile() ? null : "fade-up-left"}
+                        data-aos-offset={isMobile() ? null : 2000}
+                        data-aos-easing={isMobile() ? null : "fade-down-right"}
+                        data-aos-duration={isMobile() ? null : 2000}
                         key={index}
                         src={src}
                         alt={`Gallery Image ${index + 1}`}

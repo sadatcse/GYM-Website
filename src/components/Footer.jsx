@@ -84,7 +84,7 @@ const Footer = () => {
                         <p>Multigym Premium</p>
                     </div>
                     <p>Copyright © 2024 Multigym Premium | All Rights Reserved.</p>
-                    <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+                    <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end   ">
                     <a href="https://www.twitter.com/MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                             <FaTwitter size={24} />
                         </a>
