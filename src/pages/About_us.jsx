@@ -4,6 +4,7 @@ import Team from '../components/About/Team';
 import Package_Membership from '../components/About/Package_Membership';
 import Schedules from '../components/About/Schedules';
 import MessageFromChairman from '../components/About/Chairman';
+import CouplesMem from '../components/About/CouplesMem';
 
 const About_us = () => {
     return (
@@ -12,11 +13,9 @@ const About_us = () => {
          <MessageFromChairman />
          <VisionAndValues />
          <Team />
-         <Package_Membership />
          <Schedules />
-         
-         
-       
+         <Package_Membership />
+         <CouplesMem />
        </div>
     );
 };
