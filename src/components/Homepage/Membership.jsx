@@ -20,7 +20,7 @@ const Membership = () => {
       }}
       id='prices'
     >
-      <div className=' container mx-auto px-0 text-white h-full flex flex-col xl:pt-24 relative z-20'>
+      <div className=' container mx-auto px-0 text-white h-full flex flex-col xl:pt-10 relative z-20'>
       <Title title="PRICING TABLES" subtitle="CHOOSE YOUR PRICING PLAN" textColor="text-white" />
         <motion.div
           variants={fadeIn('up', 0.6)}

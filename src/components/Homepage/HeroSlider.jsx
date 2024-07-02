@@ -31,7 +31,7 @@ const HeroSlider = () => {
               viewport={{ once: false, amount: 0.2 }}
               className='h1 text-center lg:text-left mb-2'
             >
-              <span className='text-accent sm:text-3xl md:text-5xl lg:text-7xl '>Where hard</span> <span className=' text-custom-yellow sm:text-3xl md:text-5xl lg:text-8xl'>work meets success</span> 
+              <p className='text-accent text-3xl md:text-5xl lg:text-7xl '>Where hard</p> <p className=' text-custom-yellow text-3xl md:text-5xl lg:text-7xl'>work meets success</p> 
             </motion.h1>
             <motion.p
               variants={fadeIn('up', 0.6)}
@@ -73,7 +73,7 @@ const HeroSlider = () => {
               className='h1 text-center lg:text-left mb-2'
             >
 
-              <span className='text-accent sm:text-3xl md:text-5xl lg:text-7xl '>Striving Towards</span> <span className=' text-custom-yellow sm:text-3xl md:text-5xl lg:text-8xl'>Fulfillment Achievement</span> 
+              <p className='text-accent text-3xl  md:text-5xl lg:text-8xl '>Striving Towards</p> <p className=' text-custom-yellow text-3xl  md:text-5xl lg:text-8xl'>Fulfillment Achievement</p> 
             </motion.h1>
             <motion.p
               variants={fadeIn('up', 0.6)}

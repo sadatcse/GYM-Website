@@ -1,15 +1,10 @@
-
-
 import React, { useEffect, useState } from 'react';
-
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import Title from './Title';
 import AOS from 'aos';
 
 const animations = [
-   
-  
     'slide-down',
     'zoom-in',
     'zoom-in-up',
@@ -17,13 +12,12 @@ const animations = [
     'zoom-out',
     'zoom-out-up',
     'zoom-out-down',
-  ];
-  
-  const getRandomAnimation = () => {
+];
+
+const getRandomAnimation = () => {
     const randomIndex = Math.floor(Math.random() * animations.length);
     return animations[randomIndex];
-  };
-
+};
 
 const images = [
     'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/2-Main-Gym.jpg',
@@ -38,10 +32,11 @@ const images = [
     'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/11-Upstairs-Cardio.jpg'
 ];
 
-const Photo_galary = () => {
+const PhotoGallery = () => {
     useEffect(() => {
         AOS.init(); 
     }, []);
+
     const [currentImage, setCurrentImage] = useState(null);
     const randomAnimation = getRandomAnimation();
 
@@ -63,16 +58,24 @@ const Photo_galary = () => {
 
     return (
         <div className="mt-10 pt-5 p-4 container mx-auto">
-<Title title="PHOTO GALLERY" subtitle="Watch Real Gym Pictures" />
+            <Title title="PHOTO GALLERY" subtitle="Watch Real Gym Pictures" />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                 {images.map((src, index) => (
-                    <img data-aos={randomAnimation} data-aos-offset={(2000)} data-aos-easing={randomAnimation} disable = "mobile"  data-aos-duration={(2000)}
+                    <motion.div
                         key={index}
-                        src={src}
-                        alt={`Gallery Image ${index + 1}`}
                         className="cursor-pointer rounded-lg"
-                        onClick={() => openModal(index)}
-                    />
+                        whileHover={{ scale: 1.05 }}
+                        variants={fadeIn}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <img 
+                            src={src}
+                            alt={`Gallery Image ${index + 1}`}
+                            className="rounded-lg"
+                            onClick={() => openModal(index)}
+                        />
+                    </motion.div>
                 ))}
             </div>
 
@@ -105,4 +108,4 @@ const Photo_galary = () => {
     );
 };
 
-export default Photo_galary;
+export default PhotoGallery;
