@@ -1,15 +1,15 @@
 import React from 'react';
 const Package_Membership = () => {
     const rowClass = "border text-center font-normal py-4"
-    const headClass = "border bg-red-600 text-white font-semibold text-center text-base poppins"
+    const headClass = "border bg-red-600 text-white font-semibold text-center md:text-base poppins"
     return (
-        <div className='py-16'>
-            <div className='screen'>
-                <p className='text-6xl font-extrabold text-center text-[#ebc270] mb-10'>MEMBERSHIP PLAN</p>
+        <div className='md:py-16'>
+            <div className='mx-auto w-[90%]'>
+                <p className='md:text-6xl font-extrabold text-center text-[#ebc270] text-xl my-7 md:mb-10'>MEMBERSHIP PLAN</p>
 
                 {/* heading */}
                 <div className='mb-7 py-3 border'>
-                    <p className='text-center font-bold text-red-600 text-3xl'>SINGLE MEMBERSHIP</p>
+                    <p className='text-center font-bold text-red-600 md:text-3xl'>SINGLE MEMBERSHIP</p>
                 </div>
 
                 {/* table*/}

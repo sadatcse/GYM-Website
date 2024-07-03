@@ -11,11 +11,11 @@ const About_us = () => {
        <div>
          <AboutHero />
          <MessageFromChairman />
-         {/* <VisionAndValues />
-         <Team />
+         <VisionAndValues />
+         {/* <Team /> */}
          <Schedules />
          <Package_Membership />
-         <CouplesMem /> */}
+         <CouplesMem />
        </div>
     );
 };

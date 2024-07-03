@@ -1,19 +1,17 @@
 import React from 'react';
 
 const Schedules = () => {
-    const rowClass = "border text-center font-normal py-6"
-    const headClass = "border bg-red-600 text-white font-semibold text-center text-base poppins"
+    const rowClass = "border text-center font-normal md:py-6"
+    const headClass = "border bg-red-600 text-white  font-semibold text-center md:text-base poppins"
     return (
-        <div className='py-16'>
-            <div className='screen'>
-
-                <p className='text-6xl font-extrabold text-center text-[#ebc270] mb-10'>SCHEDULE</p>
-
+        <div className='md:py-16 py-5'>
+            <div className='mx-auto w-[90%]'>
+                <p className='text-2xl md:text-6xl font-extrabold text-center text-[#ebc270] mb-4 md:mb-10'>SCHEDULE</p>
                 {/* For gentelmen */}
                 <section>
                     {/* heading */}
                     <div className='mb-7 py-3 border'>
-                        <p className='text-center font-bold text-red-600 text-3xl'>HOURS OF OPERATION</p>
+                        <p className='text-center font-bold text-red-600 md:text-3xl'>HOURS OF OPERATION</p>
                     </div>
                     {/* table*/}
                     <div className="overflow-x-auto">
@@ -52,7 +50,7 @@ const Schedules = () => {
                     <p className='text-center font-semibold mb-9'>(EXCEPT “LADIES ONLY HOURS” ALL OTHER TIME WILL BE CO-ED/ MIXED)</p>
                     {/* heading */}
                     <div className='mb-7 py-3 border'>
-                        <p className='text-center font-bold text-red-600 text-3xl'>LADIES ONLY HOURS</p>
+                        <p className='text-center font-bold text-red-600 md:text-3xl'>LADIES ONLY HOURS</p>
                     </div>
                     {/* table*/}
                     <div className="overflow-x-auto">

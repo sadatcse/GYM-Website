@@ -12,15 +12,15 @@ function AboutHero() {
     return (
         <section className="relative bg-slate-50 bg-cover z-0" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1612090295965-e506249ccecc?q=80&w=1524&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")' }}>
             <div className="h-full absolute opacity-60 -z-10 w-full bg-black"></div>
-            <div className="screen container py-64 text-center">
-                <div className="screen">
+            <div className="mx-auto w-[90%] container py-16 md:py-64 text-center">
+                <div className="mx-auto w-[90%]">
                     <p className="md:text-xl lg:text-5xl poppins  font-semibold text-white leading-tight">Welcome to Multigym Premium  where your <span className="text-[#f4cb71]">transformation </span>
                         is our mission.
                     </p>,
                     <div className="flex justify-center">
                         <div className="max-w-md flex flex-col sm:flex-row items-center sm:justify-start sm:space-x-6">
-                            <div className=' bg-[#f4cb71] animate-bounce cursor-pointer p-4 flex items-center rounded-full'>
-                                <FaPlay className='text-2xl text-black' onClick={toggleModal} />
+                            <div className=' bg-[#f4cb71] animate-bounce cursor-pointer p-2 md:p-4 flex items-center rounded-full'>
+                                <FaPlay className='md:text-2xl text-black' onClick={toggleModal} />
                             </div>
                             <div className="">
                                 <div>
