@@ -14,7 +14,7 @@ function AboutHero() {
             <div className="h-full absolute opacity-60 -z-10 w-full bg-black"></div>
             <div className="screen container py-64 text-center">
                 <div className="screen">
-                    <p className="text-5xl poppins  font-semibold text-white leading-tight">Welcome to Multigym Premium  where your <span className="text-[#f4cb71]">transformation </span>
+                    <p className="md:text-xl lg:text-5xl poppins  font-semibold text-white leading-tight">Welcome to Multigym Premium  where your <span className="text-[#f4cb71]">transformation </span>
                         is our mission.
                     </p>,
                     <div className="flex justify-center">
@@ -24,7 +24,7 @@ function AboutHero() {
                             </div>
                             <div className="">
                                 <div>
-                                    <p className="text-3xl text-gray-300 font-bold">Know more about us</p>
+                                    <p className="md:text-3xl text-gray-300 font-bold">Know more about us</p>
                                     <span className="text-sm font-medium text-white">Join Us for a Healthier, Stronger You </span>
                                 </div>
                             </div>

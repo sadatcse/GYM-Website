@@ -10,8 +10,8 @@ const About_us = () => {
     return (
        <div>
          <AboutHero />
-         {/* <MessageFromChairman />
-         <VisionAndValues />
+         <MessageFromChairman />
+         {/* <VisionAndValues />
          <Team />
          <Schedules />
          <Package_Membership />
