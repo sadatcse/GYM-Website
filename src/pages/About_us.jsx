@@ -10,12 +10,12 @@ const About_us = () => {
     return (
        <div>
          <AboutHero />
-         <MessageFromChairman />
+         {/* <MessageFromChairman />
          <VisionAndValues />
          <Team />
          <Schedules />
          <Package_Membership />
-         <CouplesMem />
+         <CouplesMem /> */}
        </div>
     );
 };
