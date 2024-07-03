@@ -1,12 +1,12 @@
 const CouplesMem = () => {
     const rowClass = "border text-center font-normal py-4"
-    const headClass = "border bg-gray-600 text-white font-semibold text-center text-base poppins"
+    const headClass = "border bg-gray-600 text-white font-semibold text-center md:text-base poppins"
     return (
-        <div className="py-16">
-            <div className="screen">
+        <div className="md:py-16 py-9">
+            <div className="mx-auto w-[90%]">
                 {/* heading */}
                 <div className='mb-7 py-3 border border-gray-300'>
-                    <p className='text-center font-bold text-[#ebc270] text-3xl'>COUPLES MEMBERSHIP</p>
+                    <p className='text-center font-bold text-[#ebc270] md:text-3xl'>COUPLES MEMBERSHIP</p>
                 </div>
 
                 {/* table*/}

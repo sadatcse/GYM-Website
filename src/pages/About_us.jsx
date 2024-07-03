@@ -12,7 +12,7 @@ const About_us = () => {
          <AboutHero />
          <MessageFromChairman />
          <VisionAndValues />
-         <Team />
+         {/* <Team /> */}
          <Schedules />
          <Package_Membership />
          <CouplesMem />

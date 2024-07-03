@@ -47,7 +47,7 @@ const Navbar = () => {
 
   const buttons = (
     <div>
-      <button className="btn px-6 font-medium text-white bg-red-600 rounded-md border hover:text-red-600 hover:bg-transparent hover:border-red-600 poppins">Sign Up</button>
+      <button className="btn px-6 font-medium text-white bg-red-600 rounded-md border-none  hover:text-red-600 hover:bg-white hover:border-red-600 poppins">Sign Up</button>
     </div>
   );
 
