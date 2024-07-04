@@ -35,7 +35,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="poppins mt-10  ">
+        <div className="poppins">
             <footer className="footer  bg-primary-300 text-white p-10">
             <aside className="">
   <h6 className="footer-title text-xl font-bold mb-4 text">CONTACT US</h6> 
