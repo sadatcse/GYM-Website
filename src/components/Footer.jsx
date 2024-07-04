@@ -52,10 +52,10 @@ const Footer = () => {
 </aside>
                 <nav>
                     <h6 className="footer-title text-xl font-bold mb-4">Company</h6>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <Link to="/aboutus/about"><a className="link link-hover">About us</a></Link>
+                    <Link to="/contactus"><a className="link link-hover">Contact</a></Link>
+                    <Link to="/service"><a className="link link-hover">Service</a></Link>
+                    <Link to="/explore"><a className="link link-hover">Explore</a></Link>
                 </nav>
                 <nav>
                     <h6 className="footer-title text-xl font-bold mb-4">Legal</h6>

@@ -12,6 +12,7 @@ import SwiperNavButtons from './SwiperNavButtons';
 
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
+import { Link } from 'react-router-dom';
 
 const HeroSlider = () => {
   return (
@@ -48,10 +49,10 @@ const HeroSlider = () => {
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
             >
-              <CustomButton
+             <Link to="/under"> <CustomButton
                 text='Get started'
                 containerStyles='w-[196px] h-[62px]'
-              />
+              /></Link>
             </motion.div>
           </div>
         </div>
@@ -90,10 +91,10 @@ const HeroSlider = () => {
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
             >
-              <CustomButton
+               <Link to="/under"><CustomButton
                 text='Get started'
                 containerStyles='w-[196px] h-[62px]'
-              />
+              /></Link>
             </motion.div>
           </div>
         </div>

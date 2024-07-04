@@ -19,6 +19,7 @@ import WebLogin from "../pages/WebLogin";
 import Error404 from "../pages/Error404";
 import Root_Dashboard from './../pages/Dashboard/Root';
 import RedirectToShopify from "./Fakeadmin";
+import UnderConstruction from "../pages/UnderConstruction";
 
 export const router = createBrowserRouter([
 
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
       },
       
       {
-        path: "/explore/:name",
+        path: "/explore",
         element: <Explore />,
       },
       {
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
       {
         path: "/webadmin",
         element: <WebLogin />  //
+      },
+      {
+        path: "/under",
+        element: <UnderConstruction />  //
       },
   
        

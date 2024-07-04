@@ -1,45 +1,5 @@
 import React from 'react';
 
-// I am giving you a link. This is for the service page. Please copy the entire page from A to Z. Use fake data for now, and ensure that the page works well if I decide to increase or decrease the amount of fake data.
-// https://www.texasfamilyfitness.com/services
-// const servicesData = [
-//     {
-//         title: "Coffeeshop",
-//         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
-//         icon: "☕",
-//         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
-//     },
-//     {
-//         title: "Large Free Weight Center",
-//         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
-//         icon: "🏋️",
-//         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
-//     },
-//     {
-//         title: "Huge Cardio Center",
-//         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
-//         icon: "🏃",
-//         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
-//     },
-//     {
-//         title: "Group Exercise Classes",
-//         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
-//         icon: "🧘",
-//         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
-//     },
-//     {
-//         title: "Personal Training",
-//         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
-//         icon: "🏅",
-//         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
-//     },
-//     {
-//         title: "Any",
-//         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, repellat, libero praesentium voluptatem, enim molestiae dolores doloremque officia quibusdam quia ea cum sapiente? Eos doloribus autem sunt, praesentium quaerat nihil ratione, ducimus quibusdam accusantium laborum repellendus sint? Voluptatum voluptate tempora excepturi aut. Explicabo sunt magnam voluptate dolorum neque itaque quasi. Iste sequi officia molestias consectetur.",
-//         icon: "✨",
-//         image: "https://methodicalcoffee.com/cdn/shop/articles/DUA_DC_inside.jpg?v=1704476259&width=1000"
-//     },
-// ];
 
 const servicesData = [
     {
@@ -84,8 +44,8 @@ const Header = () => {
             <div className="absolute inset-0 bg-black opacity-70"></div>
             <div className="relative flex items-center justify-center h-full">
                 <div className='flex flex-col items-center gap-4'>
-                    <h1 className="text-white text-4xl font-bold">Our Services</h1>
-                    <p className="text-center text-white font-semibold text-xl">We're more than just a fitness club — we provide the tools, support, and resources you need to achieve your goals.</p>
+                    <h1 className="text-custom-yellow text-4xl font-bold">Our Services</h1>
+                    <p className="text-center text-accent font-semibold text-xl">We're more than just a fitness club — we provide the tools, support, and resources you need to achieve your goals.</p>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ import { fadeIn } from '../../../lib/variants';
 import CustomButton from './CustomButton';
 import SwiperNavButtons from './SwiperNavButtons';
 import Title from './Title';
-import Spinner from "../Utility/Spinner"; 
+import Spinner from "../Utility/Spinner";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -44,7 +44,7 @@ const Blog = () => {
       <div className='container mx-auto'>
         <Title title="OUR NEWS" subtitle="LATEST BLOG POSTS" textColor="text-white" />
         {loading ? (
-         <Spinner />
+          <Spinner />
         ) : (
           <>
             <motion.div
@@ -63,26 +63,28 @@ const Blog = () => {
                 }}
                 className='h-[420px] md:max-w-[660px] lg:max-w-none mb-8'
               >
-          {blogData
-  .sort((a, b) => new Date(b.date) - new Date(a.date))
-  .map((post, index) => (
-    <SwiperSlide key={index}>
-      <div className='flex flex-col justify-start h-full max-w-[320px] mx-auto'>
-        <img src={post.image} alt='' className='mb-6 h-64 w-84' />
-        <div className='flex flex-col items-start'>
-          <p className='max-w-[380px] uppercase text-[12px] tracking-[3px] mb-1'>
-            {post.date}
-          </p>
-          <Link
-            className='hover:text-accent transition-all duration-300'
-            to={`/blog/${post._id}`}
-          >
-            <h5 className='h5'>{post.title}</h5>
-          </Link>
-        </div>
-      </div>
-    </SwiperSlide>
-))}
+                {blogData
+                  .sort((a, b) => new Date(b.date) - new Date(a.date))
+                  .map((post, index) => (
+                    <SwiperSlide key={index}>
+                      <div className='flex flex-col justify-start h-full max-w-[320px] mx-auto'>
+                        <Link to={`/blog/${post._id}`}>
+                          <img src={post.image} alt={post.title} className='mb-6 h-64 w-84' />
+                          <div className='flex flex-col items-start'>
+                            <p className='max-w-[380px] uppercase text-[12px] tracking-[3px] mb-1'>
+                              {post.date}
+                            </p>
+                            <Link
+                              className='hover:text-accent transition-all duration-300'
+                              to={`/blog/${post._id}`}
+                            >
+                              <h5 className='h5'>{post.title}</h5>
+                            </Link>
+                          </div>
+                        </Link>
+                      </div>
+                    </SwiperSlide>
+                  ))}
                 <SwiperNavButtons
                   containerStyles='absolute left-0 right-0 bottom-[16rem] w-full max-w-[370px] sm:max-w-[620px] md:max-w-[960px] xl:max-w-[1320px] mx-auto z-50 flex justify-between gap-1'
                   btnStyles='bg-accent text-white w-[56px] h-[56px] flex justify-center items-center hover:bg-accent transition-all duration-300'
@@ -96,7 +98,9 @@ const Blog = () => {
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
             >
-              <Link to="/blog"><CustomButton containerStyles='block w-[196px] h-[62px] mx-auto' text='View all' /></Link>
+              <Link to="/blog">
+                <CustomButton containerStyles='block w-[196px] h-[62px] mx-auto' text='View all' />
+              </Link>
             </motion.div>
           </>
         )}

@@ -15,7 +15,7 @@ const Navbar = () => {
       <NavLink className="menu-link " activeClassName="active" to="/aboutus/about">About us</NavLink>
       <NavLink className="menu-link" activeClassName="active" to="/service">Service</NavLink>
       <NavLink className="menu-link" activeClassName="active" to="/trainers">Trainer</NavLink>
-      <NavLink className="menu-link" activeClassName="active" to="/explore/leg">Explore</NavLink>
+      <NavLink className="menu-link" activeClassName="active" to="/explore">Explore</NavLink>
       <NavLink className="menu-link" activeClassName="active" to="/contactus">Contact Us</NavLink>
 
 
@@ -47,7 +47,7 @@ const Navbar = () => {
 
   const buttons = (
     <div>
-      <button className="btn px-6 font-medium text-white bg-red-600 rounded-md border-none  hover:text-red-600 hover:bg-white hover:border-red-600 poppins">Sign Up</button>
+      <Link to="/under"><button className="btn px-6 font-medium text-white bg-red-600 rounded-md border-none  hover:text-red-600 hover:bg-white hover:border-red-600 poppins">Sign Up</button></Link>
     </div>
   );
 
@@ -66,7 +66,7 @@ const Navbar = () => {
       <NavLink className=" " activeClassName="active" to="/aboutus/about">About us</NavLink>
       <NavLink className="" activeClassName="active" to="/service">Service</NavLink>
       <NavLink className="" activeClassName="active" to="/trainers">Trainer</NavLink>
-      <NavLink className="" activeClassName="active" to="/explore/leg">Explore</NavLink>
+      <NavLink className="" activeClassName="active" to="/explore">Explore</NavLink>
       <NavLink className="" activeClassName="active" to="/contactus">Contact Us</NavLink>
   </ul>
           </div>
