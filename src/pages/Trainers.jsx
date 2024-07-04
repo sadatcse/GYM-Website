@@ -13,7 +13,7 @@ const Trainers = () => {
 
     console.log("hi" + data)
     return (
-        <div className="screen mt-4">
+        <div className="w-[90%] mx-auto my-4 md:mb-16">
                     <div className='flex flex-col items-center gap-2 mb-8'>
           <motion.h2
             variants={fadeIn('up', 0.4)}
