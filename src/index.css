@@ -75,3 +75,6 @@
 .swiper-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
     @apply bg-accent;
 }
+.right-inner-shadow {
+    box-shadow: inset -35px 0 35px rgba(231, 231, 231, 0.25);
+  }

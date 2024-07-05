@@ -5,9 +5,9 @@ import Sidebar from './Sidebar';
 
 const Root_Dashboard = () => {
     return (
-        <div className="flex h-screen">
+        <div className="">
         <Sidebar />
-        <div className="flex-grow p-5 bg-gray-100">
+        <div className="flex-grow p-5 bg-slate-50">
             <Outlet />
         </div>
     </div>
