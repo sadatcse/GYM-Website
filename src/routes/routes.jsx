@@ -20,6 +20,7 @@ import Error404 from "../pages/Error404";
 import Root_Dashboard from './../pages/Dashboard/Root';
 import RedirectToShopify from "./Fakeadmin";
 import UnderConstruction from "../pages/UnderConstruction";
+import Panel from "../pages/Dashboard/Panel";
 
 export const router = createBrowserRouter([
 
@@ -115,6 +116,10 @@ export const router = createBrowserRouter([
       //   path:'profile',
       //   element:
       // }
+      {
+        path:"/dashboard",
+        element:<Panel></Panel>
+      }
     ]
 
   },

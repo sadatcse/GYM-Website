@@ -5,12 +5,14 @@ import Sidebar from './Sidebar';
 
 const Root_Dashboard = () => {
     return (
-        <div className="">
-        <Sidebar />
-        <div className="flex-grow p-5 bg-slate-50">
-            <Outlet />
+        <div className="flex">
+            <div className='realative'>
+                <Sidebar />
+            </div>
+            <div className='py-5 px-6'>
+                <Outlet />
+            </div>
         </div>
-    </div>
     );
 };
 

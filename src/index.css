@@ -97,3 +97,8 @@
         
     ;
 }
+
+.routes.active {
+    background-color: rgba(243, 217, 183, 0.336);
+    color: rgba(148, 104, 62, 0.747);
+}
