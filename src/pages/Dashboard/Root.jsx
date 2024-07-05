@@ -6,10 +6,10 @@ import Sidebar from './Sidebar';
 const Root_Dashboard = () => {
     return (
         <div className="flex">
-            <div className='realative'>
+            <div className='fixed'>
                 <Sidebar />
             </div>
-            <div className='py-5 px-6'>
+            <div className='ml-[200px] p-9'>
                 <Outlet />
             </div>
         </div>
