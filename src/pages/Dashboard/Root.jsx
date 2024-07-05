@@ -5,12 +5,14 @@ import Sidebar from './Sidebar';
 
 const Root_Dashboard = () => {
     return (
-        <div className="flex h-screen">
-        <Sidebar />
-        <div className="flex-grow p-5 bg-gray-100">
-            <Outlet />
+        <div className="flex">
+            <div className='fixed'>
+                <Sidebar />
+            </div>
+            <div className='ml-[200px] p-9'>
+                <Outlet />
+            </div>
         </div>
-    </div>
     );
 };
 
