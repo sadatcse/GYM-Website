@@ -87,15 +87,14 @@
 /* dashboard styles */
 .routes {
     border-radius: 0.5rem;
-    padding: 0.5rem
-
+    padding: 0.5rem;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition properties */
 }
 
 .routes:hover {
     --tw-bg-opacity: 1;
-    background-color: #d1d1d173
-        
-    ;
+    background-color: #d1d1d173;
 }
 
 .routes.active {

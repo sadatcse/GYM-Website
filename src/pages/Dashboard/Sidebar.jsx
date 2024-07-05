@@ -54,46 +54,46 @@ const Sidebar = () => {
                     <ul className=''>
                         <li className="text-sm text-left pl-1 mx-5">Overview</li>
                         <li className="text-left mt-2 mx-5">
-                            <NavLink to="/dashboard" className="flex routes gap-4 items-center">
+                            <NavLink to="dashboard" className="flex routes gap-4 items-center">
                                 <TbLayoutDashboard className='text-xl' />
                                 Panel
                             </NavLink>
                         </li>
                         <li className="text-sm text-left pl-1 mt-2 mx-5">Blogs</li>
                         <li className="text-left mt-2 mx-5">
-                            <NavLink to="/blogs/view" className="flex routes gap-4 items-center">
+                            <NavLink to="blog_view" className="flex routes gap-4 items-center">
                                 <RiListCheck2 className='text-xl' />
                                 List
                             </NavLink>
                         </li>
                         <li className="text-left  mx-5">
-                            <NavLink to="/blogs/create" className="flex routes gap-4 items-center">
+                            <NavLink to="blog_create" className="flex routes gap-4 items-center">
                                 <VscNewFile className='text-xl' />
                                 Create
                             </NavLink>
                         </li>
                         <li className="text-sm text-left pl-1 mt-2 mx-5">Testimonial</li>
                         <li className="text-left mt-2  mx-5">
-                            <NavLink to="/testimonials/view" className="flex routes gap-4 items-center">
+                            <NavLink to="testimonial_view" className="flex routes gap-4 items-center">
                                 <LuMessagesSquare className='text-xl' />
                                 List
                             </NavLink>
                         </li>
                         <li className="text-left  mx-5">
-                            <NavLink to="/testimonials/create" className="flex routes gap-4 items-center">
+                            <NavLink to="testimonial_create" className="flex routes gap-4 items-center">
                                 <BiMessageSquareAdd className='text-xl' />
                                 Create
                             </NavLink>
                         </li>
                         <li className="text-sm text-left pl-1 mt-2 mx-5">Teams</li>
                         <li className="text-left mt-2 mx-5">
-                            <NavLink to="/teams/view" className="flex routes gap-4 items-center">
+                            <NavLink to="team_view" className="flex routes gap-4 items-center">
                                 <AiOutlineTeam className='text-xl' />
                                 List
                             </NavLink>
                         </li>
                         <li className="text-left  mx-5">
-                            <NavLink to="/teams/add" className="flex gap-4 routes items-center">
+                            <NavLink to="team_add" className="flex gap-4 routes items-center">
                                 <AiOutlineUserAdd className='text-xl' />
                                 Add
                             </NavLink>

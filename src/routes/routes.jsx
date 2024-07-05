@@ -21,6 +21,12 @@ import Root_Dashboard from './../pages/Dashboard/Root';
 import RedirectToShopify from "./Fakeadmin";
 import UnderConstruction from "../pages/UnderConstruction";
 import Panel from "../pages/Dashboard/Panel";
+import Blog_create from "../pages/Dashboard/Pages/Blog_create";
+import Blog_list from "../pages/Dashboard/Pages/Blog_list";
+import Team_create from "../pages/Dashboard/Pages/Team_create";
+import Team_list from "../pages/Dashboard/Pages/Team_list";
+import Testimonial_create from "../pages/Dashboard/Pages/Testimonial_create";
+import Testimonial_list from "../pages/Dashboard/Pages/Testimonial_list";
 
 export const router = createBrowserRouter([
 
@@ -117,9 +123,33 @@ export const router = createBrowserRouter([
       //   element:
       // }
       {
-        path:"/dashboard",
+        path:"dashboard",
         element:<Panel></Panel>
-      }
+      },
+      {
+        path:"blog_view",
+        element:<Blog_list></Blog_list>
+      },
+      {
+        path:"blog_create",
+        element:<Blog_create></Blog_create>
+      },
+      {
+        path:"testimonial_view",
+        element:<Testimonial_list></Testimonial_list>
+      },
+      {
+        path:"testimonial_create",
+        element: <Testimonial_create></Testimonial_create>
+      },
+      {
+        path:"team_view",
+        element: <Team_list></Team_list>
+      },
+      {
+        path:"team_add",
+        element: <Team_create></Team_create>
+      },
     ]
 
   },
