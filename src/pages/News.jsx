@@ -4,15 +4,17 @@ import NewsCard from "../components/Newspage/NewsCard";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../lib/variants';
 import Spinner from "../components/Utility/Spinner"; 
+import useAxiosPublic from "../Hook/useAxiosPublic";
 
 const News = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(false);
+    const axiosPublic = useAxiosPublic();
 
     const fetchNews = async () => {
         setLoading(true);
         try {
-            const response = await axios.get("https://multigym-premium-server.vercel.app/news/get-all");
+            const response = await axiosPublic.get("/news/get-all");
             setNews(response.data);
         } catch (error) {
             console.error("Error fetching news:", error);

@@ -8,7 +8,7 @@ import { CiFacebook } from "react-icons/ci";
 import { FaClock } from "react-icons/fa";
 import Spinner from "../Utility/Spinner"; 
 import Footer from "../Footer";
-
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 const NewsDetails = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -16,13 +16,14 @@ const NewsDetails = () => {
     const { id } = useParams();
     const ob = useLoaderData();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
     
-    const api = "https://multigym-premium-server.vercel.app/news/get-all";
+    const api = "/news/get-all";
 
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(api);
+            const response = await axiosPublic.get(api);
             setNews(response.data);
             setLoading(false);
         } catch (error) {

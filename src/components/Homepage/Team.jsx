@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom';
 import Title from './Title';
 import CustomButton from './CustomButton';
 import Spinner from "../Utility/Spinner";
-
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 const Team = () => {
   const [trainerData, setTrainerData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     const fetchTrainerData = async () => {
       try {
-        const response = await axios.get('https://multigym-premium-server.vercel.app/trainer/get-all');
+        const response = await axiosPublic.get('/trainer/get-all');
         setTrainerData(response.data); 
         setLoading(false);
       } catch (error) {

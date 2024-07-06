@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../lib/variants';
+import useAxiosPublic from "../Hook/useAxiosPublic";
 const Trainers = () => {
     const [data, setData] = useState([]);
+    const axiosPublic = useAxiosPublic();
     // const data = useLoaderData();
     useEffect(() => {
-        axios.get("https://multigym-premium-server.vercel.app/trainer/get-all/")
+        axiosPublic.get("/trainer/get-all/")
             .then(data => setData(data.data));
     }, [])
 

@@ -3,15 +3,17 @@ import axios from "axios";
 import { FaFacebook, FaInstagram, FaPhone } from "react-icons/fa";
 import TeamCard from "./TeamCard";
 import Spinner from "../Utility/Spinner"; 
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 const Team = () => {
   const [currentTeam, setCurrentTeam] = useState(0);
   const [teamData, setTeamData] = useState([]);
   const [loading, setLoading] = useState(true); 
+  const axiosPublic = useAxiosPublic();
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("https://multigym-premium-server.vercel.app/trainer/get-all");
+      const res = await axiosPublic.get("/trainer/get-all");
       setTeamData(res.data);
       setLoading(false);
     } catch (error) {

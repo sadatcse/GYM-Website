@@ -10,11 +10,13 @@ import CustomButton from './CustomButton';
 import SwiperNavButtons from './SwiperNavButtons';
 import Title from './Title';
 import Spinner from "../Utility/Spinner";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
+
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const axiosPublic = useAxiosPublic();
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
@@ -24,7 +26,7 @@ const Blog = () => {
           setLoading(false);
           return;
         }
-        const response = await axios.get('https://multigym-premium-server.vercel.app/news/get-all/');
+        const response = await axiosPublic.get('/news/get-all/');
         const newData = response.data;
         localStorage.setItem('blogData', JSON.stringify(newData));
 

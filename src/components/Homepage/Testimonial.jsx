@@ -3,10 +3,12 @@ import axios from "axios";
 import Marquee from "react-fast-marquee";
 import Title from "./Title";
 import Spinner from "../Utility/Spinner"; 
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 const Testimonial = () => {
   const [testimonialData, setTestimonialData] = useState([]);
   const [loading, setLoading] = useState(true);
   const maxLength = 260;
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,8 +20,8 @@ const Testimonial = () => {
           return;
         }
 
-        const response = await axios.get(
-          "https://multigym-premium-server.vercel.app/testimonial/get-all"
+        const response = await axiosPublic.get(
+          "/testimonial/get-all"
         );
         const newData = response.data;
         localStorage.setItem("testimonialData", JSON.stringify(newData));

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emailjs/nodejs": "^2.2.0",
+    "@headlessui/react": "^2.1.2",
     "@types/react-scroll": "^1.8.10",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.7.2",
