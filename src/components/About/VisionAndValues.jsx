@@ -1,24 +1,48 @@
-import { FaAws, FaGratipay, FaMortarPestle, FaPersonBooth, FaRocket, FaServer } from "react-icons/fa"
-import VisionCard from "./VisionCard"
+import React from 'react';
+import { FaCar, FaTrophy, FaRegSmile, FaWeight, FaHeart, FaHotTub } from "react-icons/fa";
+import VisionCard from "./VisionCard";
+
+
 function VisionAndValues() {
     return (
-        <section className="pb-3">
-            <div className="container mx-auto flex flex-col pb-6 mb-4 md:p-10 md:px-12">
-            <h1 className="text-4xl font-bold text-center">MORE THAN A HEALTH CLUB</h1>
-            <p className="max-w-3xl mx-auto mt-6 text-center">The goal of the Universal Survey and Engagement System is to provide a comprehensive and user-
-                    friendly online survey platform that caters to the needs of different user roles – Admin, Company, and
-                    User.</p>
-            </div>
-            <div className="container mx-auto grid grid-cols-1 lg:gap-10 lg:grid-cols-3">
-                <VisionCard path={<FaAws className="text-3xl"/>} title="Define the strategy" description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path={<FaRocket className="text-3xl"/>} title="Improve perfomance" description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path={<FaServer className="text-3xl"/>} title="Making cleaner service" description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path={<FaMortarPestle className="text-3xl"/>} title="Testing and evaluation  " description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path={<FaPersonBooth className="text-3xl"/>} title="Updating regularly " description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path={<FaGratipay className="text-3xl"/>} title="Top rated gym  " description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
+        <section className="py-12 bg-gray-100">
+            <div className="container mx-auto">
+                <h2 className="text-2xl md:text-6xl font-extrabold text-center text-[#ebc270] mb-4 md:mb-10">More Than A gym</h2>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <VisionCard
+                        icon={<FaCar className="text-6xl text-yellow-500  mx-auto" />}
+                        title="Personal Parking"
+                        description="We provide convenient personal parking facilities to ensure a hassle-free experience for our members."
+                    />
+                    <VisionCard
+                        icon={<FaTrophy className="text-6xl text-yellow-500  mx-auto" />}
+                        title="Best Gym in Mohammadpur"
+                        description="Our commitment to excellence and community support has earned us the reputation of being the best gym in Mohammadpur."
+                    />
+                    <VisionCard
+                        icon={<FaRegSmile className="text-6xl text-yellow-500  mx-auto" />}
+                        title="Member Satisfaction"
+                        description="We prioritize member satisfaction by offering exceptional service, personalized attention, and a welcoming atmosphere."
+                    />
+                    <VisionCard
+                        icon={<FaWeight className="text-6xl text-yellow-500 mx-auto" />}
+                        title="Weight Management"
+                        description="We focus on customized weight management programs tailored to individual needs, combining fitness, nutrition, and lifestyle guidance."
+                    />
+                    <VisionCard
+                        icon={<FaHeart className="text-6xl text-yellow-500  mx-auto" />}
+                        title="Health and Wellness"
+                        description="We promote holistic health and wellness through comprehensive fitness programs, encouraging a balanced lifestyle."
+                    />
+                    <VisionCard
+                        icon={<FaHotTub className="text-6xl text-yellow-500  mx-auto" />}
+                        title="Steam and Sauna"
+                        description="Enjoy the benefits of relaxation and detoxification with our state-of-the-art steam and sauna facilities."
+                    />
+                </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default VisionAndValues
+export default VisionAndValues;

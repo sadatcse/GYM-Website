@@ -90,7 +90,7 @@ const Explore = () => {
 </div>
 
 {updateuserData().length >= 12 && (
-  <div className='pagination flex items-center justify-center mt-4 space-x-4'>
+  <div className='pagination flex items-center justify-center mt-4 space-x-4 p-5'>
     <p className='text-gray-600'>Current Page: {currentPage + 1}</p>
     <button
       onClick={() => setCurrentPage(currentPage - 1)}

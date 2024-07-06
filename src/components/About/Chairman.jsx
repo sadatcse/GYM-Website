@@ -2,7 +2,7 @@ import React from 'react';
 
 const MessageFromChairman = () => {
   return (
-    <div style={{ backgroundColor: '#616c7d' }}>
+    <div>
       <div className="w-[90%] mx-auto flex flex-col lg:flex-row justify-between pt-9" >
         <img src='https://www.aavplc.com/storage/about-aav/message/executive-chairman.png' alt='Chairman' className=' lg:h-[700px] w-auto ' />
         <div className='flex flex-col md:mr-6 justify-center my-7'>
