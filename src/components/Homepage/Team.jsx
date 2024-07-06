@@ -14,7 +14,7 @@ const Team = () => {
   useEffect(() => {
     const fetchTrainerData = async () => {
       try {
-        const response = await axiosPublic.get('/trainer/get-all');
+        const response = await axios.get('https://multigym-premium-server.vercel.app/trainer/get-all');
         setTrainerData(response.data); 
         setLoading(false);
       } catch (error) {
@@ -34,8 +34,8 @@ const Team = () => {
     return text;
   };
 
-  const shuffledData = trainerData.sort(() => 0.5 - Math.random());
-  const selectedTrainers = shuffledData.slice(0, 4);
+  // const shuffledData = trainerData.sort(() => 0.5 - Math.random());
+  const selectedTrainers = trainerData.slice(0, 4);
 
   return (
     <div className='container mx-auto h-full flex flex-col items-center justify-center p-10'>
