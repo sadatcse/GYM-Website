@@ -20,9 +20,7 @@ const Testimonial = () => {
           return;
         }
 
-        const response = await axiosPublic.get(
-          "/testimonial/get-all"
-        );
+        const response = await axios.get('https://multigym-premium-server.vercel.app/testimonial/get-all' );
         const newData = response.data;
         localStorage.setItem("testimonialData", JSON.stringify(newData));
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'https:/multigym-premium-server.vercel.app/'
+    baseURL: 'https://multigym-premium-server.vercel.app/'
 })
 
 const useAxiosPublic = () => {
