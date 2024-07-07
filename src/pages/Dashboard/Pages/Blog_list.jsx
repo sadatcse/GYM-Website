@@ -3,6 +3,10 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
+import { FiEdit3 } from "react-icons/fi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { CgDetailsMore } from "react-icons/cg";
+import { BiMessageSquareDetail } from "react-icons/bi";
 
 const Blog_list = () => {
     const axiosSecure = useAxiosPublic();
@@ -126,34 +130,32 @@ const Blog_list = () => {
                                 <tbody>
                                     {updateUserData().map((post, index) => (
                                         <tr key={post._id} >
-                                            <td className="px-4 py-2 text-center">{index + 1}</td>
-                                            <td className="px-4 py-2">{post.title}</td>
-                                            <td className="px-4 py-2">{post.date}</td>
-                                            <td className="px-4 py-2">{post.category}</td>
-                                            <td className="px-4 py-2 text-center">
+                                            <td className="px-4 py-3 text-left">{index + 1}</td>
+                                            <td className="px-4 py-3">{post.title}</td>
+                                            <td className="px-4 py-3">{post.date}</td>
+                                            <td className="px-4 py-3">{post.category}</td>
+                                            <td className="flex gap-3 text-base">
                                                 <button
                                                     onClick={() => handleEdit(post)}
-                                                    className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-600"
                                                 >
-                                                    Edit
+                                                    <FiEdit3 className='text-blue-900' />
                                                 </button>
-                                            </td>
-                                            <td className="px-4 py-2 text-center">
                                                 <button
                                                     onClick={() => handleDelete(post._id)}
-                                                    className="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600 flex items-center justify-center"
                                                 >
-                                                    Delete
-                                                    <FaTrashAlt className="ml-1" />
+                                                    <AiOutlineDelete className='text-red-900 hover:text-red-700' />
                                                 </button>
-                                            </td>
-                                            <td className="px-4 py-2 text-center">
                                                 <button
                                                     onClick={() => handleView(post)}
-                                                    className="bg-green-500 text-white py-1 px-3 rounded-lg hover:bg-green-600"
                                                 >
-                                                    View
+                                                    <BiMessageSquareDetail />
                                                 </button>
+                                            </td>
+                                            <td className="px-4 py-3 text-center">
+
+                                            </td>
+                                            <td className="px-4 py-3 text-center">
+
                                             </td>
                                         </tr>
                                     ))}
