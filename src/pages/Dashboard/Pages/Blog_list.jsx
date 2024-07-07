@@ -43,7 +43,6 @@ const Blog_list = () => {
     };
 
     const handleDelete = async (postId) => {
-    
         const result = await Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -53,14 +52,14 @@ const Blog_list = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         });
-    
+
         if (result.isConfirmed) {
             try {
                 await axiosSecure.delete(`/news/delete/${postId}`);
                 const res = await axiosSecure.get('/news/get-all');
                 setUsersData(res.data);
                 setCount(res.data.length);
-                
+
                 // Show success notification
                 Swal.fire(
                     'Deleted!',
@@ -69,7 +68,7 @@ const Blog_list = () => {
                 );
             } catch (error) {
                 console.error('Error deleting blog post:', error);
-                
+
                 // Show error notification
                 Swal.fire(
                     'Error!',
@@ -87,68 +86,84 @@ const Blog_list = () => {
     const numberOfPages = Math.ceil(count / itemsPerPage);
 
     return (
-        <div>
+        <div className=''>
             <Helmet>
                 <title>Admin | Blog / News Lists</title>
             </Helmet>
-            <div className="min-h-screen bg-gradient-to-r from-green-400 to-blue-500 p-6">
-                <div className="container mx-auto">
-                    <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-4xl font-bold text-white">Total Blog Posts</h2>
-                        <h2 className="text-4xl font-bold text-white">Total Posts: {usersData.length}</h2>
+            <div className="poppins">
+                <div className="">
+
+                    {/* Top content */}
+                    <p className='text-2xl font-bold'>List</p>
+
+                    {/* breadcrumbs */}
+                    <div className="breadcrumbs mt-2 text-xs text-black">
+                        <ul>
+                            <li className='text-gray-400'><a>Home</a></li>
+                            <li className='text-gray-400'><a>admin</a></li>
+                            <li className='text-gray-400'>blog</li>
+                            <li className='text-gray-500'>list</li>
+                        </ul>
                     </div>
-                    <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
-                        <table className="min-w-full table-auto">
-                            <thead>
-                                <tr className="bg-gray-800 text-white">
-                                    <th className="px-4 py-2">#</th>
-                                    <th className="px-4 py-2">Title</th>
-                                    <th className="px-4 py-2">Date</th>
-                                    <th className="px-4 py-2">Category</th>
-                                    <th className="px-4 py-2">Edit</th>
-                                    <th className="px-4 py-2">Delete</th>
-                                    <th className="px-4 py-2">View</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {updateUserData().map((post, index) => (
-                                    <tr key={post._id} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-200'}>
-                                        <td className="border px-4 py-2 text-center">{index + 1}</td>
-                                        <td className="border px-4 py-2">{post.title}</td>
-                                        <td className="border px-4 py-2">{post.date}</td>
-                                        <td className="border px-4 py-2">{post.category}</td>
-                                        <td className="border px-4 py-2 text-center">
-                                            <button
-                                                onClick={() => handleEdit(post)}
-                                                className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-600"
-                                            >
-                                                Edit
-                                            </button>
-                                        </td>
-                                        <td className="border px-4 py-2 text-center">
-                                            <button
-                                                onClick={() => handleDelete(post._id)}
-                                                className="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600"
-                                            >
-                                                Delete
-                                                <FaTrashAlt className="ml-1" />
-                                            </button>
-                                        </td>
-                                        <td className="border px-4 py-2 text-center">
-                                            <button
-                                                onClick={() => handleView(post)}
-                                                className="bg-green-500 text-white py-1 px-3 rounded-lg hover:bg-green-600"
-                                            >
-                                                View
-                                            </button>
-                                        </td>
+
+                    {/* Main section */}
+                    {/* <div className="flex justify-between items-center">
+                        <h2 className="text-4xl font-bold ">Total Posts: {usersData.length}</h2>
+                    </div> */}
+
+                    <section className='p-5 mt-6 border rounded-2xl border-gray-100 shadow'>
+                        <div className="overflow-x-auto">
+                            <table className="table w-full">
+                                <thead className=''>
+                                    <tr className="text-xs text-gray-500 text-left">
+                                        <th className="p-3 rounded-full">Key</th>
+                                        <th className="p-3 rounded-full">Title</th>
+                                        <th className="p-3 rounded-full">Date</th>
+                                        <th className="p-3 rounded-full">Category</th>
+                                        <th className="p-3 rounded-full">Action</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                
-                    {count >= itemsPerPage && (
+                                </thead>
+                                <tbody>
+                                    {updateUserData().map((post, index) => (
+                                        <tr key={post._id} >
+                                            <td className="px-4 py-2 text-center">{index + 1}</td>
+                                            <td className="px-4 py-2">{post.title}</td>
+                                            <td className="px-4 py-2">{post.date}</td>
+                                            <td className="px-4 py-2">{post.category}</td>
+                                            <td className="px-4 py-2 text-center">
+                                                <button
+                                                    onClick={() => handleEdit(post)}
+                                                    className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-600"
+                                                >
+                                                    Edit
+                                                </button>
+                                            </td>
+                                            <td className="px-4 py-2 text-center">
+                                                <button
+                                                    onClick={() => handleDelete(post._id)}
+                                                    className="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600 flex items-center justify-center"
+                                                >
+                                                    Delete
+                                                    <FaTrashAlt className="ml-1" />
+                                                </button>
+                                            </td>
+                                            <td className="px-4 py-2 text-center">
+                                                <button
+                                                    onClick={() => handleView(post)}
+                                                    className="bg-green-500 text-white py-1 px-3 rounded-lg hover:bg-green-600"
+                                                >
+                                                    View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    {/* pagination */}
+                    {/* {count >= itemsPerPage && (
                         <div className="pagination flex items-center justify-center mt-6 space-x-4">
                             <p className="text-white">Current Page: {currentPage + 1}</p>
                             <button
@@ -189,7 +204,7 @@ const Blog_list = () => {
                                 <option value="25">25</option>
                             </select>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>
