@@ -27,6 +27,8 @@ import Team_create from "../pages/Dashboard/Pages/Team_create";
 import Team_list from "../pages/Dashboard/Pages/Team_list";
 import Testimonial_create from "../pages/Dashboard/Pages/Testimonial_create";
 import Testimonial_list from "../pages/Dashboard/Pages/Testimonial_list";
+import Blog_edit from "../pages/Dashboard/Pages/Blog_edit";
+import Team_edit from "../pages/Dashboard/Pages/Team_edit";
 
 export const router = createBrowserRouter([
 
@@ -149,6 +151,14 @@ export const router = createBrowserRouter([
       {
         path:"team_add",
         element: <Team_create></Team_create>
+      },
+      {
+        path:"team_edit/:id",
+        element: <Team_edit></Team_edit>
+      },
+      {
+        path:"blog_edit/:id",
+        element: <Blog_edit></Blog_edit>
       },
     ]
 

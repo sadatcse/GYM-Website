@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from './../../../Hook/useAxiosPublic';
-
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 const Team_list = () => {
     const axiosSecure = useAxiosPublic();
     const [usersData, setUsersData] = useState([]);
@@ -37,24 +38,49 @@ const Team_list = () => {
     };
 
     const handleEdit = (post) => {
-        console.log('Editing post:', post);
-        // Add your edit logic here
+        navigate(`/dashboard/blog_edit/${post._id}`);
     };
 
     const handleDelete = async (postId) => {
         try {
-            await axiosSecure.delete(`/trainer/delete/${postId}`);
-            const res = await axiosSecure.get('/trainer/get-all');
-            setUsersData(res.data);
-            setCount(res.data.length);
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to recover this trainer!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            });
+    
+            if (result.isConfirmed) {
+                await axiosSecure.delete(`/trainer/delete/${postId}`);
+                const res = await axiosSecure.get('/trainer/get-all');
+                setUsersData(res.data);
+                setCount(res.data.length);
+                Swal.fire(
+                    'Deleted!',
+                    'The trainer has been deleted.',
+                    'success'
+                );
+            }
         } catch (error) {
             console.error('Error deleting trainer:', error);
-            setIsError(true); // Optionally set an error state to display an error message
+            setIsError(true);
+            Swal.fire(
+                'Error!',
+                'Failed to delete the trainer.',
+                'error'
+            );
         }
     };
 
+    const navigate = useNavigate();
+
     const handleView = (post) => {
-        console.log('Viewing post:', post);
+
+
+        navigate(`/trainers/${post.short_name}`);
     };
 
     const numberOfPages = Math.ceil(count / itemsPerPage);

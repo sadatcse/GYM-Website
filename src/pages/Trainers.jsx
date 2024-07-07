@@ -87,7 +87,7 @@ const Trainers = () => {
                                     </div>
                                     <div className='text-center'>
                                         <p className='font-semibold text-2xl mt-2 uppercase'>{trainer.full_name}</p>
-                                        <p className='font-semibold text-lg mt-1 text-gray-500'>PERSONAL COACH</p>
+                                        <p className='font-semibold text-lg mt-1 text-gray-500'>{trainer.position_title}</p>
                                         {/* <p className=''>{trainer.certification}</p> */}
                                     </div>
                                 </section>

@@ -3,6 +3,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Blog_list = () => {
     const axiosSecure = useAxiosPublic();
@@ -13,7 +14,7 @@ const Blog_list = () => {
     const [selectedPost, setSelectedPost] = useState(null);
     const [itemsPerPage, setItemsPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(0);
-
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -38,8 +39,7 @@ const Blog_list = () => {
     };
 
     const handleEdit = (post) => {
-        console.log('Editing post:', post);
-        // Add your edit logic here
+        navigate(`/dashboard/blog_edit/${post._id}`);
     };
 
     const handleDelete = async (postId) => {
@@ -80,8 +80,12 @@ const Blog_list = () => {
         }
     };
 
+    const navigate = useNavigate();
+
     const handleView = (post) => {
-        console.log('Viewing post:', post);
+
+        // console.log('Viewing post:', post);
+        navigate(`/blog/${post._id}`);
     };
 
     const numberOfPages = Math.ceil(count / itemsPerPage);

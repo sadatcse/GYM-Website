@@ -4,7 +4,7 @@ const MessageFromChairman = () => {
   return (
     <div>
       <div className="w-[90%] mx-auto flex flex-col lg:flex-row justify-between pt-9" >
-        <img src='https://www.aavplc.com/storage/about-aav/message/executive-chairman.png' alt='Chairman' className=' lg:h-[700px] w-auto ' />
+        <img src='https://i.ibb.co/YyNY5F1/abul-kalam-azad-resize.png' alt='Chairman' className=' lg:h-[700px] w-auto ' />
         <div className='flex flex-col md:mr-6 justify-center my-7'>
           <p className="text-4xl font-bold mb-2 text-white ">Message from the Chairman</p>
           <p className="">
