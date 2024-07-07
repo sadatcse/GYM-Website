@@ -101,3 +101,29 @@
     background-color: rgba(243, 217, 183, 0.336);
     color: rgba(148, 104, 62, 0.747);
 }
+
+/* pagination button animation */
+@keyframes wakeUp {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes sleep {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+  }
+  
+  .active-button {
+    animation: wakeUp 0.5s ease-in-out;
+  }
+  
+  .inactive-button {
+    animation: sleep 0.5s ease-in-out;
+  }
+  
+  .transition-colors {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  

@@ -7,17 +7,20 @@ import { FiEdit3 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { CgDetailsMore } from "react-icons/cg";
 import { BiMessageSquareDetail } from "react-icons/bi";
+import { GrNext } from "react-icons/gr";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 const Blog_list = () => {
     const axiosSecure = useAxiosPublic();
-    const [usersData, setUsersData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
-    const [count, setCount] = useState(0);
-    const [selectedPost, setSelectedPost] = useState(null);
-    const [itemsPerPage, setItemsPerPage] = useState(5);
-    const [currentPage, setCurrentPage] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
+    const [usersData, setUsersData] = useState([]);
 
+    // pagination
+    const [itemsPerPage, setItemsPerPage] = useState(5);
+    const [count, setCount] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [selectedPost, setSelectedPost] = useState(null);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -88,6 +91,18 @@ const Blog_list = () => {
     };
 
     const numberOfPages = Math.ceil(count / itemsPerPage);
+
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const handleNextPage = () => {
+        if (currentPage < [...Array(numberOfPages)].length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
 
     return (
         <div className=''>
@@ -162,6 +177,36 @@ const Blog_list = () => {
                                 </tbody>
                             </table>
                         </div>
+                        <div className='flex mt-7 justify-start'>
+                            {/* pagination */}
+                            <div className="flex justify-end ">
+                                <div className="m-2 shadow rounded-lg max-w-min flex">
+                                    <button
+                                        className="join-item px-3 py-2 text-white rounded focus:outline-none hover:bg-gray-200"
+                                        onClick={handlePrevPage}
+                                    >
+                                        <span className="text-black"><MdNavigateBefore /></span>
+                                    </button>
+                                    {
+                                        [...Array(numberOfPages)].map((page, ind) => (
+                                            <button
+                                                className={`px-3 join-item text-sm py-2 focus:outline-none transition-colors duration-300 ease-in-out ${currentPage === ind ? 'bg-gray-700 rounded-xl text-white hover:bg-gray-700' : 'bg-white hover:bg-gray-200'}`}
+                                                onClick={() => setCurrentPage(ind)}
+                                                key={ind}
+                                            >
+                                                {ind + 1}
+                                            </button>
+                                        ))
+                                    }
+                                    <button
+                                        className="px-3 py-2 text-white join-item rounded focus:outline-none hover:bg-gray-200"
+                                        onClick={handleNextPage}
+                                    >
+                                        <span className="text-black"><MdNavigateNext /></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
                     {/* pagination */}
@@ -207,6 +252,8 @@ const Blog_list = () => {
                             </select>
                         </div>
                     )} */}
+
+
                 </div>
             </div>
         </div>
