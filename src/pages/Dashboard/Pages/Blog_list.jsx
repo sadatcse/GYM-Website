@@ -13,7 +13,7 @@ import { TfiSearch } from "react-icons/tfi";
 import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 const Blog_list = () => {
-  
+
     const axiosSecure = useAxiosPublic();
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -123,7 +123,7 @@ const Blog_list = () => {
             </Helmet>
             <div className="poppins">
                 <div className="">
-                    
+
                     {/* Top content */}
                     <p className='text-2xl font-bold'>List</p>
 
@@ -160,8 +160,8 @@ const Blog_list = () => {
                                     title="items per page"
                                     className="px-1 cursor-pointer py-2 rounded-lg  border max-w-min focus:outline-none"
                                 >
-                                    <option value="4">4</option>
-                                    <option value="8">8</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
                                     <option value="12">12</option>
                                     <option value="50">50</option>
                                 </select>
@@ -182,6 +182,19 @@ const Blog_list = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    {
+
+                                        usersData.length == 0 &&
+                                        // loading screen
+                                        <>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                        </>
+                                    }
                                     {updateUserData().map((post, index) => (
                                         <tr key={post._id} >
                                             <td className="px-4 py-3 text-left">{index + 1}</td>
@@ -248,13 +261,13 @@ const Blog_list = () => {
                             <div>
                                 <div className='flex gap-2'>
                                     <button
-                                    onClick={handlePrevPage}
-                                    className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
+                                        onClick={handlePrevPage}
+                                        className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
                                         Previous
                                     </button>
                                     <button
-                                    onClick={handleNextPage}
-                                    className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
+                                        onClick={handleNextPage}
+                                        className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
                                         Next
                                     </button>
                                 </div>
@@ -266,5 +279,16 @@ const Blog_list = () => {
         </div>
     );
 };
+const Skeleton = () => {
+    return (
+        <tr className='skeleton bg-[#fdfdfd] rounded-lg'>
+            <td className='py-7'></td>
+            <td className='py-7'></td>
+            <td className='py-7'></td>
+            <td className='py-7'></td>
+            <td className='py-7'></td>
+        </tr>
+    )
+}
 
 export default Blog_list;

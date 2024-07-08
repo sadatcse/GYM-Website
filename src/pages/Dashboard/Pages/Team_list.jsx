@@ -4,6 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from './../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { TfiSearch } from 'react-icons/tfi';
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import { BiMessageSquareDetail } from 'react-icons/bi';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { FiEdit3 } from 'react-icons/fi';
 const Team_list = () => {
     const axiosSecure = useAxiosPublic();
     const [usersData, setUsersData] = useState([]);
@@ -11,7 +16,7 @@ const Team_list = () => {
     const [isError, setIsError] = useState(false);
     const [count, setCount] = useState(0);
     const [selectedPost, setSelectedPost] = useState(null);
-    const [itemsPerPage, setItemsPerPage] = useState(5);
+    const [itemsPerPage, setItemsPerPage] = useState(4);
     const [currentPage, setCurrentPage] = useState(0);
 
     useEffect(() => {
@@ -85,114 +90,214 @@ const Team_list = () => {
 
     const numberOfPages = Math.ceil(count / itemsPerPage);
 
+
+    const handleItemsPerPage = e => {
+        const val = parseInt(e.target.value);
+        console.log(val);
+        setItemsPerPage(val);
+        setCurrentPage(0);
+    }
+
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const handleNextPage = () => {
+        if (currentPage < [...Array(numberOfPages)].length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
+
+    console.log(usersData)
     return (
         <div>
             <Helmet>
                 <title>Admin | Trainer Lists</title>
             </Helmet>
-            <div className="min-h-screen bg-gradient-to-r from-green-400 to-blue-500 p-6">
-                <div className="container mx-auto">
-                    <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-4xl font-bold text-white">Total Trainers</h2>
-                        <h2 className="text-4xl font-bold text-white">Total Trainers: {usersData.length}</h2>
+
+
+
+            <div className="poppins">
+                <div className="">
+
+                    {/* Top content */}
+                    <p className='text-2xl font-bold'>List</p>
+
+                    {/* breadcrumbs */}
+                    <div className="breadcrumbs mt-2 text-xs text-black">
+                        <ul>
+                            <li className='text-gray-400'><a>Home</a></li>
+                            <li className='text-gray-400'><a>admin</a></li>
+                            <li className='text-gray-400'>team</li>
+                            <li className='text-gray-500'>list</li>
+                        </ul>
                     </div>
-                    <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
-                        <table className="min-w-full table-auto">
-                            <thead>
-                                <tr className="bg-gray-800 text-white">
-                                    <th className="px-4 py-2">#</th>
-                                    <th className="px-4 py-2">Full Name</th>
-                                    <th className="px-4 py-2">Certification</th>
-                                    <th className="px-4 py-2">Role</th>
-                                    <th className="px-4 py-2">Edit</th>
-                                    <th className="px-4 py-2">Delete</th>
-                                    <th className="px-4 py-2">View</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {updateUserData().map((trainer, index) => (
-                                    <tr key={trainer._id} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-200'}>
-                                        <td className="border px-4 py-2 text-center">{index + 1}</td>
-                                        <td className="border px-4 py-2">{trainer.full_name}</td>
-                                        <td className="border px-4 py-2">{trainer.certification}</td>
-                                        <td className="border px-4 py-2">{trainer.role}</td>
-                                        <td className="border px-4 py-2 text-center">
-                                            <button
-                                                onClick={() => handleEdit(trainer)}
-                                                className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-600"
-                                            >
-                                                Edit
-                                            </button>
-                                        </td>
-                                        <td className="border px-4 py-2 text-center">
-                                            <button
-                                                onClick={() => handleDelete(trainer._id)}
-                                                className="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600"
-                                            >
-                                                Delete
-                                                <FaTrashAlt className="ml-1" />
-                                            </button>
-                                        </td>
-                                        <td className="border px-4 py-2 text-center">
-                                            <button
-                                                onClick={() => handleView(trainer)}
-                                                className="bg-green-500 text-white py-1 px-3 rounded-lg hover:bg-green-600"
-                                            >
-                                                View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                
-                    {count >= itemsPerPage && (
-                        <div className="pagination flex items-center justify-center mt-6 space-x-4">
-                            <p className="text-white">Current Page: {currentPage + 1}</p>
-                            <button
-                                onClick={() => setCurrentPage(currentPage - 1)}
-                                className={`px-4 py-2 rounded ${currentPage === 0 ? 'bg-gray-300' : 'bg-blue-500 text-white hover:bg-blue-600'}`}
-                                disabled={currentPage === 0}
-                            >
-                                Prev
-                            </button>
-                            {[...Array(numberOfPages)].map((_, index) => (
-                                <button
-                                    onClick={() => setCurrentPage(index)}
-                                    key={index}
-                                    className={`px-4 py-2 rounded ${currentPage === index ? 'bg-yellow-500' : 'bg-gray-300 hover:bg-gray-400'}`}
+
+                    {/* Main section */}
+                    <section className='p-5 mt-6 border rounded-2xl border-gray-100 shadow'>
+
+
+                        <div className='flex items-center  mb-5'>
+                            {/* search bar */}
+                            <div className='w-full border py-2 px-3  rounded-lg'>
+                                <div className='flex items-center gap-2'>
+                                    <TfiSearch className='text-2xl font-bold text-gray-500' />
+                                    <input type="text" className='outline-none w-full poppins text-sm' placeholder='Search here...' />
+                                </div>
+                            </div>
+                            {/* items per page */}
+                            <div className="flex justify-between items-center m-2">
+                                {/* <div>
+                                    <p className="text-gray-500">Total {count} products</p>
+                                </div> */}
+                                <select
+                                    value={itemsPerPage}
+                                    onChange={handleItemsPerPage}
+                                    title="items per page"
+                                    className="px-1 cursor-pointer py-2 rounded-lg  border max-w-min focus:outline-none"
                                 >
-                                    {index + 1}
-                                </button>
-                            ))}
-                            <button
-                                onClick={() => setCurrentPage(currentPage + 1)}
-                                className={`px-4 py-2 rounded ${currentPage === numberOfPages - 1 ? 'bg-gray-300' : 'bg-blue-500 text-white hover:bg-blue-600'}`}
-                                disabled={currentPage === numberOfPages - 1}
-                            >
-                                Next
-                            </button>
-                            <select
-                                value={itemsPerPage}
-                                onChange={(e) => {
-                                    setItemsPerPage(Number(e.target.value));
-                                    setCurrentPage(0);
-                                }}
-                                className="px-4 py-2 border border-gray-300 rounded"
-                            >
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                                <option value="25">25</option>
-                            </select>
+                                    <option value="4">4</option>
+                                    <option value="8">8</option>
+                                    <option value="12">12</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
                         </div>
-                    )}
+
+
+                        {/* table */}
+                        <div className="overflow-x-auto">
+                            <table className="table w-full">
+                                <thead className=''>
+                                    <tr className="text-xs text-gray-500 text-left">
+                                        <th className="p-3 rounded-full">Key</th>
+                                        <th className="p-3 rounded-full">Name</th>
+                                        <th className="p-3 rounded-full">Certification</th>
+                                        <th className="p-3 rounded-full">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {
+
+                                        usersData.length == 0 &&
+                                        // loading screen
+                                        <>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                        </>
+                                    }
+                                    {updateUserData().map((trainer, index) => (
+                                        <tr key={trainer._id} >
+                                            <td className="px-4 py-3 text-left">{index + 1}</td>
+                                            <td className="px-4 py-3 text-left">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle h-12 w-12">
+                                                            <img
+                                                                src={trainer.image_url}
+                                                                alt="Avatar Tailwind CSS Component" />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-medium">{trainer.full_name}</div>
+                                                        <div className="text-sm opacity-50">{trainer.role}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td className="px-4 py-3">{trainer.certification}</td>
+                                            <td className="flex gap-3 mt-4 text-base">
+                                                <button
+                                                    onClick={() => handleEdit(trainer)}
+                                                >
+                                                    <FiEdit3 className='text-blue-900' />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDelete(trainer._id)}
+                                                >
+                                                    <AiOutlineDelete className='text-red-900 hover:text-red-700' />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleView(trainer)}
+                                                >
+                                                    <BiMessageSquareDetail />
+                                                </button>
+                                            </td>
+                                            <td className="px-4 py-3 text-center">
+
+                                            </td>
+                                            <td className="px-4 py-3 text-center">
+
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className='flex mt-7 items-center justify-between'>
+                            {/* pagination */}
+                            <div className="flex justify-end ">
+                                <div className="m-2 shadow rounded-lg max-w-min flex">
+                                    <button
+                                        className="join-item px-3 py-2 text-white rounded focus:outline-none hover:bg-gray-200"
+                                        onClick={handlePrevPage}
+                                    >
+                                        <span className="text-black"><MdNavigateBefore /></span>
+                                    </button>
+                                    {
+                                        [...Array(numberOfPages)].map((page, ind) => (
+                                            <button
+                                                className={`px-3 join-item text-sm py-2 focus:outline-none transition-colors duration-300 ease-in-out ${currentPage === ind ? 'bg-gray-700 rounded-xl text-white hover:bg-gray-700' : 'bg-white hover:bg-gray-200'}`}
+                                                onClick={() => setCurrentPage(ind)}
+                                                key={ind}
+                                            >
+                                                {ind + 1}
+                                            </button>
+                                        ))
+                                    }
+                                    <button
+                                        className="px-3 py-2 text-white join-item rounded focus:outline-none hover:bg-gray-200"
+                                        onClick={handleNextPage}
+                                    >
+                                        <span className="text-black"><MdNavigateNext /></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <div className='flex gap-2'>
+                                    <button
+                                        onClick={handlePrevPage}
+                                        className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
+                                        Previous
+                                    </button>
+                                    <button
+                                        onClick={handleNextPage}
+                                        className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
     );
 };
-
+const Skeleton = () => {
+    return (
+        <tr className='skeleton bg-[#fdfdfd] rounded-lg'>
+            <td className='py-8'></td>
+            <td className='py-8'></td>
+            <td className='py-8'></td>
+            <td className='py-8'></td>
+            <td className='py-8'></td>
+        </tr>
+    )
+}
 export default Team_list;
