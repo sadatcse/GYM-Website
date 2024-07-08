@@ -127,3 +127,27 @@
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   }
   
+
+/* Apply styles for the select */
+select {
+    transition: border-color 0.3s ease-in-out;
+}
+
+select:focus {
+    border-color: #3182ce;
+}
+
+select:hover {
+    border-color: #63b3ed;
+}
+
+/* Style for the icons */
+.relative .w-5.h-5 {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Rotate icon when select is open */
+.relative .w-5.h-5.up {
+    transform: rotate(180deg);
+}
+

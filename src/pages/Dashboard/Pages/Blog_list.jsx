@@ -9,7 +9,8 @@ import { CgDetailsMore } from "react-icons/cg";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { GrNext } from "react-icons/gr";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-
+import { TfiSearch } from "react-icons/tfi";
+import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
 const Blog_list = () => {
     const axiosSecure = useAxiosPublic();
     const [isError, setIsError] = useState(false);
@@ -103,7 +104,12 @@ const Blog_list = () => {
             setCurrentPage(currentPage + 1);
         }
     }
-
+    const handleItemsPerPage = e => {
+        const val = parseInt(e.target.value);
+        console.log(val);
+        setItemsPerPage(val);
+        setCurrentPage(0);
+    }
     return (
         <div className=''>
             <Helmet>
@@ -129,8 +135,38 @@ const Blog_list = () => {
                     {/* <div className="flex justify-between items-center">
                         <h2 className="text-4xl font-bold ">Total Posts: {usersData.length}</h2>
                     </div> */}
-
                     <section className='p-5 mt-6 border rounded-2xl border-gray-100 shadow'>
+
+
+                        <div className='flex items-center  mb-5'>
+                            {/* search bar */}
+                            <div className='w-full border py-2 px-3  rounded-lg'>
+                                <div className='flex items-center gap-2'>
+                                    <TfiSearch className='text-2xl font-bold text-gray-500' />
+                                    <input type="text" className='outline-none w-full poppins text-sm' placeholder='Search here...' />
+                                </div>
+                            </div>
+                            {/* items per page */}
+                            <div className="flex justify-between items-center m-2">
+                                {/* <div>
+                                    <p className="text-gray-500">Total {count} products</p>
+                                </div> */}
+                                <select
+                                    value={itemsPerPage}
+                                    onChange={handleItemsPerPage}
+                                    title="items per page"
+                                    className="px-1 cursor-pointer py-2 rounded-lg  border max-w-min focus:outline-none"
+                                >
+                                    <option value="4">4</option>
+                                    <option value="8">8</option>
+                                    <option value="12">12</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        {/* table */}
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead className=''>
@@ -177,7 +213,7 @@ const Blog_list = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <div className='flex mt-7 justify-start'>
+                        <div className='flex mt-7 items-center justify-between'>
                             {/* pagination */}
                             <div className="flex justify-end ">
                                 <div className="m-2 shadow rounded-lg max-w-min flex">
@@ -206,54 +242,22 @@ const Blog_list = () => {
                                     </button>
                                 </div>
                             </div>
+                            <div>
+                                <div className='flex gap-2'>
+                                    <button
+                                    onClick={handlePrevPage}
+                                    className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
+                                        Previous
+                                    </button>
+                                    <button
+                                    onClick={handleNextPage}
+                                    className='text-xs bg-gray-100 px-4 rounded-md py-2 hover:bg-gray-50'>
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </section>
-
-                    {/* pagination */}
-                    {/* {count >= itemsPerPage && (
-                        <div className="pagination flex items-center justify-center mt-6 space-x-4">
-                            <p className="text-white">Current Page: {currentPage + 1}</p>
-                            <button
-                                onClick={() => setCurrentPage(currentPage - 1)}
-                                className={`px-4 py-2 rounded ${currentPage === 0 ? 'bg-gray-300' : 'bg-blue-500 text-white hover:bg-blue-600'}`}
-                                disabled={currentPage === 0}
-                            >
-                                Prev
-                            </button>
-                            {[...Array(numberOfPages)].map((_, index) => (
-                                <button
-                                    onClick={() => setCurrentPage(index)}
-                                    key={index}
-                                    className={`px-4 py-2 rounded ${currentPage === index ? 'bg-yellow-500' : 'bg-gray-300 hover:bg-gray-400'}`}
-                                >
-                                    {index + 1}
-                                </button>
-                            ))}
-                            <button
-                                onClick={() => setCurrentPage(currentPage + 1)}
-                                className={`px-4 py-2 rounded ${currentPage === numberOfPages - 1 ? 'bg-gray-300' : 'bg-blue-500 text-white hover:bg-blue-600'}`}
-                                disabled={currentPage === numberOfPages - 1}
-                            >
-                                Next
-                            </button>
-                            <select
-                                value={itemsPerPage}
-                                onChange={(e) => {
-                                    setItemsPerPage(Number(e.target.value));
-                                    setCurrentPage(0);
-                                }}
-                                className="px-4 py-2 border border-gray-300 rounded"
-                            >
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                                <option value="25">25</option>
-                            </select>
-                        </div>
-                    )} */}
-
-
                 </div>
             </div>
         </div>
