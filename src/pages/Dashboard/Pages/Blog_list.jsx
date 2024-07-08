@@ -281,7 +281,7 @@ const Blog_list = () => {
 };
 const Skeleton = () => {
     return (
-        <tr className='skeleton bg-[#eeeeee] rounded-lg'>
+        <tr className='skeleton bg-[#fdfdfd] rounded-lg'>
             <td className='py-7'></td>
             <td className='py-7'></td>
             <td className='py-7'></td>

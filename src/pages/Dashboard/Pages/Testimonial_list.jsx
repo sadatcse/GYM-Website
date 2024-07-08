@@ -191,7 +191,7 @@ const TestimonialList = () => {
                                             </td>
                                             <td className="px-4 py-3 text-sm">{testimonial.comment}</td>
                                             
-                                            <td className="flex gap-3 text-base">
+                                            <td className="flex gap-3 mt-5 text-base">
                                                 <button
                                                 // onClick={() => handleEdit(post)}
                                                 >
@@ -274,11 +274,11 @@ const TestimonialList = () => {
 
 const Skeleton = () => {
     return (
-        <tr className='skeleton bg-[#eeeeee] rounded-lg'>
-            <td className='py-11'></td>
-            <td className='py-11'></td>
-            <td className='py-11'></td>
-            <td className='py-11'></td>
+        <tr className='skeleton bg-[#fdfdfd]  rounded-lg'>
+            <td className='py-10'></td>
+            <td className='py-10'></td>
+            <td className='py-10'></td>
+            <td className='py-10'></td>
         </tr>
     )
 }
