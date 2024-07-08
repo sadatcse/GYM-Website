@@ -10,9 +10,10 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import { GrNext } from "react-icons/gr";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { TfiSearch } from "react-icons/tfi";
-import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";import { useNavigate } from 'react-router-dom';
-
+import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 const Blog_list = () => {
+  
     const axiosSecure = useAxiosPublic();
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,8 @@ const Blog_list = () => {
     const [itemsPerPage, setItemsPerPage] = useState(5);
     const [count, setCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
-        const [selectedPost, setSelectedPost] = useState(null);
+    const [selectedPost, setSelectedPost] = useState(null);
+>>>>>>>>> Temporary merge branch 2
     useEffect(() => {
         const fetchData = async () => {
             try {
