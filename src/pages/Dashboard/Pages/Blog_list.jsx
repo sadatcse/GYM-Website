@@ -121,7 +121,7 @@ const Blog_list = () => {
             </Helmet>
             <div className="poppins">
                 <div className="">
-
+                    
                     {/* Top content */}
                     <p className='text-2xl font-bold'>List</p>
 
@@ -136,9 +136,6 @@ const Blog_list = () => {
                     </div>
 
                     {/* Main section */}
-                    {/* <div className="flex justify-between items-center">
-                        <h2 className="text-4xl font-bold ">Total Posts: {usersData.length}</h2>
-                    </div> */}
                     <section className='p-5 mt-6 border rounded-2xl border-gray-100 shadow'>
 
 
