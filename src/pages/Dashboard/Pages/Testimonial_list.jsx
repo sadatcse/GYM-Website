@@ -160,7 +160,17 @@ const TestimonialList = () => {
                                         <th className="p-3 rounded-full">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className=''>
+                                    {
+                                        testimonials.length == 0 &&
+                                        // Loading screen 
+                                        <>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                            <Skeleton></Skeleton>
+                                        </>
+                                    }
                                     {updateTestimonialsData().map((testimonial, index) => (
                                         <tr key={testimonial._id} >
                                             <td className="px-4 py-3 text-left">{index + 1}</td>
@@ -180,8 +190,7 @@ const TestimonialList = () => {
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3 text-sm">{testimonial.comment}</td>
-                                            {/* <td className="px-4 py-3">{post.date}</td>
-                                            <td className="px-4 py-3">{post.category}</td> */}
+                                            
                                             <td className="flex gap-3 text-base">
                                                 <button
                                                 // onClick={() => handleEdit(post)}
@@ -216,7 +225,7 @@ const TestimonialList = () => {
                                 <div className="m-2 shadow rounded-lg max-w-min flex">
                                     <button
                                         className="join-item px-3 py-2 text-white rounded focus:outline-none hover:bg-gray-200"
-                                    onClick={handlePrevPage}
+                                        onClick={handlePrevPage}
                                     >
                                         <span className="text-black"><MdNavigateBefore /></span>
                                     </button>
@@ -233,7 +242,7 @@ const TestimonialList = () => {
                                     }
                                     <button
                                         className="px-3 py-2 text-white join-item rounded focus:outline-none hover:bg-gray-200"
-                                    onClick={handleNextPage}
+                                        onClick={handleNextPage}
                                     >
                                         <span className="text-black"><MdNavigateNext /></span>
                                     </button>
@@ -262,5 +271,16 @@ const TestimonialList = () => {
         </div>
     );
 };
+
+const Skeleton = () => {
+    return (
+        <tr className='skeleton bg-[#eeeeee] rounded-lg'>
+            <td className='py-11'></td>
+            <td className='py-11'></td>
+            <td className='py-11'></td>
+            <td className='py-11'></td>
+        </tr>
+    )
+}
 
 export default TestimonialList;
