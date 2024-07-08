@@ -51,7 +51,7 @@ const Blog_create = () => {
         image: '',
         category: '',
         tags: '',
-        date: new Date(),
+        date: null,
     });
 
     const handleChange = (e) => {
@@ -150,62 +150,6 @@ const Blog_create = () => {
                         />
                     </div>
                     <div className="mt-6">
-                        {/* <ReactQuill
-                            id="description"
-                            value={formData.description}
-                            onChange={handleDescriptionChange}
-                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            modules={Blog_create.modules}
-                            formats={Blog_create.formats}
-                            required
-                        /> */}
-                        <textarea
-                            id="description"
-                            value={formData.description}
-                            onChange={handleDescriptionChange}
-                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Description"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <div>
-                            <div className="form-control w-full my-6">
-                                <input onChange={handleImageUpload} type="file" className="file-input w-full max-w-xs" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-6">
-                        <input
-                            type="text"
-                            id="image"
-                            name="image"
-                            value={imageurl}
-                            onChange={handleChange}
-                            placeholder='Blog image url'
-                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            required
-                        />
-                    </div>
-                    <div className="mt-6">
-                        <select
-                            id="category"
-                            name="category"
-                            value={formData.category}
-                            onChange={handleChange}
-                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            required
-                        >
-                            <option value="">Category</option>
-                            <option value="celebrations">Celebrations</option>
-                            <option value="announcements">Announcements</option>
-                            <option value="events">Events</option>
-                            <option value="meetings">Meetings</option>
-                            <option value="fitness">Fitness</option>
-                            <option value="achievements">Achievements</option>
-                        </select>
-                    </div>
-                    <div className="mt-6">
                         <input
                             type="text"
                             id="tags"
@@ -217,17 +161,71 @@ const Blog_create = () => {
                             required
                         />
                     </div>
-                    <div className="mt-6">
-                        <label htmlFor="date" className="block text-lg font-semibold mb-2 text-gray-700">Date</label>
+                    <div className="flex justify-between gap-5 mt-6">
                         <DatePicker
                             selected={formData.date}
                             onChange={handleDateChange}
+                            placeholderText='Select a date'
+                            className="appearance-none text-gray-400 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                        <select
+                            id="category"
+                            name="category"
+                            value={formData.category}
+                            onChange={handleChange}
+                            className="appearance-none text-sm border shadow-sm rounded-xl cursor-pointer w-full py-4 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        >
+                            <option value="" className='text-gray-400'>Category</option>
+                            <option value="celebrations">Celebrations</option>
+                            <option value="announcements">Announcements</option>
+                            <option value="events">Events</option>
+                            <option value="meetings">Meetings</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="achievements">Achievements</option>
+                        </select>
+                    </div>
+                    <div className="mt-6">
+                        {/* <ReactQuill
+                            id="description"
+                            value={formData.description}
+                            onChange={handleDescriptionChange}
                             className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            modules={Blog_create.modules}
+                            formats={Blog_create.formats}
+                            required
+                        /> */}
+                        <textarea
+                            id="description"
+                            // value={formData.description}
+                            onChange={handleDescriptionChange}
+                            className="appearance-none resize-none text-sm border shadow-sm rounded-xl h-36 w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Description"
                             required
                         />
                     </div>
-                    <div className="text-center">
-                        <button type="submit" className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline">
+
+                    <div className="flex  items-center gap-5">
+                        <div className='w-1/2'>
+                            <div className="form-control border rounded-lg shadow-sm my-6">
+                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
+                            </div>
+                        </div>
+                        <div className='w-1/2'>
+                            <input
+                                type="text"
+                                id="image"
+                                name="image"
+                                value={imageurl}
+                                onChange={handleChange}
+                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
+                                placeholder="Enter image URL"
+                            />
+                        </div>
+                    </div>
+                    <div className="text-right">
+                        <button type="submit" className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
                             Create Blog Post
                         </button>
                     </div>

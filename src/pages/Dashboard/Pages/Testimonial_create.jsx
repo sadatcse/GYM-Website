@@ -174,7 +174,7 @@ const Testimonial_create = () => {
                             name="comment"
                             value={formData.comment}
                             onChange={(e) => handleCommentChange(e.target.value)}
-                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none resize-none text-sm border  shadow-sm rounded-xl h-52  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter testimonial comment"
                             required
                         />
@@ -190,7 +190,7 @@ const Testimonial_create = () => {
                                 type="text"
                                 id="image"
                                 name="image"
-                                value={imageurl}
+                                // value={imageurl}
                                 onChange={handleChange}
                                 className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                                 placeholder="Enter image URL"
