@@ -24,7 +24,7 @@ const Blog_list = () => {
     const [count, setCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedPost, setSelectedPost] = useState(null);
->>>>>>>>> Temporary merge branch 2
+
     useEffect(() => {
         const fetchData = async () => {
             try {
