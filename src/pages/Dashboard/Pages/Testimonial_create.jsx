@@ -5,13 +5,14 @@ import 'react-quill/dist/quill.snow.css';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
+import ImageUpload from '../../../components/Utility/ImageUpload';
 const Testimonial_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
-const axiosPublic = useAxiosPublic();
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const axiosPublic = useAxiosPublic();
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-const handleImageUpload = async (e) => {
+    const handleImageUpload = async (e) => {
         const imageFile = e.target.files[0];
         const formData = new FormData();
         formData.append('image', imageFile);
@@ -122,74 +123,87 @@ const handleImageUpload = async (e) => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-6">
+        <div className="poppins">
             <Helmet>
                 <title>Create | Add Testimonial</title>
             </Helmet>
-            <div className="bg-blue-100 p-8 rounded-lg shadow-2xl w-full max-w-lg">
-                <h1 className="text-4xl font-bold mb-8 text-center text-gray-900">Create Testimonial</h1>
+
+            {/* Top content */}
+            <p className='text-2xl font-bold'>Create a testimonial</p>
+
+            {/* breadcrumbs */}
+            <div className="breadcrumbs mt-2 text-xs text-black">
+                <ul>
+                    <li className='text-gray-400'><a>Home</a></li>
+                    <li className='text-gray-400'><a>admin</a></li>
+                    <li className='text-gray-400'>testimonial</li>
+                    <li className='text-gray-500'>new</li>
+                </ul>
+            </div>
+
+            <div className="mt-9 ml-4">
+                <p className='font-medium text-2xl'>Details</p>
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">Testimonial Person Position Eg .Manager</label>
+                    <div className="mt-6">
                         <input
                             type="text"
                             id="title"
                             name="title"
                             value={formData.title}
                             onChange={handleChange}
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Enter title"
+                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Testimonial Title"
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Testimonial Person Name</label>
+                    <div className="mt-6">
                         <input
                             type="text"
                             id="name"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Enter name"
+                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Testimonial Person Name"
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="comment" className="block text-gray-700 text-sm font-bold mb-2">Testimonial Person Comment</label>
+                    <div className="mt-6">
                         <textarea
                             id="comment"
                             name="comment"
                             value={formData.comment}
                             onChange={(e) => handleCommentChange(e.target.value)}
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
+                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter testimonial comment"
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <div><h1>Upload Testimonial User Image</h1>
-                            <div className="form-control w-full my-6">
-                                <input onChange={handleImageUpload} type="file" className="file-input w-full max-w-xs" />
+                    <div className="flex  items-center gap-5">
+                        <div className='w-1/2'>
+                            <div className="form-control border rounded-lg shadow-sm my-6">
+                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
                             </div>
                         </div>
+                        <div className='w-1/2'>
+                            <input
+                                type="text"
+                                id="image"
+                                name="image"
+                                value={imageurl}
+                                onChange={handleChange}
+                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
+                                placeholder="Enter image URL"
+                            />
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="image" className="block text-gray-700 text-sm font-bold mb-2">Testimonial Person Image URL</label>
-                        <input
-                            type="text"
-                            id="image"
-                            name="image"
-                            value={imageurl}
-                            onChange={handleChange}
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Enter image URL"
-                        />
+                    <div className="">
+
                     </div>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-end">
                         <button
                             type="submit"
-                            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
                         >
                             Create Testimonial
                         </button>
