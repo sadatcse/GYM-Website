@@ -5,7 +5,7 @@ import Package_Membership from '../components/About/Package_Membership';
 import Schedules from '../components/About/Schedules';
 import MessageFromChairman from '../components/About/Chairman';
 import CouplesMem from '../components/About/CouplesMem';
-
+import { Helmet } from 'react-helmet-async';
 const About_us = () => {
     return (
        <div>

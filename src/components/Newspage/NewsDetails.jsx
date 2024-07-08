@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLoaderData, useParams, useNavigate } from "react-router-dom";
 import { SlSocialReddit } from "react-icons/sl";
 import { TiSocialPinterestCircular } from "react-icons/ti";
@@ -9,6 +9,7 @@ import { FaClock } from "react-icons/fa";
 import Spinner from "../Utility/Spinner"; 
 import Footer from "../Footer";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+
 const NewsDetails = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -19,7 +20,6 @@ const NewsDetails = () => {
     const axiosPublic = useAxiosPublic();
     
     const api = "/news/get-all";
-
 
     const fetchData = async () => {
         try {
@@ -32,11 +32,11 @@ const NewsDetails = () => {
         }
     };
 
-
-    if (loading) {
-        fetchData();
-    }
-
+    useEffect(() => {
+        if (loading) {
+            fetchData();
+        }
+    }, [loading]);
 
     const calculateReadingTime = (text) => {
         const wordsPerMinute = 100;
@@ -54,6 +54,10 @@ const NewsDetails = () => {
     if (error) {
         return <p>{error}</p>;
     }
+
+    const createMarkup = (htmlContent) => {
+        return { __html: htmlContent };
+    };
 
     return (
         <div>
@@ -73,9 +77,7 @@ const NewsDetails = () => {
                         <p className="text-2xl mb-2 font-bold">
                             {ob.date} <FaClock className="inline-block ml-2 mr-1" /> {readingTime} min read
                         </p>
-                        {ob.description && ob.description.split('\n').map((paragraph, index) => (
-                            <p key={index} className="text-2xl font-thin leading-8 mt-3">{paragraph}</p>
-                        ))}
+                        <div dangerouslySetInnerHTML={createMarkup(ob.description)} className="text-2xl font-thin leading-8 mt-3" />
                         <p className="text-red-500 mt-3 text-lg font-thin cursor-pointer max-w-fit" onClick={() => navigate(-1)}>Go Back</p>
                     </div>
 
@@ -87,7 +89,11 @@ const NewsDetails = () => {
                             <p className="text-red-600 my-4 font-thin">{ob.category}</p>
                             <p className="font-bold text-red-600 text-lg">POST TAGS</p>
                             <div className="flex gap-4 py-4 font-thin">
-                                {ob.tags && ob.tags.map(tag => <p key={tag} className="text-red-600">{tag}</p>)}
+                                {Array.isArray(ob.tags) ? (
+                                    ob.tags.map(tag => <p key={tag} className="text-red-600">{tag}</p>)
+                                ) : (
+                                    <p className="text-red-600">{ob.tags}</p>
+                                )}
                             </div>
                             <p className="font-bold text-red-600 mt-3 text-lg">FOLLOW THE LATEST</p>
                             <div className="flex my-5 mb-7 justify-start gap-4 items-center text-4xl">
@@ -123,7 +129,6 @@ const NewsDetails = () => {
                     </section>
                 </section>
             </div>
-          
         </div>
     );
 };

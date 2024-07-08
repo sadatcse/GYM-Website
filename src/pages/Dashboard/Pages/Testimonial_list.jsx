@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Swal from 'sweetalert2';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
@@ -38,13 +38,36 @@ const TestimonialList = () => {
 
     const handleDelete = async (testimonialId) => {
         try {
-            await axiosSecure.delete(`/testimonial/delete/${testimonialId}`);
-            const res = await axiosSecure.get('/testimonial/get-all');
-            setTestimonials(res.data);
-            setCount(res.data.length);
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to recover this testimonial!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            });
+    
+            if (result.isConfirmed) {
+                await axiosSecure.delete(`/testimonial/delete/${testimonialId}`);
+                Swal.fire(
+                    'Deleted!',
+                    'The testimonial has been deleted.',
+                    'success'
+                );
+    
+                const res = await axiosSecure.get('/testimonial/get-all');
+                setTestimonials(res.data);
+                setCount(res.data.length);
+            }
         } catch (error) {
             console.error('Error deleting testimonial:', error);
-            setIsError(true); // Optionally set an error state to display an error message
+            setIsError(true); 
+            Swal.fire(
+                'Error!',
+                'Failed to delete the testimonial.',
+                'error'
+            );
         }
     };
 

@@ -10,7 +10,8 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import { GrNext } from "react-icons/gr";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { TfiSearch } from "react-icons/tfi";
-import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
+import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";import { useNavigate } from 'react-router-dom';
+
 const Blog_list = () => {
     const axiosSecure = useAxiosPublic();
     const [isError, setIsError] = useState(false);
@@ -21,7 +22,7 @@ const Blog_list = () => {
     const [itemsPerPage, setItemsPerPage] = useState(5);
     const [count, setCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
-    const [selectedPost, setSelectedPost] = useState(null);
+        const [selectedPost, setSelectedPost] = useState(null);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -46,8 +47,7 @@ const Blog_list = () => {
     };
 
     const handleEdit = (post) => {
-        console.log('Editing post:', post);
-        // Add your edit logic here
+        navigate(`/dashboard/blog_edit/${post._id}`);
     };
 
     const handleDelete = async (postId) => {
@@ -87,8 +87,12 @@ const Blog_list = () => {
         }
     };
 
+    const navigate = useNavigate();
+
     const handleView = (post) => {
-        console.log('Viewing post:', post);
+
+        // console.log('Viewing post:', post);
+        navigate(`/blog/${post._id}`);
     };
 
     const numberOfPages = Math.ceil(count / itemsPerPage);
