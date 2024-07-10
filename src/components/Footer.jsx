@@ -75,12 +75,12 @@ const Footer = () => {
             </footer>
 
             <div className="mx-auto">
-                <footer className="footer items-center py-4 bg-primary-300 border-t text-white flex justify-between px-5">
+                <footer className="footer items-center py-7 md:py-4 gap-6 bg-primary-300 border-t text-white flex flex-col-reverse md:flex-row md:justify-between px-5">
                     <div className="flex items-center gap-2">
                         <img src={logo1} className="w-10" alt="Logo" />
                         <p>Multigym Premium</p>
                     </div>
-                    <p>Copyright © 2024 </p>
+                    <p className="">Copyright © 2024 </p>
                     <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                         <a href="https://www.facebook.com/MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <FaFacebook size={24} />
