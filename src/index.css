@@ -129,7 +129,7 @@
   
 
 /* Apply styles for the select */
-select {
+/* select {
     transition: border-color 0.3s ease-in-out;
 }
 
@@ -139,7 +139,7 @@ select:focus {
 
 select:hover {
     border-color: #63b3ed;
-}
+} */
 
 /* Style for the icons */
 .relative .w-5.h-5 {
