@@ -112,147 +112,117 @@ const Team_create = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-6">
+        <div className="poppins">
             <Helmet>
                 <title>Create | Add Team Member</title>
             </Helmet>
-            <div className="bg-blue-100 p-8 rounded-lg shadow-2xl w-full max-w-lg">
-                <h1 className="text-4xl font-bold mb-8 text-center text-gray-900">Create Team Member</h1>
+            {/* Top content */}
+            <p className='text-2xl font-bold'>Add team member</p>
+
+            {/* breadcrumbs */}
+            <div className="breadcrumbs mt-2 text-xs text-black">
+                <ul>
+                    <li className='text-gray-400'><a>Home</a></li>
+                    <li className='text-gray-400'><a>admin</a></li>
+                    <li className='text-gray-400'>team</li>
+                    <li className='text-gray-500'>new</li>
+                </ul>
+            </div>
+            <div className="mt-9 ml-4">
+                <p className='font-medium text-2xl'>Details</p>
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="full_name">
-                            Full Name
-                        </label>
+                    <div className="mt-5">
                         <input
                             id="full_name"
                             name="full_name"
                             type="text"
                             value={formData.full_name}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder='Full name'
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="short_name">
-                            Short Name
-                        </label>
+                    <div className="flex gap-3 mt-5">
                         <input
                             id="short_name"
                             name="short_name"
+                            placeholder='Short name'
                             type="text"
                             value={formData.short_name}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
-                    </div>
-                    <div className="mb-4">
-                        <div><h1>Upload Team Member Profile Image</h1>
-                            <div className="form-control w-full my-6">
-                                <input onChange={handleImageUpload} type="file" className="file-input w-full max-w-xs" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mb-4">
-                        <p>Full Image Url</p>
-                        <input onChange={handleChange} className="mb-2 relative border w-full py-2 px-4"
-                            value={imageurl}
-                            type="text" name="image_url"
-                            placeholder="image_url"
-                            id="image_url"
-                            required />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bio">
-                            Bio
-                        </label>
-                        <textarea
-                            id="bio"
-                            name="bio"
-                            value={formData.bio}
-                            onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="certification">
-                            Certification
-                        </label>
                         <input
                             id="certification"
                             name="certification"
                             type="text"
+                            placeholder='Certification'
                             value={formData.certification}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Instagram">
-                            Instagram
-                        </label>
-                        <input
-                            id="Instagram"
-                            name="Instagram"
-                            type="text"
-                            value={formData.Instagram}
-                            onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="facebook">
-                            Facebook
-                        </label>
+
+                    <div className="flex gap-3 mt-5">
                         <input
                             id="facebook"
                             name="facebook"
                             type="text"
+                            placeholder='Facebook'
                             value={formData.facebook}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                        <input
+                            id="Instagram"
+                            name="Instagram"
+                            type="text"
+                            placeholder='Instagram'
+                            value={formData.Instagram}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="mobile">
-                            Mobile
-                        </label>
+                    <div className="flex gap-3 mt-5">
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder='Email'
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
                         <input
                             id="mobile"
                             name="mobile"
                             type="text"
+                            placeholder='Mobile no'
                             value={formData.mobile}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
-                            Role
-                        </label>
+                    <div className="flex gap-3 mt-5">
+                        <input
+                            id="position_title"
+                            name="position_title"
+                            type="text"
+                            placeholder='Position title'
+                            value={formData.position_title}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                        />
                         <select
                             id="role"
                             name="role"
                             value={formData.role}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-400 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
                             required
                         >
                             <option value="" disabled>Select Role</option>
@@ -273,25 +243,44 @@ const Team_create = () => {
                             <option value="Customer Service Representative">Customer Service Representative</option>
                         </select>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="position_title">
-                            Position Title
-                        </label>
-                        <input
-                            id="position_title"
-                            name="position_title"
-                            type="text"
-                            value={formData.position_title}
+
+                    <div className="flex  items-center gap-5">
+                        <div className='w-1/2'>
+                            <div className="form-control border rounded-lg shadow-sm my-6">
+                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
+                            </div>
+                        </div>
+                        <div className='w-1/2'>
+                            <input
+                                type="text"
+                                id="image"
+                                name="image"
+                                value={imageurl}
+                                onChange={handleChange}
+                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
+                                placeholder="Enter image URL"
+                            />
+                        </div>
+                    </div>
+
+                    <div className='mt-3'>
+                        <textarea
+                            id="bio"
+                            name="bio"
+                            value={formData.bio}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder='Bio'
+                            className="appearance-none text-gray-700 text-sm border shadow-sm h-36 rounded-xl  w-full py-4 px-3 resize-none  leading-tight focus:outline-none focus:shadow-outline:shadow-outline"
+                            required
                         />
                     </div>
-                    <div className="flex items-center justify-between">
+
+                    <div className="flex items-center justify-end mt-5">
                         <button
                             type="submit"
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
                         >
-                            Submit
+                            Add
                         </button>
                     </div>
                 </form>
