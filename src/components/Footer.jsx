@@ -37,19 +37,19 @@ const Footer = () => {
     return (
         <div className="poppins">
             <footer className="footer  bg-primary-300 text-white p-10">
-            <aside className="">
-  <h6 className="footer-title text-xl font-bold mb-4 text">CONTACT US</h6> 
-  <div className="">
-    
-    <p className="font-semibold text-xl">MULTIGYM PREMIUM</p>
-    <p>24/1, 24/2 (3rd & 4th floor), Ring Road</p>
-    <p>Shia Masjid Mor, Mohammadpur</p>
-    <p>Dhaka 1207</p>
-    <p><span className="font-bold">Mobile :</span> 01313-197435,  01313-197427</p>
-  </div>
+                <aside className="">
+                    <h6 className="footer-title text-xl font-bold mb-4 text">CONTACT US</h6>
+                    <div className="">
+
+                        <p className="font-semibold text-xl">MULTIGYM PREMIUM</p>
+                        <p>24/1, 24/2 (3rd & 4th floor), Ring Road</p>
+                        <p>Shia Masjid Mor, Mohammadpur</p>
+                        <p>Dhaka 1207</p>
+                        <p><span className="font-bold">Mobile :</span> 01313-197435,  01313-197427</p>
+                    </div>
 
 
-</aside>
+                </aside>
                 <nav>
                     <h6 className="footer-title text-xl font-bold mb-4">Company</h6>
                     <Link to="/aboutus/about"><a className="link link-hover">About us</a></Link>
@@ -81,12 +81,12 @@ const Footer = () => {
                 <footer className="footer items-center py-4 bg-primary-300 border-t text-white flex justify-between px-5">
                     <div className="flex items-center gap-2">
                         <img src={logo1} className="w-10" alt="Logo" />
-                        <p>Multigym Premium</p>
+                        <p className="text-xs md:text-base">Multigym Premium</p>
                     </div>
-                    <p>Copyright © 2024 </p>
+                    <p className="text-xs hidden md:block md:text-base">Copyright © 2024 </p>
                     <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end   ">
-                    <a href="https://www.twitter.com/MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                            <FaTwitter size={24} />
+                        <a href="https://www.twitter.com/MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <FaTwitter  size={24} />
                         </a>
                         <a href="https://www.youtube.com/@MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                             <FaYoutube size={24} />
