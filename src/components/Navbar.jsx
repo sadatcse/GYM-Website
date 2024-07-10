@@ -64,7 +64,8 @@ const Navbar = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[5] mt-3 w-52 p-2 shadow">
+            <ul tabIndex={0} className="poppins relative  menu menu-sm dropdown-content gap-1 bg-transparent text-white rounded-box z-[5] mt-3 w-40 p-3 shadow">
+              <div className='absolute bg-black w-full  top-0 opacity-90 border border-gray-700 -left-1 h-full rounded-lg -z-10'></div>
               <NavLink className="" activeClassName="active" to="/">Home</NavLink>
               <NavLink className=" " activeClassName="active" to="/aboutus/about">About us</NavLink>
               <NavLink className="" activeClassName="active" to="/service">Service</NavLink>
