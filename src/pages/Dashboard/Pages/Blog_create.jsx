@@ -187,23 +187,23 @@ const Blog_create = () => {
                         </select>
                     </div>
                     <div className="mt-6">
-                        {/* <ReactQuill
+                        <ReactQuill
                             id="description"
                             value={formData.description}
                             onChange={handleDescriptionChange}
-                            className="appearance-none text-sm border shadow-sm rounded-xl  w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-sm border shadow-sm rounded-xl lg:h-52 w-full py-4 lg:pb-14 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             modules={Blog_create.modules}
                             formats={Blog_create.formats}
                             required
-                        /> */}
-                        <textarea
+                        />
+                        {/* <textarea
                             id="description"
                             // value={formData.description}
                             onChange={handleDescriptionChange}
                             className="appearance-none resize-none text-sm border shadow-sm rounded-xl h-36 w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Description"
                             required
-                        />
+                        /> */}
                     </div>
 
                     <div className="flex  items-center gap-5">
