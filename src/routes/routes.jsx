@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
       {
         path: '/trainers/:name',
         element: <Trainers_Details />,
-        loader: ({ params }) => fetch(`https://multigym-premium-server.vercel.app/trainer/get-name/${params.name}`)
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/trainer/get-name/${params.name}`)
       },
       {
         path: "/service",
@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
       {
         path: "/blog/:id",
         element: <NewsDetails />,
-        loader: ({ params }) => fetch(`https://multigym-premium-server.vercel.app/news/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/news/get-id/${params.id}`)
       },
       {
         path: "/legal/appprivacypolicy",
@@ -158,7 +158,8 @@ export const router = createBrowserRouter([
       },
       {
         path:"blog_edit/:id",
-        element: <Blog_edit></Blog_edit>
+        element: <Blog_edit></Blog_edit>,
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/news/get-id/${params.id}`)
       },
     ]
 
