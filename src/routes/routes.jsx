@@ -29,6 +29,7 @@ import Testimonial_create from "../pages/Dashboard/Pages/Testimonial_create";
 import Testimonial_list from "../pages/Dashboard/Pages/Testimonial_list";
 import Blog_edit from "../pages/Dashboard/Pages/Blog_edit";
 import Team_edit from "../pages/Dashboard/Pages/Team_edit";
+import Testimonial_edit from "../pages/Dashboard/Pages/Testimonial_edit";
 
 export const router = createBrowserRouter([
 
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
       {
         path: '/trainers/:name',
         element: <Trainers_Details />,
-        loader: ({ params }) => fetch(`https://multigym-premium-server.vercel.app/trainer/get-name/${params.name}`)
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/trainer/get-name/${params.name}`)
       },
       {
         path: "/service",
@@ -80,7 +81,7 @@ export const router = createBrowserRouter([
       {
         path: "/blog/:id",
         element: <NewsDetails />,
-        loader: ({ params }) => fetch(`https://multigym-premium-server.vercel.app/news/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/news/get-id/${params.id}`)
       },
       {
         path: "/legal/appprivacypolicy",
@@ -154,11 +155,18 @@ export const router = createBrowserRouter([
       },
       {
         path:"team_edit/:id",
-        element: <Team_edit></Team_edit>
+        element: <Team_edit></Team_edit>,
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/trainer/get-id/${params.id}`)
       },
       {
         path:"blog_edit/:id",
-        element: <Blog_edit></Blog_edit>
+        element: <Blog_edit></Blog_edit>,
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/news/get-id/${params.id}`)
+      },
+      {
+        path:"testimonial_edit/:id",
+        element: <Testimonial_edit></Testimonial_edit>,
+        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/testimonial/get-id/${params.id}`)
       },
     ]
 
