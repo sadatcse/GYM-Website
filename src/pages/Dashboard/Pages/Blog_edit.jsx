@@ -7,8 +7,7 @@ import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
 
 const Blog_edit = () => {
-    // const axiosPublic = useAxiosPublic();
-    // axiosPublic.get(`/news/get-id/${id}`)
+    
     const { category, date, description, image, tags, title, _id } = useLoaderData();
     const handleSubmit = () =>{
 
