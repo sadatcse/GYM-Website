@@ -41,11 +41,6 @@ const Team_list = () => {
         const endIndex = startIndex + itemsPerPage;
         return usersData.slice(startIndex, endIndex);
     };
-
-    const handleEdit = (post) => {
-        navigate(`/dashboard/blog_edit/${post._id}`);
-    };
-
     const handleDelete = async (postId) => {
         try {
             const result = await Swal.fire({
@@ -84,8 +79,10 @@ const Team_list = () => {
 
     const handleView = (post) => {
 
-
         navigate(`/trainers/${post.short_name}`);
+    };
+    const handleEdit = (trainer) => {
+        navigate(`/dashboard/team_edit/${trainer._id}`);
     };
 
     const numberOfPages = Math.ceil(count / itemsPerPage);
