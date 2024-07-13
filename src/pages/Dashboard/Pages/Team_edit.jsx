@@ -80,7 +80,7 @@ const Team_edit = () => {
     return (
         <div className="poppins">
             <Helmet>
-                <title>Create | Edit Team Member</title>
+                <title>Edit Team Member</title>
             </Helmet>
             {/* Top content */}
             <p className='text-2xl font-bold'>Edit : {full_name}</p>

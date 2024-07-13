@@ -78,7 +78,7 @@ const Blog_edit = () => {
     return (
         <div className="poppins">
             <Helmet>
-                <title>Edit | Add Blogs</title>
+                <title>Edit Blog</title>
             </Helmet>
 
             {/* Top content */}
