@@ -8,6 +8,7 @@ import { TfiSearch } from 'react-icons/tfi';
 import { FiEdit3 } from 'react-icons/fi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { BiMessageSquareDetail } from 'react-icons/bi';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const TestimonialList = () => {
     const axiosSecure = useAxiosPublic();
@@ -97,7 +98,10 @@ const TestimonialList = () => {
         }
     }
 
-
+    const navigate = useNavigate();
+    const handleEdit = (testimonial) => {
+        navigate(`/dashboard/testimonial_edit/${testimonial._id}`);
+    };
     return (
         <div>
             <Helmet>
@@ -193,7 +197,7 @@ const TestimonialList = () => {
                                             
                                             <td className="flex gap-3 mt-5 text-base">
                                                 <button
-                                                // onClick={() => handleEdit(post)}
+                                                onClick={() => handleEdit(testimonial)}
                                                 >
                                                     <FiEdit3 className='text-blue-900' />
                                                 </button>

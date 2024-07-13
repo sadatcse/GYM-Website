@@ -1,8 +1,7 @@
 const Testimonial_edit = () => {
-    // /testimonial/get-id/:id
     return (
         <div>
-            
+            <p>HI</p>
         </div>
     );
 };
