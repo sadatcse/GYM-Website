@@ -1,12 +1,256 @@
 import { useLoaderData } from "react-router-dom";
+import UseAxioSecure from "../../../Hook/UseAxioSecure";
+import useAxiosPublic from "../../../Hook/useAxiosPublic";
+import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Team_edit = () => {
     const {
-        Instagram , certification , bio , email , facebook , full_name , image_url,  mobile , position_title, role , short_name, _id
+        Instagram, certification, bio, email, facebook, full_name, image_url, mobile, position_title, role, short_name, _id
+
     } = useLoaderData();
+    const axiosSecure = UseAxioSecure();
+    const axiosPublic = useAxiosPublic();
+    const [imageurl, setimageurl] = useState('');
+    const [formData, setFormData] = useState({
+        full_name: full_name,
+        short_name: short_name,
+        image_url: image_url,
+        bio: bio,
+        certification: certification,
+        email: email,
+        Instagram: Instagram,
+        facebook: facebook,
+        mobile: mobile,
+        role: role,
+        position_title: position_title,
+        date: new Date(),
+    });
+
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
+    const handleImageUpload = async (e) => {
+        const imageFile = e.target.files[0];
+        const formData = new FormData();
+        formData.append('image', imageFile);
+
+        try {
+            const res = await axiosPublic.post(image_hosting_api, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            setimageurl(res.data.data.url);
+            setFormData((prevData) => ({
+                ...prevData,
+                image_url: res.data.data.url
+            }));
+
+            await Swal.fire({
+                icon: 'success',
+                title: 'Image uploaded successfully!',
+                text: `Image URL: ${res.data.data.url}`,
+            });
+        } catch (error) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error uploading image',
+                text: error.message,
+            });
+        }
+    };
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleDateChange = (date) => {
+        setFormData({
+            ...formData,
+            date: date,
+        });
+    };
+    const handleSubmit = () =>{
+
+    }
     return (
-        <div>
-            <h1>Team Edit {bio} </h1>
+        <div className="poppins">
+            <Helmet>
+                <title>Create | Edit Team Member</title>
+            </Helmet>
+            {/* Top content */}
+            <p className='text-2xl font-bold'>Edit : {full_name}</p>
+
+            {/* breadcrumbs */}
+            <div className="breadcrumbs mt-2 text-xs text-black">
+                <ul>
+                    <li className='text-gray-400'><a>Home</a></li>
+                    <li className='text-gray-400'><a>admin</a></li>
+                    <li className='text-gray-400'>team</li>
+                    <li className='text-gray-500'>edit</li>
+                </ul>
+            </div>
+            <div className="mt-9 ml-4">
+                <p className='font-medium text-2xl'>Details</p>
+                <form onSubmit={handleSubmit}>
+                    <div className="mt-5">
+                        <input
+                            id="full_name"
+                            name="full_name"
+                            type="text"
+                            value={formData.full_name}
+                            onChange={handleChange}
+                            placeholder='Full name'
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                    </div>
+                    <div className="flex gap-3 mt-5">
+                        <input
+                            id="short_name"
+                            name="short_name"
+                            placeholder='Short name'
+                            type="text"
+                            value={formData.short_name}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                        <input
+                            id="certification"
+                            name="certification"
+                            type="text"
+                            placeholder='Certification'
+                            value={formData.certification}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                    </div>
+
+                    <div className="flex gap-3 mt-5">
+                        <input
+                            id="facebook"
+                            name="facebook"
+                            type="text"
+                            placeholder='Facebook'
+                            value={formData.facebook}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                        <input
+                            id="Instagram"
+                            name="Instagram"
+                            type="text"
+                            placeholder='Instagram'
+                            value={formData.Instagram}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                    </div>
+                    <div className="flex gap-3 mt-5">
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder='Email'
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                        <input
+                            id="mobile"
+                            name="mobile"
+                            type="text"
+                            placeholder='Mobile no'
+                            value={formData.mobile}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                    </div>
+                    <div className="flex gap-3 mt-5">
+                        <input
+                            id="position_title"
+                            name="position_title"
+                            type="text"
+                            placeholder='Position title'
+                            value={formData.position_title}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                        <select
+                            id="role"
+                            name="role"
+                            value={formData.role}
+                            onChange={handleChange}
+                            className="appearance-none text-gray-400 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        >
+                            <option value="" disabled>Select Role</option>
+                            <option value="Group Fitness Instructor">Group Fitness Instructor</option>
+                            <option value="Personal Trainer">Personal Trainer</option>
+                            <option value="Nutritionist">Nutritionist</option>
+                            <option value="Front Desk Receptionist">Front Desk Receptionist</option>
+                            <option value="Maintenance Staff">Maintenance Staff</option>
+                            <option value="Sales Representative">Sales Representative</option>
+                            <option value="Cleaning Staff">Cleaning Staff</option>
+                            <option value="Security Personnel">Security Personnel</option>
+                            <option value="Marketing Specialist">Marketing Specialist</option>
+                            <option value="Office Staff">Office Staff</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Trainer">Trainer</option>
+                            <option value="Spotter">Spotter</option>
+                            <option value="Assistant Trainer">Assistant Trainer</option>
+                            <option value="Customer Service Representative">Customer Service Representative</option>
+                        </select>
+                    </div>
+
+                    <div className="flex  items-center gap-5">
+                        <div className='w-1/2'>
+                            <div className="form-control border rounded-lg shadow-sm my-6">
+                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
+                            </div>
+                        </div>
+                        <div className='w-1/2'>
+                            <input
+                                type="text"
+                                id="image"
+                                name="image"
+                                value={imageurl}
+                                onChange={handleChange}
+                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
+                                placeholder="Enter image URL"
+                            />
+                        </div>
+                    </div>
+
+                    <div className='mt-3'>
+                        <textarea
+                            id="bio"
+                            name="bio"
+                            value={formData.bio}
+                            onChange={handleChange}
+                            placeholder='Bio'
+                            className="appearance-none text-gray-700 text-sm border shadow-sm h-36 rounded-xl  w-full py-4 px-3 resize-none  leading-tight focus:outline-none focus:shadow-outline:shadow-outline"
+                            required
+                        />
+                    </div>
+
+                    <div className="flex items-center justify-end mt-5">
+                        <button
+                            type="submit"
+                            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+                        >
+                            Add
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
