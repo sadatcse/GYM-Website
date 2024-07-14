@@ -6,6 +6,7 @@ import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import ImageUpload from '../../../components/Utility/ImageUpload';
+import axios from 'axios';
 const Testimonial_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
@@ -18,7 +19,7 @@ const Testimonial_create = () => {
         formData.append('image', imageFile);
 
         try {
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+            const res = await axios.post(image_hosting_api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

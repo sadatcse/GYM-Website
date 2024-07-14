@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Team_edit = () => {
     const {
@@ -44,7 +45,7 @@ const Team_edit = () => {
         reader.readAsDataURL(imageFile);
 
         try {
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+            const res = await axios.post(image_hosting_api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

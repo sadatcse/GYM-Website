@@ -7,6 +7,7 @@ import 'react-quill/dist/quill.snow.css';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
+import axios from 'axios';
 const Blog_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
@@ -19,7 +20,7 @@ const Blog_create = () => {
         formData.append('image', imageFile);
 
         try {
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+            const res = await axios.post(image_hosting_api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

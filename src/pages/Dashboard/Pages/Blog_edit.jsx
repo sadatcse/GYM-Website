@@ -5,6 +5,7 @@ import ReactQuill from 'react-quill';
 import { useLoaderData } from 'react-router-dom';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
+import axios from 'axios';
 
 const Blog_edit = () => {
     
@@ -32,7 +33,7 @@ const Blog_edit = () => {
         formData.append('image', imageFile);
 
         try {
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+            const res = await axios.post(image_hosting_api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
