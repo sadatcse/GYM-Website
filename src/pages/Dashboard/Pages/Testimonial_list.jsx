@@ -161,7 +161,7 @@ const TestimonialList = () => {
                                         <th className="p-3 rounded-full">Key</th>
                                         <th className="p-3 rounded-full">Name</th>
                                         <th className="p-3 rounded-full">Comment</th>
-                                        <th className="p-3 rounded-full">Action</th>
+                                        <th className="p-3 rounded-full">Remove</th>
                                     </tr>
                                 </thead>
                                 <tbody className=''>
@@ -196,21 +196,21 @@ const TestimonialList = () => {
                                             <td className="px-4 py-3 text-sm">{testimonial.comment}</td>
                                             
                                             <td className="flex gap-3 mt-5 text-base">
-                                                <button
+                                                {/* <button
                                                 onClick={() => handleEdit(testimonial)}
                                                 >
                                                     <FiEdit3 className='text-blue-900' />
-                                                </button>
+                                                </button> */}
                                                 <button
                                                 onClick={() => handleDelete(testimonial._id)}
                                                 >
-                                                    <AiOutlineDelete className='text-red-900 hover:text-red-700' />
+                                                    <AiOutlineDelete className='text-red-900 hover:text-red-700 text-xl' />
                                                 </button>
-                                                <button
+                                                {/* <button
                                                 // onClick={() => handleView(post)}
                                                 >
                                                     <BiMessageSquareDetail />
-                                                </button>
+                                                </button> */}
                                             </td>
                                             <td className="px-4 py-3 text-center">
 

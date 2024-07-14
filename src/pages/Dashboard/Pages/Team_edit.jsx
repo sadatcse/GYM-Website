@@ -135,7 +135,7 @@ const Team_edit = () => {
                 </div>
                 <img src={previewImageUrl} alt="Image Preview" className="w-44 h-full border mt-2" />
             </div>
-            <div className="mt-9 ml-4">
+            <div className="ml-4">
                 <p className='font-medium text-2xl'>Details</p>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-5">

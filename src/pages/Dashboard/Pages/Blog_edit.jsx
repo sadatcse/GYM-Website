@@ -1,36 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { Helmet } from 'react-helmet-async';
 import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { useLoaderData } from 'react-router-dom';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
 const Blog_edit = () => {
-    
     const { category, date, description, image, tags, title, _id } = useLoaderData();
-    const handleSubmit = () =>{
-
-    }
+    const axiosSecure = UseAxioSecure();
+    const axiosPublic = useAxiosPublic();
+    const [imageurl, setimageurl] = useState(image);
+    const [previewImageUrl, setPreviewImageUrl] = useState(image);
     const [formData, setFormData] = useState({
         title: title,
         description: description,
         image: image,
         category: category,
         tags: tags,
-        date: null,
+        date: new Date(date),
     });
-    console.log(typeof(formData.category))
-    const axiosSecure = UseAxioSecure();
-    const [imageurl, setimageurl] = useState('');
-    const axiosPublic = useAxiosPublic();
+
+    
+
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
     const handleImageUpload = async (e) => {
         const imageFile = e.target.files[0];
         const formData = new FormData();
         formData.append('image', imageFile);
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreviewImageUrl(reader.result);
+        };
+        reader.readAsDataURL(imageFile);
 
         try {
             const res = await axios.post(image_hosting_api, formData, {
@@ -57,23 +66,54 @@ const Blog_edit = () => {
             });
         }
     };
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
+
     const handleDateChange = (date) => {
         setFormData({
             ...formData,
             date: date,
         });
     };
+
     const handleDescriptionChange = (value) => {
         setFormData({
             ...formData,
             description: value,
         });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const id = _id;
+
+        try {
+            const response = await axiosSecure.put(`/news/put/${id}`, formData);
+            if (response.data.modifiedCount > 0) {
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Blog post updated successfully!',
+                    text: 'The blog details have been updated.',
+                });
+            } else {
+                await Swal.fire({
+                    icon: 'info',
+                    title: 'No changes detected',
+                    text: 'No updates were made to the blog details.',
+                });
+            }
+        } catch (error) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error updating blog post',
+                text: error.message,
+            });
+        }
     };
 
     return (
@@ -82,19 +122,21 @@ const Blog_edit = () => {
                 <title>Edit Blog</title>
             </Helmet>
 
-            {/* Top content */}
-            <p className='text-2xl font-bold'>Edit : <span className='text-gray-700'>  {title}</span></p>
-
-            {/* breadcrumbs */}
-            <div className="breadcrumbs mt-2 text-xs text-black">
-                <ul>
-                    <li className='text-gray-400'><a>Home</a></li>
-                    <li className='text-gray-400'><a>admin</a></li>
-                    <li className='text-gray-400'>blog</li>
-                    <li className='text-gray-500'>edit</li>
-                </ul>
+            <div className='flex justify-between'>
+                <div>
+                    <p className='text-2xl font-bold'>Edit  Blog </p>
+                    <div className="breadcrumbs mt-2 text-xs text-black">
+                        <ul>
+                            <li className='text-gray-400'><a>Home</a></li>
+                            <li className='text-gray-400'><a>admin</a></li>
+                            <li className='text-gray-400'>blog</li>
+                            <li className='text-gray-500'>edit</li>
+                        </ul>
+                    </div>
+                </div>
+                <img src={previewImageUrl} alt="Image Preview" className="w-64 h-full border rounded mt-2" />
             </div>
-            <div className="mt-9 ml-4">
+            <div className="ml-4">
                 <p className='font-medium text-2xl'>Details</p>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-6">
@@ -132,8 +174,7 @@ const Blog_edit = () => {
                         <select
                             id="category"
                             name="category"
-                            value={category}
-                            // value={formData.category}
+                            value={formData.category}
                             onChange={handleChange}
                             className="appearance-none text-sm border shadow-sm rounded-xl cursor-pointer w-full py-4 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
                             required
@@ -157,17 +198,9 @@ const Blog_edit = () => {
                             formats={Blog_edit.formats}
                             required
                         />
-                        {/* <textarea
-                            id="description"
-                            // value={formData.description}
-                            onChange={handleDescriptionChange}
-                            className="appearance-none resize-none text-sm border shadow-sm rounded-xl h-36 w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Description"
-                            required
-                        /> */}
                     </div>
 
-                    <div className="flex  items-center gap-5">
+                    <div className="flex items-center gap-5 mt-6">
                         <div className='w-1/2'>
                             <div className="form-control border rounded-lg shadow-sm my-6">
                                 <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
@@ -180,14 +213,14 @@ const Blog_edit = () => {
                                 name="image"
                                 value={imageurl}
                                 onChange={handleChange}
-                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
+                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
                                 placeholder="Enter image URL"
                             />
                         </div>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right mt-6">
                         <button type="submit" className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                            Create Blog Post
+                            Update Blog Post
                         </button>
                     </div>
                 </form>
@@ -195,6 +228,7 @@ const Blog_edit = () => {
         </div>
     );
 };
+
 // Modules and formats for the editor
 Blog_edit.modules = {
     toolbar: [
@@ -203,7 +237,6 @@ Blog_edit.modules = {
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         [{ 'list': 'ordered' }, { 'list': 'bullet' },
         { 'indent': '-1' }, { 'indent': '+1' }],
-
         ['clean']
     ],
 };
@@ -213,4 +246,5 @@ Blog_edit.formats = [
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent',
 ];
+
 export default Blog_edit;
