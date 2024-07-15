@@ -30,6 +30,7 @@ import Testimonial_list from "../pages/Dashboard/Pages/Testimonial_list";
 import Blog_edit from "../pages/Dashboard/Pages/Blog_edit";
 import Team_edit from "../pages/Dashboard/Pages/Team_edit";
 import Testimonial_edit from "../pages/Dashboard/Pages/Testimonial_edit";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
 
@@ -118,7 +119,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Root_Dashboard></Root_Dashboard>,
+    element:<AdminRoute><Root_Dashboard></Root_Dashboard></AdminRoute>,
     errorElement: <Error404></Error404>,
     children: [
       // {
@@ -131,41 +132,41 @@ export const router = createBrowserRouter([
       },
       {
         path:"blog_view",
-        element:<Blog_list></Blog_list>
+        element:<AdminRoute><Blog_list></Blog_list></AdminRoute>
       },
       {
         path:"blog_create",
-        element:<Blog_create></Blog_create>
+        element:<AdminRoute><Blog_create></Blog_create></AdminRoute>
       },
       {
         path:"testimonial_view",
-        element:<Testimonial_list></Testimonial_list>
+        element:<AdminRoute><Testimonial_list></Testimonial_list></AdminRoute>
       },
       {
         path:"testimonial_create",
-        element: <Testimonial_create></Testimonial_create>
+        element: <AdminRoute><Testimonial_create></Testimonial_create></AdminRoute>
       },
       {
         path:"team_view",
-        element: <Team_list></Team_list>
+        element:<AdminRoute><Team_list></Team_list></AdminRoute>
       },
       {
         path:"team_add",
-        element: <Team_create></Team_create>
+        element: <AdminRoute><Team_create></Team_create></AdminRoute>
       },
       {
         path:"team_edit/:id",
-        element: <Team_edit></Team_edit>,
+        element: <AdminRoute><Team_edit></Team_edit></AdminRoute>,
         loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/trainer/get-id/${params.id}`)
       },
       {
         path:"blog_edit/:id",
-        element: <Blog_edit></Blog_edit>,
+        element: <AdminRoute><Blog_edit></Blog_edit></AdminRoute>,
         loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/news/get-id/${params.id}`)
       },
       {
         path:"testimonial_edit/:id",
-        element: <Testimonial_edit></Testimonial_edit>,
+        element: <AdminRoute><Testimonial_edit></Testimonial_edit></AdminRoute>,
         loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/testimonial/get-id/${params.id}`)
       },
     ]
