@@ -3,6 +3,16 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import Title from './Title';
 import AOS from 'aos';
+import Image1 from "./../../assets/img/photogalary/1.jpg";
+import Image2 from "./../../assets/img/photogalary/2.jpg";
+import Image3 from "./../../assets/img/photogalary/3.jpg";
+import Image4 from "./../../assets/img/photogalary/4.jpg";
+import Image5 from "./../../assets/img/photogalary/5.jpg";
+import Image6 from "./../../assets/img/photogalary/6.jpg";
+import Image7 from "./../../assets/img/photogalary/7.jpg";
+import Image8 from "./../../assets/img/photogalary/8.jpg";
+import Image9 from "./../../assets/img/photogalary/9.jpg";
+import Image10 from "./../../assets/img/photogalary/10.jpg";
 
 const animations = [
     'slide-down',
@@ -20,16 +30,16 @@ const getRandomAnimation = () => {
 };
 
 const images = [
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/2-Main-Gym.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/3-Main-Cardio.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/4-The-Arena.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/5-Free-Weights-Dumbbells.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/6-Stretch-Room.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/7-Chakras-Yoga-Studio.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/8-Multisport-Room.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/9-Pilates-Equipment-Studio.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/10-Lotus-Room.jpg',
-    'https://www.castlehillfitness.com/wp-content/uploads/photo-gallery/imported_from_media_libray/11-Upstairs-Cardio.jpg'
+    Image1,
+    Image2,
+    Image3,
+    Image4,
+    Image5,
+    Image6,
+    Image7,
+    Image8,
+    Image9,
+    Image10
 ];
 
 const PhotoGallery = () => {
