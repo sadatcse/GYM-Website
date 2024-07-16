@@ -22,7 +22,7 @@ const Blog_edit = () => {
         image: image,
         category: category,
         tags: tags,
-        date: new Date(date),
+        date: date,
     });
 
     

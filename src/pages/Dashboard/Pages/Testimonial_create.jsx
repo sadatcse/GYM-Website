@@ -191,7 +191,7 @@ const Testimonial_create = () => {
                                 type="text"
                                 id="image"
                                 name="image"
-                                // value={imageurl}
+                                value={imageurl}
                                 onChange={handleChange}
                                 className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                                 placeholder="Enter image URL"

@@ -1,7 +1,7 @@
 // import swiper react components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import bg from "./../../assets/img/hero/bg.png"
-import bg1 from "./../../assets/img/hero/bg2.png"
+import bg1 from "./../../assets/img/hero/bg.png"
+import bg from "./../../assets/img/hero/bg2.png"
 // import swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
