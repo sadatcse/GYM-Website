@@ -3,6 +3,8 @@ import UseAxioSecure from "../../../Hook/UseAxioSecure";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Team_edit = () => {
     const {
@@ -12,6 +14,7 @@ const Team_edit = () => {
     const axiosSecure = UseAxioSecure();
     const axiosPublic = useAxiosPublic();
     const [imageurl, setimageurl] = useState('');
+    const [previewImageUrl, setPreviewImageUrl] = useState(image_url);
     const [formData, setFormData] = useState({
         full_name: full_name,
         short_name: short_name,
@@ -35,8 +38,14 @@ const Team_edit = () => {
         const formData = new FormData();
         formData.append('image', imageFile);
 
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreviewImageUrl(reader.result);
+        };
+        reader.readAsDataURL(imageFile);
+
         try {
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+            const res = await axios.post(image_hosting_api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -61,6 +70,7 @@ const Team_edit = () => {
         }
     };
 
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -74,27 +84,58 @@ const Team_edit = () => {
             date: date,
         });
     };
-    const handleSubmit = () =>{
 
-    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const id = _id;
+    
+        try {
+            const response = await axiosSecure.put(`/trainer/put/${id}`, formData);
+            if (response.data.modifiedCount > 0) {
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Trainer updated successfully!',
+                    text: 'The trainer details have been updated.',
+                });
+            } else {
+                await Swal.fire({
+                    icon: 'info',
+                    title: 'No changes detected',
+                    text: 'No updates were made to the trainer details.',
+                });
+            }
+        } catch (error) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error updating trainer',
+                text: error.message,
+            });
+        }
+    };
+    
     return (
         <div className="poppins">
             <Helmet>
                 <title>Edit Team Member</title>
             </Helmet>
             {/* Top content */}
-            <p className='text-2xl font-bold'>Edit : {full_name}</p>
-
-            {/* breadcrumbs */}
-            <div className="breadcrumbs mt-2 text-xs text-black">
-                <ul>
-                    <li className='text-gray-400'><a>Home</a></li>
-                    <li className='text-gray-400'><a>admin</a></li>
-                    <li className='text-gray-400'>team</li>
-                    <li className='text-gray-500'>edit</li>
-                </ul>
+            <div className="flex justify-between">
+                <div>
+                    <p className='text-2xl font-bold'>Edit Team</p>
+                    {/* breadcrumbs */}
+                    <div className="breadcrumbs mt-2 text-xs text-black">
+                        <ul>
+                            <li className='text-gray-400'><a>Home</a></li>
+                            <li className='text-gray-400'><a>admin</a></li>
+                            <li className='text-gray-400'>team</li>
+                            <li className='text-gray-500'>edit</li>
+                        </ul>
+                    </div>
+                </div>
+                <img src={previewImageUrl} alt="Image Preview" className="w-44 h-full border mt-2" />
             </div>
-            <div className="mt-9 ml-4">
+            <div className="ml-4">
                 <p className='font-medium text-2xl'>Details</p>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-5">
@@ -246,7 +287,7 @@ const Team_edit = () => {
                             type="submit"
                             className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
                         >
-                            Add
+                            Save
                         </button>
                     </div>
                 </form>

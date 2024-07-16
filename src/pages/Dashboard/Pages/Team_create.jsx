@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Team_create = () => {
     const axiosSecure = UseAxioSecure();
@@ -28,11 +29,12 @@ const Team_create = () => {
 
     const handleImageUpload = async (e) => {
         const imageFile = e.target.files[0];
+        console.log(imageFile)
         const formData = new FormData();
         formData.append('image', imageFile);
 
         try {
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+            const res = await axios.post(image_hosting_api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

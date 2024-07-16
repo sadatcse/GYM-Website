@@ -3,23 +3,32 @@ import { useLoaderData } from "react-router-dom";
 import UseAxioSecure from "../../../Hook/UseAxioSecure";
 import { useState } from "react";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Testimonial_edit = () => {
     const { comment, image, name, title, _id } = useLoaderData();
 
-
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
+    const [previewImageUrl, setPreviewImageUrl] = useState(image);
     const axiosPublic = useAxiosPublic();
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
     const handleImageUpload = async (e) => {
         const imageFile = e.target.files[0];
         const formData = new FormData();
         formData.append('image', imageFile);
 
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreviewImageUrl(reader.result);
+        };
+        reader.readAsDataURL(imageFile);
+
         try {
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+            const res = await axios.post(image_hosting_api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -44,7 +53,6 @@ const Testimonial_edit = () => {
         }
     };
 
-
     const [formData, setFormData] = useState({
         title: title,
         name: name,
@@ -67,16 +75,34 @@ const Testimonial_edit = () => {
         });
     };
 
-    const handleDateChange = (date) => {
-        setFormData({
-            ...formData,
-            date: date,
-        });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const id = _id;
+
+        try {
+            const response = await axiosSecure.put(`/testimonial/put/${id}`, formData);
+            if (response.data.modifiedCount > 0) {
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Testimonial updated successfully!',
+                    text: 'The testimonial details have been updated.',
+                });
+            } else {
+                await Swal.fire({
+                    icon: 'info',
+                    title: 'No changes detected',
+                    text: 'No updates were made to the testimonial details.',
+                });
+            }
+        } catch (error) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error updating testimonial',
+                text: error.message,
+            });
+        }
     };
 
-    const handleSubmit = () => {
-
-    }
     return (
         <div className="poppins">
             <Helmet>
@@ -84,7 +110,7 @@ const Testimonial_edit = () => {
             </Helmet>
 
             {/* Top content */}
-            <p className='text-2xl font-bold'>Edit testimonial</p>
+            <p className='text-2xl font-bold'>Edit Testimonial</p>
 
             {/* breadcrumbs */}
             <div className="breadcrumbs mt-2 text-xs text-black">
@@ -134,7 +160,7 @@ const Testimonial_edit = () => {
                             required
                         />
                     </div>
-                    <div className="flex  items-center gap-5">
+                    <div className="flex items-center gap-5">
                         <div className='w-1/2'>
                             <div className="form-control border rounded-lg shadow-sm my-6">
                                 <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
@@ -145,23 +171,23 @@ const Testimonial_edit = () => {
                                 type="text"
                                 id="image"
                                 name="image"
-                                // value={imageurl}
+                                value={imageurl}
                                 onChange={handleChange}
                                 className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
                                 placeholder="Enter image URL"
                             />
                         </div>
                     </div>
-                    <div className="">
-
-                    </div>
-                    <div className="flex items-center justify-end">
-                        <button
-                            type="submit"
-                            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
-                        >
-                            Create Testimonial
-                        </button>
+                    <div className="flex justify-between">
+                        <div className="flex items-center justify-end">
+                            <button
+                                type="submit"
+                                className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+                            >
+                                Update Testimonial
+                            </button>
+                        </div>
+                        <img src={previewImageUrl} alt="Image Preview" className="w-44 h-full border mt-2" />
                     </div>
                 </form>
             </div>
