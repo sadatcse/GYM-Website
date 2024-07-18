@@ -36,7 +36,7 @@ const JoinOurGym = () => {
   return (
     <>
       {showPopup && (
-        <div className="fixed bottom-0 right-0 mb-8 ml-4 z-50 mx-5" aria-live="polite">
+        <div className="fixed bottom-0 right-0 sm:mb-1 md:mb-5 lg:mb-8 ml-4 z-50 mx-5" aria-live="polite">
           <div className="flex items-center justify-center mb-6">
             <Link to="/under">
               <img 
