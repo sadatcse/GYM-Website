@@ -2,6 +2,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
+import Advertisement1 from "../components/Advertisement/Advertisement1";
 const Contact_us = () => {
     const location1 = "https://www.google.com/maps/place/Multi+Gym+Premium,+Shia+Masjid/@23.7627561,90.3565433,17z/data=!3m1!4b1!4m6!3m5!1s0x3755bf2476ff0fd5:0x55d28ddfdbff1096!8m2!3d23.7627561!4d90.3591182!16s%2Fg%2F11vdqj2fhv?entry=ttu"
     const location2 = "https://www.google.com/maps/place/Multi+Gym+Premium,+Lalmatia+Branch/@23.7583751,90.3683927,17z/data=!3m1!4b1!4m6!3m5!1s0x3755bf213d5bc75f:0xf5a881e8d0507a36!8m2!3d23.7583703!4d90.3732636!16s%2Fg%2F11w3d__h9_?entry=ttu"
@@ -78,6 +79,7 @@ const Contact_us = () => {
 
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.69158478031!2d90.36839267997814!3d23.758375133480182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf213d5bc75f%3A0xf5a881e8d0507a36!2sMulti%20Gym%20Premium%2C%20Lalmatia%20Branch!5e0!3m2!1sen!2sbd!4v1719082681089!5m2!1sen!2sbd" width="600" height="450" className="rounded-lg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div> */}
+            <Advertisement1 /> 
         </div>
     );
 };
