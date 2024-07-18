@@ -9,9 +9,10 @@ import Testimonial from '../components/Homepage/Testimonial';
 import Blog from '../components/Homepage/Blog';
 import Photo_galary from '../components/Homepage/Photo_galary';
 import { Helmet } from 'react-helmet-async';
+
 const Home = () => {
     const [modalOpen, setModalOpen] = useState(true);
-    const [countdown, setCountdown] = useState(10); 
+    const [countdown, setCountdown] = useState(10);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -31,10 +32,13 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-        <title>Home - Multigym Premium</title>
-        <meta name="description" content="Welcome to Multigym Premium. Explore our services and manage your account." />
-    </Helmet>
+                <title>Home - Multigym Premium</title>
+                <meta name="description" content="Welcome to Multigym Premium. Explore our services and manage your account." />
+            </Helmet>
             <Hero />
+            {/* <div className="hidden sm:block">
+                
+            </div> */}
             <About />
             <Classes />
             <Team />
@@ -43,12 +47,9 @@ const Home = () => {
             <Blog />
             <Photo_galary />
 
-
             {modalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center border-2 border-red-500">
-
                     <div className="fixed inset-0 "></div>
-         
                     <div className="bg-white p-8 rounded shadow-lg max-w-md">
                         <div className="text-lg font-bold mb-4 flex items-center">
                             <FaInfoCircle className="mr-2 text-blue-500" /> Website Under Construction
@@ -58,7 +59,6 @@ const Home = () => {
                             Sorry, the information on this page is currently not accurate as the website is under construction.
                         </p>
                         <div className="text-right">
-                
                             <p className="text-sm text-gray-500">Auto closing in {countdown} seconds</p>
                         </div>
                     </div>
