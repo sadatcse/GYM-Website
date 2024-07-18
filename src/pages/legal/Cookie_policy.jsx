@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaCookieBite, FaExclamationCircle, FaCog, FaShieldAlt, FaSyncAlt, FaPhone } from 'react-icons/fa';
-
+import { Helmet } from 'react-helmet-async';
 const CookiePolicy = () => {
   return (
     <div className="bg-gray-100 min-h-screen p-6">

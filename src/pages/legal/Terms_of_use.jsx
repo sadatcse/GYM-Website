@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGavel, FaUserShield, FaRegHandshake, FaRegMoneyBillAlt, FaExclamationTriangle, FaBan, FaBalanceScale, FaSyncAlt, FaPhone, FaVideo, FaDumbbell } from 'react-icons/fa';
-
+import { Helmet } from 'react-helmet-async';
 const TermsOfUse = () => {
   return (
     <div className="bg-gray-100 min-h-screen p-6">

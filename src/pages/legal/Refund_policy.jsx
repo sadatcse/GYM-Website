@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaMoneyBillWave, FaRegClock, FaPhone, FaClipboardCheck, FaMedkit, FaExclamationTriangle, FaSyncAlt } from 'react-icons/fa';
-
+import { Helmet } from 'react-helmet-async';
 const RefundPolicy = () => {
   return (
     <div className="bg-gray-100 min-h-screen p-6">

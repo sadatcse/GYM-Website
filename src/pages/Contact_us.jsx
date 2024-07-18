@@ -9,6 +9,10 @@ const Contact_us = () => {
     return (
         <div className="text-white relative z-0 bg-cover md:bg-contain" style={{backgroundImage:'url("https://i.pinimg.com/736x/4c/c8/b1/4cc8b1f71fc788aa146a33704bed9cc3.jpg")'}}>
             <div className="absolute w-full h-full opacity-70 bg-black -z-10"></div>
+            <Helmet>
+        <title>Contact Us - Multigym Premium</title>
+        <meta name="description" content="Get in touch with Multigym Premium. We're here to help you with any questions or concerns." />
+    </Helmet>
             <div className=" grid w-[90%] mx-auto py-9 grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-10">
                 <div className="flex flex-col justify-center">
                     <p className="text-lg md:text-3xl text-center md:text-left font-bold poppins">MULTIGYM PREMIUM DHAKA CITY</p>

@@ -4,6 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../lib/variants';
 import useAxiosPublic from "../Hook/useAxiosPublic";
+import { Helmet } from 'react-helmet-async';
 const Trainers = () => {
     const [data, setData] = useState([]);
     const axiosPublic = useAxiosPublic();
@@ -36,6 +37,10 @@ const Trainers = () => {
             Meet the Trainer
           </motion.p>
         </div>
+        <Helmet>
+        <title>Trainer - Multigym Premium</title>
+        <meta name="description" content="Discover our professional trainers at Multigym Premium. Learn more about their expertise and how they can help you achieve your fitness goals." />
+    </Helmet>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
                 {/* {data.map((trainer, index) => (
                     <div key={index} className="bg-gray-800 text-gray-300 rounded-lg p-6 shadow-lg">
@@ -85,6 +90,7 @@ const Trainers = () => {
                                             </div>
                                         </Link>
                                     </div>
+                                    
                                     <div className='text-center'>
                                         <p className='font-semibold text-2xl mt-2 uppercase'>{trainer.full_name}</p>
                                         <p className='font-semibold text-lg mt-1 text-gray-500'>{trainer.position_title}</p>

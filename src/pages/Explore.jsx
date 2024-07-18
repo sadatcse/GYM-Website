@@ -3,6 +3,7 @@ import Headerpage from "../components/Utility/Headerpage";
 import Header from "../assets/img/headerimage/headerimage4.jpg";
 import "./explore.css";
 import Data from "./../../public/Data.json";
+import { Helmet } from 'react-helmet-async';
 const Explore = () => {
     const [count, setCount] = useState(Data.length);
     const [itemsPerPage, setItemsPerPage] = useState(12);
@@ -47,6 +48,10 @@ const Explore = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Explore - Multigym Premium</title>
+        <meta name="description" content="Explore the wide range of services and offerings at Multigym Premium. Discover what we have to offer for your fitness journey." />
+    </Helmet>
       <Headerpage
         imageUrl={Header}
         title="Explore"

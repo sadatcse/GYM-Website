@@ -9,7 +9,7 @@ import { FaClock } from "react-icons/fa";
 import Spinner from "../Utility/Spinner"; 
 import Footer from "../Footer";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-
+import { Helmet } from 'react-helmet-async';
 const NewsDetails = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -72,6 +72,10 @@ const NewsDetails = () => {
                     </div>
                 </div>
                 <div className="grid md:grid-cols-3 mt-10 gap-10">
+                <Helmet>
+                <title>{`${ob.title} - Multigym Premium Blog`}</title>
+                <meta name="description" content={`Read about ${ob.title} on Multigym Premium's blog. Stay informed with our latest updates and articles.`} />
+            </Helmet>
                     <div className="col-span-2 pr-20">
                         <p className="text-4xl font-semibold mb-5 poppins">{ob.title}</p>
                         <p className="text-2xl mb-2 font-bold">

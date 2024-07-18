@@ -8,7 +8,7 @@ import Membership from '../components/Homepage/Membership';
 import Testimonial from '../components/Homepage/Testimonial';
 import Blog from '../components/Homepage/Blog';
 import Photo_galary from '../components/Homepage/Photo_galary';
-
+import { Helmet } from 'react-helmet-async';
 const Home = () => {
     const [modalOpen, setModalOpen] = useState(true);
     const [countdown, setCountdown] = useState(10); 
@@ -30,6 +30,10 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+        <title>Home - Multigym Premium</title>
+        <meta name="description" content="Welcome to Multigym Premium. Explore our services and manage your account." />
+    </Helmet>
             <Hero />
             <About />
             <Classes />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaLock, FaUserSecret, FaInfoCircle, FaChild, FaSyncAlt, FaPhone } from 'react-icons/fa';
-
+import { Helmet } from 'react-helmet-async';
 const PrivacyPolicyfb = () => {
   return (
     <div className="bg-gray-100 min-h-screen p-6">

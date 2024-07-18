@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { FiLock, FiMail } from 'react-icons/fi';
 import withReactContent from 'sweetalert2-react-content';
 import { AuthContext } from './../providers/AuthProvider';
-
+import { Helmet } from 'react-helmet-async';
 const WebLogin = () => {
     const { signInUser, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();

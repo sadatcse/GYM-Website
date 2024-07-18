@@ -9,6 +9,10 @@ import { Helmet } from 'react-helmet-async';
 const About_us = () => {
     return (
        <div>
+         <Helmet>
+        <title>About Us - Multigym Premium</title>
+        <meta name="description" content="Learn more about Multigym Premium, our mission, and our services." />
+    </Helmet>
          <AboutHero />
         
          <VisionAndValues />

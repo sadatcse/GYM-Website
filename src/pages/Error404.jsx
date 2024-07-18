@@ -7,9 +7,9 @@ const Error404 = () => {
 
 <div className="flex flex-col items-center justify-center min-h-screen">
 <Helmet>
-        <title>Error404</title>
-        <meta name="description" content="404 Error Page" />
-</Helmet>
+        <title>Page Not Found - Multigym Premium</title>
+        <meta name="description" content="The page you are looking for cannot be found. Please check the URL or return to the homepage." />
+    </Helmet>
 <h1 className="text-4xl font-bold text-accent  my-10">Oops! Nothing Found.</h1>
   <p className=" my-2 text-custom-yellow  font-bold text-7xl">
   It looks like this page is talking a rest day.

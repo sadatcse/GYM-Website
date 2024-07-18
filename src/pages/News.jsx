@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../../lib/variants';
 import Spinner from "../components/Utility/Spinner"; 
 import useAxiosPublic from "../Hook/useAxiosPublic";
-
+import { Helmet } from 'react-helmet-async';
 const News = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -29,6 +29,10 @@ const News = () => {
 
     return (
         <div className="screen my-2">
+             <Helmet>
+        <title>Blog - Multigym Premium</title>
+        <meta name="description" content="Read the latest articles and updates from Multigym Premium. Stay informed with our blog." />
+    </Helmet>
             <div className='flex flex-col items-center gap-2 mb-8'>
                 <motion.h2
                     variants={fadeIn('up', 0.4)}

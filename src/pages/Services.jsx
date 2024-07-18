@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChild, FaDumbbell, FaRunning, FaUsers, FaUser, FaParking, FaCoffee, FaAppleAlt, FaLock } from 'react-icons/fa';
-
+import { Helmet } from 'react-helmet-async';
 const servicesData = [
     {
         "title": "Large Free Weight Center",
@@ -73,6 +73,10 @@ const Header = () => {
 const Services = () => {
     return (
         <div>
+            <Helmet>
+        <title>Services - Multigym Premium</title>
+        <meta name="description" content="Discover the range of services offered by Multigym Premium. From personal training to group classes, we have something for everyone." />
+    </Helmet>
             <Header />
             <div className="py-12 screen mt-5">
                 <div className="grid grid-cols-1 gap-28">

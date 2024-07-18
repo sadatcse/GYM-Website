@@ -4,7 +4,7 @@ import { FaFacebookF, FaPhoneAlt } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa6';
 import { MdOutlineEmail } from 'react-icons/md';
 import useAxiosPublic from "../Hook/useAxiosPublic";
-
+import { Helmet } from 'react-helmet-async';
 
 const Trainers_Details = () => {
     const { name } = useParams();
@@ -28,6 +28,10 @@ const Trainers_Details = () => {
 
     return (
         <div className='w-[90%] mx-auto'>
+            <Helmet>
+                <title>{`Trainer - ${full_name} - Multigym Premium`}</title>
+                <meta name="description" content={`Learn more about ${full_name}, one of our expert trainers at Multigym Premium.`} />
+            </Helmet>
             <div className='my-16 overflow-x-hidden flex flex-col relative lg:flex-row items-center'>
                 <div className='md:w-1/2'>
                     <img src={image_url} className='w-full' alt={full_name} />
