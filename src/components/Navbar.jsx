@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const user = false;
 
-  const menu   = (
+  const menu = (
     <>
       <NavLink className="menu-link " activeClassName="active" to="/">Home</NavLink>
       <NavLink className="menu-link " activeClassName="active" to="/aboutus/about">About us</NavLink>
@@ -47,7 +47,10 @@ const Navbar = () => {
 
   const buttons = (
     <div>
-      <Link to="/under"><button className="btn px-6 font-medium text-white bg-red-600 rounded-md border-none  hover:text-red-600 hover:bg-white hover:border-red-600 poppins">Sign Up</button></Link>
+      {/* desktop sign up button */}
+      <Link to="/under"><button className="btn hidden md:block md:px-6 md:font-medium text-white bg-red-600 rounded-md border-none  hover:text-red-600 hover:bg-white hover:border-red-600 poppins">Sign Up</button></Link>
+      {/* mobile sign up button */}
+      <Link to="/under"><button className="block md:hidden py-2 px-4 text-xs md:text-sm md:font-medium text-white bg-red-600 rounded-md border-none  poppins">Sign Up</button></Link>
     </div>
   );
 
@@ -57,20 +60,22 @@ const Navbar = () => {
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className=" z-50 btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#f4cb71">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-</svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#f4cb71">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[5] mt-3 w-52 p-2 shadow">
-            <NavLink className="" activeClassName="active" to="/">Home</NavLink>
-      <NavLink className=" " activeClassName="active" to="/aboutus/about">About us</NavLink>
-      <NavLink className="" activeClassName="active" to="/service">Service</NavLink>
-      <NavLink className="" activeClassName="active" to="/trainers">Trainer</NavLink>
-      <NavLink className="" activeClassName="active" to="/explore">Explore</NavLink>
-      <NavLink className="" activeClassName="active" to="/contactus">Contact Us</NavLink>
-  </ul>
+            <ul tabIndex={0} className="poppins relative  menu menu-sm dropdown-content gap-1 bg-transparent text-white rounded-box z-[5] mt-3 w-40 p-3 shadow">
+              <div className='absolute bg-black w-full  top-0 opacity-90 border border-gray-700 -left-1 h-full rounded-lg -z-10'></div>
+              <NavLink className="" activeClassName="active" to="/">Home</NavLink>
+              <NavLink className=" " activeClassName="active" to="/aboutus/about">About us</NavLink>
+              <NavLink className="" activeClassName="active" to="/service">Service</NavLink>
+              <NavLink className="" activeClassName="active" to="/trainers">Trainer</NavLink>
+              <NavLink className="" activeClassName="active" to="/explore">Explore</NavLink>
+              <NavLink className="" activeClassName="active" to="/contactus">Contact Us</NavLink>
+            </ul>
           </div>
-          <a className="btn btn-ghost text-xl z-50"><img className='h-24 w-26' src={Logo}></img></a>
+          <a className="btn btn-ghost text-xl z-50"><img className='h-24 w-26 hidden  md:block' src={Logo}></img></a>
+          <a className="btn btn-ghost text-xl z-50"><img className='w-10 block md:hidden' src={Logo}></img></a>
         </div>
         <div className="flex navbar-end w-full justify-end ">
           <div className="hidden lg:flex ">
