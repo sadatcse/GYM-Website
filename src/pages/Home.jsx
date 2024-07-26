@@ -11,23 +11,23 @@ import Photo_galary from '../components/Homepage/Photo_galary';
 import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
-    const [modalOpen, setModalOpen] = useState(true);
-    const [countdown, setCountdown] = useState(10);
+    // const [modalOpen, setModalOpen] = useState(true);
+    // const [countdown, setCountdown] = useState(10);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setModalOpen(false);
-        }, 10000);
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setModalOpen(false);
+    //     }, 10000);
 
-        const interval = setInterval(() => {
-            setCountdown((prevCount) => prevCount - 1);
-        }, 1000);
+    //     const interval = setInterval(() => {
+    //         setCountdown((prevCount) => prevCount - 1);
+    //     }, 1000);
 
-        return () => {
-            clearTimeout(timer);
-            clearInterval(interval);
-        };
-    }, []);
+    //     return () => {
+    //         clearTimeout(timer);
+    //         clearInterval(interval);
+    //     };
+    // }, []);
 
     return (
         <div>
@@ -47,7 +47,7 @@ const Home = () => {
             <Blog />
             <Photo_galary />
 
-            {modalOpen && (
+            {/* {modalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center border-2 border-red-500">
                     <div className="fixed inset-0 "></div>
                     <div className="bg-white p-8 rounded shadow-lg max-w-md">
@@ -63,7 +63,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };

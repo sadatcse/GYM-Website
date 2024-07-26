@@ -50,7 +50,7 @@ const Team = () => {
               <div className='flex flex-col items-center text-center' key={trainer._id}>
                 {/* image */}
                 <div className='relative mx-auto'>
-                  <Link to={`/trainers/${trainer.short_name}`}><img src={trainer.image_url} alt={trainer.full_name} className='rounded-lg bg-gray-50 w-full border' /></Link>
+                  <Link to={`/trainers/${trainer.short_name}`}><img src={trainer.image_url} alt={trainer.full_name} className='rounded-lg bg-gray-50 w-full border h-96' /></Link>
                 </div>
                 {/* name */}
                 <Link to={`/trainers/${trainer.short_name}`}><h4 className='h4 mt-1 mb-2'>{trainer.full_name}</h4></Link>
