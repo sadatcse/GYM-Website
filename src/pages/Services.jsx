@@ -1,18 +1,25 @@
 import React from 'react';
 import { FaChild, FaDumbbell, FaRunning, FaUsers, FaUser, FaParking, FaCoffee, FaAppleAlt, FaLock } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
+import center from "./../assets/img/Service/center.jpg"
+import cardio from "./../assets/img/Service/cardio.jpg"
+import coffecup from "./../assets/img/Service/coffecup.jpg"
+import food from "./../assets/img/Service/food.png"
+import locker from "./../assets/img/Service/locker.jpg"
+import parking from "./../assets/img/Service/parking.jpg"
+import Personal from "./../assets/img/Service/Personal.jpg"
 const servicesData = [
     {
         "title": "Large Free Weight Center",
         "description": "Unlock your inner strength in our state-of-the-art free weight center! Work with our staff to find the right program to power your results.",
         "icon": <FaDumbbell />,
-        "image": "https://i.ibb.co/Sr5psxK/DSC01496.jpg"
+        "image": center
     },
     {
         "title": "Huge Cardio Center",
         "description": "Are you all about your daily treadmill sprints or looking to wind down on an elliptical? Whatever your favorite machine is, we are here to help you get moving with the best cardio equipment.",
         "icon": <FaRunning />,
-        "image": "https://i.ibb.co/K0s9C4P/DSC01350.jpg"
+        "image": cardio
     },
     {
         "title": "Group Exercise Classes",
@@ -24,31 +31,31 @@ const servicesData = [
         "title": "Personal Training",
         "description": "Meet your goals with private personal training and Ignite group fitness. Our passionate and skilled personal trainers will customize a fitness program based on your needs.",
         "icon": <FaUser />,
-        "image": "https://www.texasfamilyfitness.com/hubfs/IMG_1321.jpg"
+        "image": Personal
     },
     {
         "title": "Parking Space",
         "description": "Convenient and ample parking space for all our members. Easy access ensures that you can get to your workout without any hassle.",
         "icon": <FaParking />,
-        "image": "https://i.ibb.co/ts40Qfx/117292323-2139147922889072-5827792306607486822-n.jpg"
+        "image": parking
     },
     {
         "title": "Coffee Shop",
         "description": "Relax and unwind at our on-site coffee shop. Enjoy a variety of beverages and snacks before or after your workout.",
         "icon": <FaCoffee />,
-        "image": "https://i.ibb.co/t3b5nZJ/coffecup.jpg"
+        "image": coffecup
     },
     {
         "title": "Nutrition Service",
         "description": "Get personalized nutrition advice and meal plans from our certified nutritionists to complement your fitness regime.",
         "icon": <FaAppleAlt />,
-        "image": "https://www.sustagen.com.my/sites/malaysiasustagen/files/Your_0.png"
+        "image": food
     },
     {
         "title": "Personal Locker Service",
         "description": "Keep your belongings safe and secure with our personal locker service. Enjoy peace of mind while you work out.",
         "icon": <FaLock />,
-        "image": "https://i.ibb.co/2N6zfpK/DSC01415.jpg"
+        "image": locker
     }
 ]
 

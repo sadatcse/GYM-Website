@@ -1,10 +1,11 @@
 import React from 'react';
-
+import abulkalamazad from "./../../assets/img/about/abul-kalam-azad.png"
+import sign from "./../../assets/img/about/sign.png"
 const MessageFromChairman = () => {
   return (
     <div>
       <div className="w-[90%] mx-auto flex flex-col lg:flex-row justify-between pt-9" >
-        <img src='https://i.ibb.co/YyNY5F1/abul-kalam-azad-resize.png' alt='Chairman' className=' lg:h-[700px] w-auto ' />
+        <img src={abulkalamazad} alt='Chairman' className=' lg:h-[700px] w-auto ' />
         <div className='flex flex-col md:mr-6 justify-center my-7'>
           <p className="text-4xl font-bold mb-2 text-white ">Message from the Chairman</p>
           <p className="">
@@ -22,7 +23,7 @@ const MessageFromChairman = () => {
           </p>
           <p className="text-2xl">
             Warm regards,<br />
-            <img className='h-16 w-32' src='https://i.ibb.co/VYmJZsZ/6358905a49d944cee775366a9485c59a.png'></img>
+            <img className='h-16 w-32' src={sign}></img>
             <strong className=''>Abul Kalam Azad</strong><br />
             <p className='font-semibold'>Chairman, Multigym Premium</p>
           </p>
