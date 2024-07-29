@@ -6,15 +6,16 @@ const Title = ({ title, subtitle, atextColor }) => {
   const textColor = 'text-custom-yellow';
   return (
     <div>
-      <motion.h2
-        variants={fadeIn('up', 0.4)}
+
+      <motion.h1
+        variants={fadeIn('up', 0.6)}
         initial='hidden'
         whileInView={'show'}
         viewport={{ once: false, amount: 0.2 }}
-        className='h2 text-center'
+        className='text-center acme-regular text-xl text-accent'
       >
-        <h1 className='text-center acme-regular text-xl text-accent'>{title}</h1>
-      </motion.h2>
+        {title}
+      </motion.h1>
       <motion.p
         variants={fadeIn('up', 0.6)}
         initial='hidden'
@@ -22,7 +23,7 @@ const Title = ({ title, subtitle, atextColor }) => {
         viewport={{ once: false, amount: 0.2 }}
         className='max-w-[600px] mx-auto text-center'
       >
-        <h1 className={`text-center bebas-neue-regular text-6xl pb-9 ${textColor}`}>{subtitle}</h1>
+        <span className={`text-center bebas-neue-regular text-6xl pb-9 ${textColor}`}>{subtitle}</span>
       </motion.p>
     </div>
   );

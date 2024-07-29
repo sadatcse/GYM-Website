@@ -49,17 +49,17 @@ const Footer = () => {
                 </aside>
                 <nav>
                     <h6 className="footer-title text-xl font-bold mb-4">Company</h6>
-                    <Link to="/aboutus/about"><a className="link link-hover">About us</a></Link>
-                    <Link to="/contactus"><a className="link link-hover">Contact</a></Link>
-                    <Link to="/service"><a className="link link-hover">Service</a></Link>
-                    <Link to="/explore"><a className="link link-hover">Explore</a></Link>
+                    <Link className="link link-hover" to="/aboutus/about">About us</Link>
+                    <Link className="link link-hover" to="/contactus">Contact</Link>
+                    <Link className="link link-hover" to="/service">Service</Link>
+                    <Link className="link link-hover" to="/explore">Explore</Link>
                 </nav>
                 <nav>
                     <h6 className="footer-title text-xl font-bold mb-4">Legal</h6>
-                    <Link to="/legal/termsofuse"><a className="hover:text-red-600 cursor-pointer">Terms of use</a></Link>
-                    <Link to="/legal/appprivacypolicy"><a className="hover:text-red-600 cursor-pointer">Privacy policy</a></Link>
-                    <Link to="/legal/cookiepolicy"><a className="hover:text-red-600 cursor-pointer">Cookie policy</a></Link>
-                    <Link to="/legal/refundpolicy"><a className="hover:text-red-600 cursor-pointer">Refund policy</a></Link>
+                    <Link className="hover:text-red-600 cursor-pointer" to="/legal/termsofuse">Terms of use</Link>
+                    <Link className="hover:text-red-600 cursor-pointer" to="/legal/appprivacypolicy">Privacy policy</Link>
+                    <Link className="hover:text-red-600 cursor-pointer" to="/legal/cookiepolicy">Cookie policy</Link>
+                    <Link className="hover:text-red-600 cursor-pointer" to="/legal/refundpolicy">Refund policy</Link>
                 </nav>
                 <nav>
                     <h6 className="footer-title text-xl font-bold mb-4">DOWNLOAD MULTIGYM PREMIUM APP</h6>

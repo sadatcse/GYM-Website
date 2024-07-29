@@ -10,6 +10,7 @@ import Spinner from "../Utility/Spinner";
 import Footer from "../Footer";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import { Helmet } from 'react-helmet-async';
+
 const NewsDetails = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -72,10 +73,10 @@ const NewsDetails = () => {
                     </div>
                 </div>
                 <div className="grid md:grid-cols-3 mt-10 gap-10">
-                <Helmet>
-                <title>{`${ob.title} - Multigym Premium Blog`}</title>
-                <meta name="description" content={`Read about ${ob.title} on Multigym Premium's blog. Stay informed with our latest updates and articles.`} />
-            </Helmet>
+                    <Helmet>
+                        <title>{`${ob.title} - Multigym Premium Blog`}</title>
+                        <meta name="description" content={`Read about ${ob.title} on Multigym Premium's blog. Stay informed with our latest updates and articles.`} />
+                    </Helmet>
                     <div className="col-span-2 pr-20">
                         <p className="text-4xl font-semibold mb-5 poppins">{ob.title}</p>
                         <p className="text-2xl mb-2 font-bold">
@@ -85,7 +86,7 @@ const NewsDetails = () => {
                         <p className="text-red-500 mt-3 text-lg font-thin cursor-pointer max-w-fit" onClick={() => navigate(-1)}>Go Back</p>
                     </div>
 
-                    {/* image part */}
+                    {/* Image part */}
                     <div className="pl-5">
                         <img className="w-full rounded-t-md" src={ob.image} alt="" />
                         <div className="bg-slate-50 p-8">
@@ -94,7 +95,7 @@ const NewsDetails = () => {
                             <p className="font-bold text-red-600 text-lg">POST TAGS</p>
                             <div className="flex gap-4 py-4 font-thin">
                                 {Array.isArray(ob.tags) ? (
-                                    ob.tags.map(tag => <p key={tag} className="text-red-600">{tag}</p>)
+                                    ob.tags.map((tag, index) => <p key={index} className="text-red-600">{tag}</p>)
                                 ) : (
                                     <p className="text-red-600">{ob.tags}</p>
                                 )}
@@ -113,15 +114,15 @@ const NewsDetails = () => {
                     </div>
                 </div>
 
-                {/* related news */}
+                {/* Related news */}
                 <section className="mt-20 mb-9">
                     <div>
-                        <p className="text-3xl mb-7 ">Related Blog & Stories</p>
+                        <p className="text-3xl mb-7">Related Blog & Stories</p>
                     </div>
                     {/* News Cards */}
                     <section className="grid grid-cols-1 md:grid-cols-4 gap-4">
                         {news.slice(news.length - 4, news.length).map((item) => (
-                            <div key={item.id} className="relative">
+                            <div key={item._id} className="relative">
                                 <img src={item.image} className="rounded h-48 object-cover w-full hover:opacity-95" alt="" />
                                 <div className="bg-white p-4">
                                     <Link to={`/blog/${item._id}`}>

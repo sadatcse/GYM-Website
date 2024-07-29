@@ -14,7 +14,7 @@ const Trainers = () => {
             .then(data => setData(data.data));
     }, [])
 
-    console.log("hi" + data)
+  
     return (
         <div className="w-[90%] mx-auto my-4 md:mb-16">
                     <div className='flex flex-col items-center gap-2 mb-8'>

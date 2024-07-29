@@ -12,11 +12,11 @@ import Title from './Title';
 import Spinner from "../Utility/Spinner";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 
-
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
+
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
@@ -72,18 +72,18 @@ const Blog = () => {
                       <div className='flex flex-col justify-start h-full max-w-[320px] mx-auto'>
                         <Link to={`/blog/${post._id}`}>
                           <img src={post.image} alt={post.title} className='mb-6 h-64 w-84' />
-                          <div className='flex flex-col items-start'>
-                            <p className='max-w-[380px] uppercase text-[12px] tracking-[3px] mb-1'>
-                              {post.date}
-                            </p>
-                            <Link
-                              className='hover:text-accent transition-all duration-300'
-                              to={`/blog/${post._id}`}
-                            >
-                              <h5 className='h5'>{post.title}</h5>
-                            </Link>
-                          </div>
                         </Link>
+                        <div className='flex flex-col items-start'>
+                          <p className='max-w-[380px] uppercase text-[12px] tracking-[3px] mb-1'>
+                            {post.date}
+                          </p>
+                          <Link
+                            className='hover:text-accent transition-all duration-300'
+                            to={`/blog/${post._id}`}
+                          >
+                            <h5 className='h5'>{post.title}</h5>
+                          </Link>
+                        </div>
                       </div>
                     </SwiperSlide>
                   ))}

@@ -1,32 +1,42 @@
+import React, { useState, useEffect, useRef } from 'react';
 import CountUp from 'react-countup';
 import { FaBriefcase, FaClock, FaCalendarAlt } from 'react-icons/fa';
 import { ImUsers } from 'react-icons/im';
-
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
 
-const stats = [
-  {
-    number: 24,
-    icon: FaBriefcase,
-    text: 'Weekly classes',
-  },
-  {
-    number: 402,
-    icon: ImUsers,
-    text: 'Happy customers',
-  },
-  {
-    number: 5840,
-    icon: FaClock,
-    text: 'Working hours',
-  },
-  {
-    number: 1,
-    icon: FaCalendarAlt,
-    text: 'Number of years',
-  },
-];
+// Office hours
+const OFFICE_START_HOUR = 7; // 7:00 AM
+const OFFICE_END_HOUR = 23; // 11:00 PM
+const OFFICE_HOURS_PER_DAY = OFFICE_END_HOUR - OFFICE_START_HOUR;
+
+// Calculate initial values
+const startDate = new Date('2023-06-27T00:00:00+06:00');
+const calculateStats = () => {
+  const currentDate = new Date();
+  const currentTimeInDhaka = new Date(currentDate.toLocaleString('en-US', { timeZone: 'Asia/Dhaka' }));
+  const timeDifference = currentTimeInDhaka - startDate;
+  const numberOfDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const numberOfYears = Math.floor(numberOfDays / 365);
+
+  // Calculate total working hours
+  let workingHours = numberOfDays * OFFICE_HOURS_PER_DAY;
+  
+  const currentHour = currentTimeInDhaka.getHours();
+  const currentMinute = currentTimeInDhaka.getMinutes();
+  
+  if (currentHour >= OFFICE_START_HOUR && currentHour < OFFICE_END_HOUR) {
+    workingHours += currentHour - OFFICE_START_HOUR;
+    workingHours += currentMinute / 60; // Add partial hour for current minute
+  } else if (currentHour >= OFFICE_END_HOUR) {
+    workingHours += OFFICE_HOURS_PER_DAY;
+  }
+
+  return {
+    numberOfDays,
+    numberOfYears,
+    workingHours: Math.floor(workingHours), // Round down to nearest hour
+  };
+};
 
 // animation
 const statsContainerVariant = {
@@ -54,8 +64,19 @@ const statsItem = {
 };
 
 const Achievements = () => {
+  const [stats, setStats] = useState(calculateStats());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStats(calculateStats());
+    }, 3600000); // Update every hour (3600000ms)
+
+    return () => clearInterval(interval);
+  }, []);
+
   const ref = useRef(null);
   const isInView = useInView(ref);
+
   return (
     <section>
       <div className='container mx-auto'>
@@ -66,7 +87,28 @@ const Achievements = () => {
           viewport={{ once: false, amount: 0.3 }}
           className='grid grid-cols-2 md:grid-cols-4 gap-16'
         >
-          {stats.map((item, index) => {
+          {[
+            {
+              number: 24,
+              icon: FaBriefcase,
+              text: 'Weekly classes',
+            },
+            {
+              number: stats.numberOfDays,
+              icon: ImUsers,
+              text: 'Happy customers',
+            },
+            {
+              number: stats.workingHours,
+              icon: FaClock,
+              text: 'Working hours',
+            },
+            {
+              number: stats.numberOfYears,
+              icon: FaCalendarAlt,
+              text: 'Number of years',
+            },
+          ].map((item, index) => {
             return (
               <motion.div
                 variants={statsItem}
