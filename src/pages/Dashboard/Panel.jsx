@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 
 const quotes = [
@@ -10,6 +10,15 @@ const quotes = [
 ];
 
 const Panel = () => {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            window.location.reload();
+        }, 10000); 
+
+    
+        return () => clearTimeout(timer);
+    }, []); 
+
     return (
         <div className="max-w-7xl mx-auto p-4">
             <div className="my-8">

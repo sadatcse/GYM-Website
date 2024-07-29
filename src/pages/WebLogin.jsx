@@ -27,6 +27,7 @@ const WebLogin = () => {
                 });
                 e.target.reset();
                 navigate(location.state?.from || "/dashboard/dashboard");
+                
             })
             .catch((error) => {
                 MySwal.fire({
