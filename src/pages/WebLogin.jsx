@@ -26,7 +26,7 @@ const WebLogin = () => {
                     timer: 1500
                 });
                 e.target.reset();
-                navigate(location.state?.from || "/dashboard/dashboard");
+                navigate(location.state?.from || "/dashboard");
                 
             })
             .catch((error) => {
