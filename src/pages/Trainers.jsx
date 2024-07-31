@@ -3,16 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../lib/variants';
-import useAxiosPublic from "../Hook/useAxiosPublic";
 import { Helmet } from 'react-helmet-async';
+import useAxiosPublic from './../Hook/useAxiosPublic';
 const Trainers = () => {
     const [data, setData] = useState([]);
     const axiosPublic = useAxiosPublic();
     // const data = useLoaderData();
     useEffect(() => {
-        axiosPublic.get("/trainer/get-all/")
-            .then(data => setData(data.data));
-    }, [])
+        const fetchTrainerData = async () => {
+            try {
+                const response = await axiosPublic.get("/trainer/get-all/");
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching trainer data:', error);
+            }
+        };
+
+        fetchTrainerData();
+    }, [axiosPublic]);
 
   
     return (

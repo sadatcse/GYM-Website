@@ -26,7 +26,7 @@ const Blog = () => {
           setLoading(false);
           return;
         }
-        const response = await axios.get('https://multigym-premium-server.vercel.app/news/get-all/');
+        const response = await axios.get('https://api.multigympremium.com/news/get-all/');
         const newData = response.data;
         localStorage.setItem('blogData', JSON.stringify(newData));
 

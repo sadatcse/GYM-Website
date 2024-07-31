@@ -1,7 +1,7 @@
 import axios from 'axios';
 export const axiosSecure = axios.create({
     // baseURL: 'https:/multigym-premium-server.vercel.app/'
-    baseURL: 'https://multi-gym-server-vwyee.ondigitalocean.app/'
+    baseURL: 'http://api.multigympremium.com/'
 })
 const UseAxioSecure = () => {
     axiosSecure.defaults.withCredentials = true ;

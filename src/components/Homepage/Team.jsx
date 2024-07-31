@@ -14,7 +14,7 @@ const Team = () => {
   useEffect(() => {
     const fetchTrainerData = async () => {
       try {
-        const response = await axios.get('https://multigym-premium-server.vercel.app/trainer/get-all');
+        const response = await axios.get('https://api.multigympremium.com/trainer/get-all');
         setTrainerData(response.data); 
         setLoading(false);
       } catch (error) {
