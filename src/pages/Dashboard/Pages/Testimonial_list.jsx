@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
-import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { TfiSearch } from 'react-icons/tfi';
 import { FiEdit3 } from 'react-icons/fi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { BiMessageSquareDetail } from 'react-icons/bi';
 import { Navigate, useNavigate } from 'react-router-dom';
+import UseAxioSecure from '../../../Hook/UseAxioSecure';
 
 const TestimonialList = () => {
-    const axiosSecure = useAxiosPublic();
+    const axiosSecure = UseAxioSecure();
     const [testimonials, setTestimonials] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
