@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'http://api.multigympremium.com'
+    baseURL: 'https://api.multigympremium.com'
 })
 
 const useAxiosPublic = () => {
