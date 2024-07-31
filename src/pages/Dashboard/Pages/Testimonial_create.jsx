@@ -4,13 +4,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-quill/dist/quill.snow.css';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import Swal from 'sweetalert2';
-import useAxiosPublic from '../../../Hook/useAxiosPublic';
+
 import ImageUpload from '../../../components/Utility/ImageUpload';
 import axios from 'axios';
 const Testimonial_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
-    const axiosPublic = useAxiosPublic();
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
     const handleImageUpload = async (e) => {

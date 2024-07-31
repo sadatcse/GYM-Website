@@ -2,17 +2,15 @@ import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import UseAxioSecure from "../../../Hook/UseAxioSecure";
 import { useState } from "react";
-import useAxiosPublic from "../../../Hook/useAxiosPublic";
+
 import Swal from "sweetalert2";
 import axios from "axios";
 
 const Testimonial_edit = () => {
     const { comment, image, name, title, _id } = useLoaderData();
-
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
     const [previewImageUrl, setPreviewImageUrl] = useState(image);
-    const axiosPublic = useAxiosPublic();
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
