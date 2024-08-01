@@ -11,7 +11,7 @@ import axios from 'axios';
 const Blog_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
-    const axiosPublic = useAxiosPublic();
+ 
 
 
     
@@ -23,7 +23,7 @@ const Blog_create = () => {
         try {
             const response = await axiosSecure.post('/upload', formData, {
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'multipart/form-data',
                 },
             });
     
