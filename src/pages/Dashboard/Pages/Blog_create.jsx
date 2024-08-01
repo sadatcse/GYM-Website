@@ -23,7 +23,7 @@ const Blog_create = () => {
         try {
             const response = await axiosSecure.post('/upload', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    "Content-Type": "application/json",
                 },
             });
     
