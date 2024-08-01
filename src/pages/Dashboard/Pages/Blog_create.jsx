@@ -21,14 +21,15 @@ const Blog_create = () => {
         formData.append('image', imageFile);
         
         try {
-            const response = await fetch('https://image.multigympremium.com/upload', {
-                method: 'POST',
-                body: formData,
+            const response = await axios.post('https://image.multigympremium.com/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
             });
-
-            const data = await response.json();
-
-            if (response.ok) {
+    
+            const data = response.data;
+    
+            if (response.status === 200) {
                 setimageurl(data.path);
                 Swal.fire({
                     icon: 'success',
