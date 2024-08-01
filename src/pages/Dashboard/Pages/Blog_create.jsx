@@ -7,53 +7,12 @@ import 'react-quill/dist/quill.snow.css';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
-import axios from 'axios';
+import ImageUpload from '../../../components/Utility/ImageUploadcpanel';
+
 const Blog_create = () => {
     const axiosSecure = UseAxioSecure();
-    const [imageurl, setimageurl] = useState('');
+    const [imageurl, setImageUrl] = useState('');
     const axiosPublic = useAxiosPublic();
-
-
-    
-    const handleImageUpload = async (e) => {
-        const imageFile = e.target.files[0];
-        const formData = new FormData();
-        formData.append('image', imageFile);
-        
-        try {
-            const response = await axios.post('https://image.multigympremium.com/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-    
-            const data = response.data;
-    
-            if (response.status === 200) {
-                setimageurl(data.path);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Image uploaded successfully',
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
-                    text: data.message || 'Failed to upload image',
-                });
-            }
-        } catch (error) {
-            console.error('Error uploading image:', error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'Failed to upload image',
-            });
-        }
-    };
-
-
 
     const [formData, setFormData] = useState({
         title: '',
@@ -89,7 +48,6 @@ const Blog_create = () => {
         e.preventDefault();
         console.log(formData);
 
-        // Format the date to include only month, day, and year
         const formattedDate = formData.date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -131,10 +89,8 @@ const Blog_create = () => {
                 <title>Create | Add Blogs</title>
             </Helmet>
 
-            {/* Top content */}
             <p className='text-2xl font-bold'>Create a blog</p>
 
-            {/* breadcrumbs */}
             <div className="breadcrumbs mt-2 text-xs text-black">
                 <ul>
                     <li className='text-gray-400'><a>Home</a></li>
@@ -206,21 +162,11 @@ const Blog_create = () => {
                             formats={Blog_create.formats}
                             required
                         />
-                        {/* <textarea
-                            id="description"
-                            // value={formData.description}
-                            onChange={handleDescriptionChange}
-                            className="appearance-none resize-none text-sm border shadow-sm rounded-xl h-36 w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            placeholder="Description"
-                            required
-                        /> */}
                     </div>
 
-                    <div className="flex  items-center gap-5">
+                    <div className="flex items-center gap-5">
                         <div className='w-1/2'>
-                            <div className="form-control border rounded-lg shadow-sm my-6">
-                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
-                            </div>
+                            <ImageUpload setImageUrl={setImageUrl} />
                         </div>
                         <div className='w-1/2'>
                             <input
