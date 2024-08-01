@@ -11,7 +11,7 @@ import axios from 'axios';
 const Blog_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
- 
+    const axiosPublic = useAxiosPublic();
 
 
     
@@ -21,7 +21,7 @@ const Blog_create = () => {
         formData.append('image', imageFile);
         
         try {
-            const response = await axiosSecure.post('/upload', formData, {
+            const response = await axios.post('https://image.multigympremium.com/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
