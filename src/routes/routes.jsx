@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
       {
         path: '/trainers/:name',
         element: <Trainers_Details />,
-        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/trainer/get-name/${params.name}`)
+        loader: ({ params }) => fetch(`https://api.multigympremium.com/trainer/get-name/${params.name}`)
       },
       {
         path: "/service",
@@ -82,7 +82,7 @@ export const router = createBrowserRouter([
       {
         path: "/blog/:id",
         element: <NewsDetails />,
-        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/news/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`https://api.multigympremium.com/news/get-id/${params.id}`)
       },
       {
         path: "/legal/appprivacypolicy",
@@ -157,17 +157,17 @@ export const router = createBrowserRouter([
       {
         path:"team_edit/:id",
         element: <AdminRoute><Team_edit></Team_edit></AdminRoute>,
-        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/trainer/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`https://api.multigympremium.com/trainer/get-id/${params.id}`)
       },
       {
         path:"blog_edit/:id",
         element: <AdminRoute><Blog_edit></Blog_edit></AdminRoute>,
-        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/news/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`https://api.multigympremium.com/news/get-id/${params.id}`)
       },
       {
         path:"testimonial_edit/:id",
         element: <AdminRoute><Testimonial_edit></Testimonial_edit></AdminRoute>,
-        loader: ({ params }) => fetch(`https://multi-gym-server-vwyee.ondigitalocean.app/testimonial/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`https://api.multigympremium.com/testimonial/get-id/${params.id}`)
       },
     ]
 

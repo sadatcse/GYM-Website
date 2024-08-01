@@ -31,26 +31,25 @@ const Blog_edit = () => {
         const imageFile = e.target.files[0];
         const formData = new FormData();
         formData.append('image', imageFile);
-
+    
         const reader = new FileReader();
         reader.onloadend = () => {
             setPreviewImageUrl(reader.result);
         };
         reader.readAsDataURL(imageFile);
-
+    
         try {
-            const res = await axios.post('https://api.multigympremium.com/upload', formData, {
+            const res = await axiosSecure.post('/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                },
-                withCredentials: true  // Ensure cookies are included in the request
+                }
             });
             setimageurl(res.data.path);
             setFormData((prevData) => ({
                 ...prevData,
                 image: res.data.path
             }));
-
+    
             await Swal.fire({
                 icon: 'success',
                 title: 'Image uploaded successfully!',
