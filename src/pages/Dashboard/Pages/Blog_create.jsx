@@ -21,7 +21,7 @@ const Blog_create = () => {
         formData.append('image', imageFile);
         
         try {
-            const response = await axios.post('https://image.multigympremium.com/upload', formData, {
+            const response = await axiosSecure.post('/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
