@@ -4,8 +4,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-quill/dist/quill.snow.css';
 import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import Swal from 'sweetalert2';
+import ImageUpload from '../../../components/Utility/ImageUploadcpanel';
 
-import ImageUpload from '../../../components/Utility/ImageUpload';
 import axios from 'axios';
 const Testimonial_create = () => {
     const axiosSecure = UseAxioSecure();

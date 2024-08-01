@@ -4,7 +4,7 @@ import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-
+import ImageUpload from '../../../components/Utility/ImageUploadcpanel';
 const Team_create = () => {
     const axiosSecure = UseAxioSecure();
     const axiosPublic = useAxiosPublic();
