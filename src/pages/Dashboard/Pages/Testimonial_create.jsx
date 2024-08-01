@@ -10,38 +10,7 @@ import axios from 'axios';
 const Testimonial_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
-    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-    const handleImageUpload = async (e) => {
-        const imageFile = e.target.files[0];
-        const formData = new FormData();
-        formData.append('image', imageFile);
-
-        try {
-            const res = await axios.post(image_hosting_api, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            setimageurl(res.data.data.url);
-            setFormData((prevData) => ({
-                ...prevData,
-                image: res.data.data.url
-            }));
-
-            await Swal.fire({
-                icon: 'success',
-                title: 'Image uploaded successfully!',
-                text: `Image URL: ${res.data.data.url}`,
-            });
-        } catch (error) {
-            await Swal.fire({
-                icon: 'error',
-                title: 'Error uploading image',
-                text: error.message,
-            });
-        }
-    };
+ 
 
 
     const [formData, setFormData] = useState({
@@ -181,9 +150,7 @@ const Testimonial_create = () => {
                     </div>
                     <div className="flex  items-center gap-5">
                         <div className='w-1/2'>
-                            <div className="form-control border rounded-lg shadow-sm my-6">
-                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
-                            </div>
+                        <ImageUpload setImageUrl={setimageurl} />
                         </div>
                         <div className='w-1/2'>
                             <input
