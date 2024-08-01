@@ -30,45 +30,6 @@ const Team_edit = () => {
         date: new Date(),
     });
 
-    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
-    const handleImageUpload = async (e) => {
-        const imageFile = e.target.files[0];
-        const formData = new FormData();
-        formData.append('image', imageFile);
-
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setPreviewImageUrl(reader.result);
-        };
-        reader.readAsDataURL(imageFile);
-
-        try {
-            const res = await axios.post(image_hosting_api, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            setimageurl(res.data.data.url);
-            setFormData((prevData) => ({
-                ...prevData,
-                image_url: res.data.data.url
-            }));
-
-            await Swal.fire({
-                icon: 'success',
-                title: 'Image uploaded successfully!',
-                text: `Image URL: ${res.data.data.url}`,
-            });
-        } catch (error) {
-            await Swal.fire({
-                icon: 'error',
-                title: 'Error uploading image',
-                text: error.message,
-            });
-        }
-    };
 
 
     const handleChange = (e) => {
@@ -88,14 +49,13 @@ const Team_edit = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         const id = _id;
-        setFormData((prevData) => ({
-            ...prevData,
-            image: imageurl
-        }));
-    
+
+        const updatedFormData = { ...formData, image_url: imageurl };
+
         try {
-            const response = await axiosSecure.put(`/trainer/put/${id}`, formData);
+            const response = await axiosSecure.put(`/trainer/put/${id}`, updatedFormData);
             if (response.data.modifiedCount > 0) {
                 await Swal.fire({
                     icon: 'success',
@@ -257,12 +217,18 @@ const Team_edit = () => {
 
                     <div className="flex  items-center gap-5">
                         <div className='w-1/2'>
-                            <div className="form-control border rounded-lg shadow-sm my-6">
-                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
-                            </div>
+                        <ImageUpload setImageUrl={setimageurl} setPreviewImageUrl={setPreviewImageUrl} />
                         </div>
                         <div className='w-1/2'>
-                        <ImageUpload setImageUrl={setimageurl} setPreviewImageUrl={setPreviewImageUrl} />
+                            <input
+                                type="text"
+                                id="image"
+                                name="image"
+                                value={imageurl}
+                                onChange={handleChange}
+                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
+                                placeholder="Enter image URL"
+                            />
                         </div>
                     </div>
 
