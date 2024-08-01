@@ -9,7 +9,7 @@ import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-
+import ImageUpload from '../../../components/Utility/ImageUploadcpanel';
 const Blog_edit = () => {
     const { category, date, description, image, tags, title, _id } = useLoaderData();
     const axiosSecure = UseAxioSecure();
@@ -199,9 +199,8 @@ const Blog_edit = () => {
 
                     <div className="flex items-center gap-5 mt-6">
                         <div className='w-1/2'>
-                            <div className="form-control border rounded-lg shadow-sm my-6">
-                                <input onChange={handleImageUpload} type="file" className="file-input outline-none focus:outline-none" />
-                            </div>
+                        <ImageUpload setImageUrl={setimageurl} setPreviewImageUrl={setPreviewImageUrl} />
+
                         </div>
                         <div className='w-1/2'>
                             <input

@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const ImageUpload = ({ setImageUrl }) => {
+const ImageUpload = ({ setImageUrl, setPreviewImageUrl }) => {
     const handleImageUpload = async (e) => {
         const imageFile = e.target.files[0];
         const formData = new FormData();
         formData.append('image', imageFile);
-        
+
         try {
             const response = await axios.post('https://image.multigympremium.com/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-    
+
             const data = response.data;
-    
+
             if (response.status === 200) {
-                setImageUrl(data.path);
+                if (setImageUrl) {
+                    setImageUrl(data.path);
+                }
+                if (setPreviewImageUrl) {
+                    setPreviewImageUrl(data.path);
+                }
                 Swal.fire({
                     icon: 'success',
                     title: 'Success!',

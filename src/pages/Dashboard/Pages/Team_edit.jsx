@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import axios from "axios";
-
+import ImageUpload from '../../../components/Utility/ImageUploadcpanel';
 const Team_edit = () => {
     const {
         Instagram, certification, bio, email, facebook, full_name, image_url, mobile, position_title, role, short_name, _id
@@ -258,15 +258,7 @@ const Team_edit = () => {
                             </div>
                         </div>
                         <div className='w-1/2'>
-                            <input
-                                type="text"
-                                id="image"
-                                name="image"
-                                value={imageurl}
-                                onChange={handleChange}
-                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
-                                placeholder="Enter image URL"
-                            />
+                        <ImageUpload setImageUrl={setimageurl} setPreviewImageUrl={setPreviewImageUrl} />
                         </div>
                     </div>
 
