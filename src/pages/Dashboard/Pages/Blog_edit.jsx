@@ -27,9 +27,6 @@ const Blog_edit = () => {
 
     
 
-    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
     const handleImageUpload = async (e) => {
         const imageFile = e.target.files[0];
         const formData = new FormData();
@@ -42,21 +39,22 @@ const Blog_edit = () => {
         reader.readAsDataURL(imageFile);
 
         try {
-            const res = await axios.post(image_hosting_api, formData, {
+            const res = await axios.post('https://api.multigympremium.com/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                },
+                withCredentials: true  // Ensure cookies are included in the request
             });
-            setimageurl(res.data.data.url);
+            setimageurl(res.data.path);
             setFormData((prevData) => ({
                 ...prevData,
-                image: res.data.data.url
+                image: res.data.path
             }));
 
             await Swal.fire({
                 icon: 'success',
                 title: 'Image uploaded successfully!',
-                text: `Image URL: ${res.data.data.url}`,
+                text: `Image URL: ${res.data.path}`,
             });
         } catch (error) {
             await Swal.fire({
