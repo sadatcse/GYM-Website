@@ -27,42 +27,7 @@ const Blog_edit = () => {
 
     
 
-    const handleImageUpload = async (e) => {
-        const imageFile = e.target.files[0];
-        const formData = new FormData();
-        formData.append('image', imageFile);
-    
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setPreviewImageUrl(reader.result);
-        };
-        reader.readAsDataURL(imageFile);
-    
-        try {
-            const res = await axiosSecure.post('/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            setimageurl(res.data.path);
-            setFormData((prevData) => ({
-                ...prevData,
-                image: res.data.path
-            }));
-    
-            await Swal.fire({
-                icon: 'success',
-                title: 'Image uploaded successfully!',
-                text: `Image URL: ${res.data.path}`,
-            });
-        } catch (error) {
-            await Swal.fire({
-                icon: 'error',
-                title: 'Error uploading image',
-                text: error.message,
-            });
-        }
-    };
+
 
     const handleChange = (e) => {
         setFormData({
@@ -88,6 +53,10 @@ const Blog_edit = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const id = _id;
+        setFormData((prevData) => ({
+            ...prevData,
+            image: imageurl
+        }));
 
         try {
             const response = await axiosSecure.put(`/news/put/${id}`, formData);

@@ -89,6 +89,10 @@ const Team_edit = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const id = _id;
+        setFormData((prevData) => ({
+            ...prevData,
+            image: imageurl
+        }));
     
         try {
             const response = await axiosSecure.put(`/trainer/put/${id}`, formData);
