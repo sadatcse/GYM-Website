@@ -12,38 +12,46 @@ const Blog_create = () => {
     const axiosSecure = UseAxioSecure();
     const [imageurl, setimageurl] = useState('');
     const axiosPublic = useAxiosPublic();
-    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
+
+    
     const handleImageUpload = async (e) => {
         const imageFile = e.target.files[0];
         const formData = new FormData();
         formData.append('image', imageFile);
-
+        
         try {
-            const res = await axios.post(image_hosting_api, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const response = await fetch('https://image.multigympremium.com/upload', {
+                method: 'POST',
+                body: formData,
             });
-            setimageurl(res.data.data.url);
-            setFormData((prevData) => ({
-                ...prevData,
-                image: res.data.data.url
-            }));
 
-            await Swal.fire({
-                icon: 'success',
-                title: 'Image uploaded successfully!',
-                text: `Image URL: ${res.data.data.url}`,
-            });
+            const data = await response.json();
+
+            if (response.ok) {
+                setimageurl(data.path);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Image uploaded successfully',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: data.message || 'Failed to upload image',
+                });
+            }
         } catch (error) {
-            await Swal.fire({
+            console.error('Error uploading image:', error);
+            Swal.fire({
                 icon: 'error',
-                title: 'Error uploading image',
-                text: error.message,
+                title: 'Error!',
+                text: 'Failed to upload image',
             });
         }
     };
+
 
 
     const [formData, setFormData] = useState({
