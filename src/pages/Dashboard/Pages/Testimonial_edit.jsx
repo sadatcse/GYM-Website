@@ -76,6 +76,7 @@ const Testimonial_edit = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const id = _id;
+        formData.image=imageurl;
 
         try {
             const response = await axiosSecure.put(`/testimonial/put/${id}`, formData);

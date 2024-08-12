@@ -52,7 +52,7 @@ const Team_edit = () => {
         
         const id = _id;
 
-        const updatedFormData = { ...formData, image_url: imageurl };
+        formData.image_url=imageurl;
 
         try {
             const response = await axiosSecure.put(`/trainer/put/${id}`, updatedFormData);

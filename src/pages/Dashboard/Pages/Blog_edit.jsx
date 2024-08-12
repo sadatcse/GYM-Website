@@ -10,6 +10,7 @@ import useAxiosPublic from '../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import ImageUpload from '../../../components/Utility/ImageUploadcpanel';
+
 const Blog_edit = () => {
     const { category, date, description, image, tags, title, _id } = useLoaderData();
     const axiosSecure = UseAxioSecure();
@@ -26,7 +27,12 @@ const Blog_edit = () => {
     });
 
     
-
+    useEffect(() => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            image: previewImageUrl,
+        }));
+    }, [previewImageUrl]);
 
 
     const handleChange = (e) => {
@@ -53,8 +59,8 @@ const Blog_edit = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const id = _id;
-        const updatedFormData = { ...formData, image: imageurl };
-
+        formData.image=imageurl;
+    
         try {
             const response = await axiosSecure.put(`/news/put/${id}`, updatedFormData);
             if (response.data.modifiedCount > 0) {
@@ -173,7 +179,7 @@ const Blog_edit = () => {
                                 type="text"
                                 id="image"
                                 name="image"
-                                value={imageurl}
+                                default value={imageurl}
                                 onChange={handleChange}
                                 className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
                                 placeholder="Enter image URL"

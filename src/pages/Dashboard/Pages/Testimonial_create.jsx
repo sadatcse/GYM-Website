@@ -44,7 +44,7 @@ const Testimonial_create = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        formData.image=imageurl;
 
         // Format the date to include only month, day, and year
         const formattedDate = formData.date.toLocaleDateString('en-US', {

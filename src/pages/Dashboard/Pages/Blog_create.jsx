@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -23,6 +23,14 @@ const Blog_create = () => {
         date: null,
     });
 
+    // Use useEffect to update formData when imageurl changes
+    useEffect(() => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            image: imageurl,
+        }));
+    }, [imageurl]);
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -46,14 +54,17 @@ const Blog_create = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
 
+        formData.image = imageurl;
+        
+    
         const formattedDate = formData.date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
-
+  
+    
         try {
             const response = await axiosSecure.post("/news/post",
                 { ...formData, date: formattedDate },
@@ -63,18 +74,18 @@ const Blog_create = () => {
                     },
                 }
             );
-
+    
             console.log("Response:", response.data);
-
+    
             Swal.fire({
                 icon: "success",
                 title: "Success!",
                 text: "Blog added successfully",
             });
-
+    
         } catch (error) {
             console.error("Error adding Blog:", error);
-
+    
             Swal.fire({
                 icon: "error",
                 title: "Error!",
@@ -82,7 +93,7 @@ const Blog_create = () => {
             });
         }
     };
-
+    
     return (
         <div className="poppins">
             <Helmet>
@@ -199,7 +210,6 @@ Blog_create.modules = {
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         [{ 'list': 'ordered' }, { 'list': 'bullet' },
         { 'indent': '-1' }, { 'indent': '+1' }],
-
         ['clean']
     ],
 };

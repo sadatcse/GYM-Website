@@ -42,14 +42,15 @@ const Team_create = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
-
+        
+        formData.image_url = imageurl;
         // Format the date to include only month, day, and year
         const formattedDate = formData.date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
+        console.log(formData);
 
         try {
             const response = await axiosSecure.post("/trainer/post",
