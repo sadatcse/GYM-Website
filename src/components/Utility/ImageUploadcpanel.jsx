@@ -9,7 +9,7 @@ const ImageUpload = ({ setImageUrl, setPreviewImageUrl }) => {
         formData.append('image', imageFile);
 
         try {
-            const response = await axios.post('https://image.multigympremium.com/upload', formData, {
+            const response = await axios.post('https://web.multigympremium.com/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

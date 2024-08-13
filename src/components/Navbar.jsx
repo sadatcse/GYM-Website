@@ -4,14 +4,26 @@ import "../css/navbar.css";
 import Logo from "../assets/logo.png";
 
 const Navbar = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = false;
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+
+    // Close the dropdown after 3 seconds
+    if (!isDropdownOpen) {
+      setTimeout(() => {
+        setIsDropdownOpen(false);
+      }, 3000);
+    }
+  };
 
   const menu = (
     <>
       <NavLink className={({ isActive }) => (isActive ? "menu-link active" : "menu-link")} to="/">Home</NavLink>
       <NavLink className={({ isActive }) => (isActive ? "menu-link active" : "menu-link")} to="/aboutus/about">About us</NavLink>
       <NavLink className={({ isActive }) => (isActive ? "menu-link active" : "menu-link")} to="/service">Service</NavLink>
-      <NavLink className={({ isActive }) => (isActive ? "menu-link active" : "menu-link")} to="/trainers">Trainer</NavLink>
+      <NavLink className={({ isActive }) => (isActive ? "menu-link active" : "menu-link")} to="/trainers">Team</NavLink>
       <NavLink className={({ isActive }) => (isActive ? "menu-link active" : "menu-link")} to="/explore">Explore</NavLink>
       <NavLink className={({ isActive }) => (isActive ? "menu-link active" : "menu-link")} to="/contactus">Contact Us</NavLink>
     </>
@@ -53,23 +65,29 @@ const Navbar = () => {
       <div className="navbar bg-custom-black px-10">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="z-50 btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" onClick={handleDropdownToggle} className="z-50 btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#f4cb71">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
             </div>
-            <ul tabIndex={0} className="poppins relative menu menu-sm dropdown-content gap-1 bg-transparent text-white rounded-box z-[5] mt-3 w-40 p-3 shadow">
-              <div className='absolute bg-black w-full top-0 opacity-90 border border-gray-700 -left-1 h-full rounded-lg -z-10'></div>
-              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/">Home</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/aboutus/about">About us</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/service">Service</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/trainers">Trainer</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/explore">Explore</NavLink>
-              <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/contactus">Contact Us</NavLink>
-            </ul>
+            {isDropdownOpen && (
+              <ul tabIndex={0} className="poppins relative menu menu-sm dropdown-content gap-1 bg-transparent text-white rounded-box z-[5] mt-3 w-40 p-3 shadow">
+                <div className='absolute bg-black w-full top-0 opacity-90 border border-gray-700 -left-1 h-full rounded-lg -z-10'></div>
+                <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/" onClick={handleDropdownToggle}>Home</NavLink>
+                <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/aboutus/about" onClick={handleDropdownToggle}>About us</NavLink>
+                <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/service" onClick={handleDropdownToggle}>Service</NavLink>
+                <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/trainers" onClick={handleDropdownToggle}>Trainer</NavLink>
+                <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/explore" onClick={handleDropdownToggle}>Explore</NavLink>
+                <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/contactus" onClick={handleDropdownToggle}>Contact Us</NavLink>
+              </ul>
+            )}
           </div>
-          <a className="btn btn-ghost text-xl z-50"><img className='h-24 w-26 hidden md:block' src={Logo} alt="Logo"></img></a>
-          <a className="btn btn-ghost text-xl z-50"><img className='w-10 block md:hidden' src={Logo} alt="Logo"></img></a>
+          <Link to="/" className="btn btn-ghost text-xl z-50">
+  <img className='h-24 w-26 hidden md:block' src={Logo} alt="Logo" />
+</Link>
+<Link to="/" className="btn btn-ghost text-xl z-50">
+  <img className='w-10 block md:hidden' src={Logo} alt="Logo" />
+</Link>
         </div>
         <div className="flex navbar-end w-full justify-end ">
           <div className="hidden lg:flex ">

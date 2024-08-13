@@ -48,7 +48,7 @@ const About = () => {
           {featured.map((feature, index) => {
             return (
               <div
-                className='flex flex-col justify-center items-center gap-4 border p-10 hover:bg-[#f4cb71] rounded-md hover:scale-110 transition-all duration-300 dark:text-white dark:hover:text-neutral'
+                className='flex flex-col justify-center items-center gap-4 border p-10 hover:bg-[#f4cb71] rounded-md hover:scale-110 transition-all duration-300 '
                 key={index}
               >
                 <div className='text-4xl bg-primary-300 text-custom-yellow w-[80px] h-[80px] rounded-full flex justify-center items-center'>

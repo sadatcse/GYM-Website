@@ -4,8 +4,10 @@ import logo from "../assets/gymlogo.jpg";
 import logo1 from "../assets/logo.png";
 import android from "../assets/img/footer/playstore.png";
 import ios from "../assets/img/footer/appsstore.png";
+import moment from "moment/moment";
 
 const Footer = () => {
+    const currentYear = moment().format('YYYY'); // Using moment.js
     const footerContainerVariant = {
         hidden: {
             opacity: 0,
@@ -40,11 +42,12 @@ const Footer = () => {
                 <aside>
                     <h6 className="footer-title text-xl font-bold mb-4">CONTACT US</h6>
                     <div>
-                        <p className="font-semibold text-xl">MULTIGYM PREMIUM</p>
+                        <p className="font-semibold text-xl">MULTI GYM PREMIUM</p>
                         <p>24/1, 24/2 (3rd & 4th floor), Ring Road</p>
                         <p>Shia Masjid Mor, Mohammadpur</p>
                         <p>Dhaka 1207</p>
                         <p><span className="font-bold">Mobile:</span> 01313-197435, 01313-197427</p>
+                        <p><span className="font-bold">Email:</span> info@multigympremium.com</p>
                     </div>
                 </aside>
                 <nav>
@@ -52,7 +55,8 @@ const Footer = () => {
                     <Link className="link link-hover" to="/aboutus/about">About us</Link>
                     <Link className="link link-hover" to="/contactus">Contact</Link>
                     <Link className="link link-hover" to="/service">Service</Link>
-                    <Link className="link link-hover" to="/explore">Explore</Link>
+                    <Link className="link link-hover" to="/blog">Blog</Link>
+                    <Link className="link link-hover" to="/notice">Notice</Link>
                 </nav>
                 <nav>
                     <h6 className="footer-title text-xl font-bold mb-4">Legal</h6>
@@ -60,9 +64,10 @@ const Footer = () => {
                     <Link className="hover:text-red-600 cursor-pointer" to="/legal/appprivacypolicy">Privacy policy</Link>
                     <Link className="hover:text-red-600 cursor-pointer" to="/legal/cookiepolicy">Cookie policy</Link>
                     <Link className="hover:text-red-600 cursor-pointer" to="/legal/refundpolicy">Refund policy</Link>
+                    <Link className="hover:text-red-600 cursor-pointer" to="/webadmin">Admin Login</Link>
                 </nav>
                 <nav>
-                    <h6 className="footer-title text-xl font-bold mb-4">DOWNLOAD MULTIGYM PREMIUM APP</h6>
+                    <h6 className="footer-title text-xl font-bold mb-4">DOWNLOAD MULTI GYM PREMIUM APP</h6>
                     <div className="flex flex-col gap-4">
                         <a href="https://play.google.com/store/apps/details?id=com.example.android" target="_blank" rel="noopener noreferrer">
                             <img src={android} alt="Download on Android" />
@@ -78,9 +83,9 @@ const Footer = () => {
                 <footer className="footer items-center py-7 md:py-4 gap-6 bg-primary-300 border-t text-white flex flex-col-reverse md:flex-row md:justify-between px-5">
                     <div className="flex items-center gap-2">
                         <img src={logo1} className="w-10" alt="Logo" />
-                        <p>Multigym Premium</p>
+                        <p>Multi Gym Premium</p>
                     </div>
-                    <p className="">Copyright © 2024 </p>
+                    <p className="">Copyright © {currentYear}</p> {/* Dynamic Year */}
                     <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                         <a href="https://www.facebook.com/MultiGymPremium" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <FaFacebook size={24} />
@@ -91,7 +96,7 @@ const Footer = () => {
                         <a href="https://www.linkedin.com/company/multigympremium" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <FaLinkedin size={24} />
                         </a>
-                        <a href="https://www.pinterest.com/mmultigympremium" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                        <a href="https://www.pinterest.com/multigympremium" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
                             <FaPinterest size={24} />
                         </a>
                         <a href="https://www.tiktok.com/@multigympremium" target="_blank" rel="noopener noreferrer" aria-label="TikTok">

@@ -98,6 +98,19 @@ const Sidebar = () => {
                                 Add
                             </NavLink>
                         </li>
+                        <li className="text-sm text-left pl-1 mt-2 mx-5">Notice</li>
+                        <li className="text-left mt-2 mx-5">
+                            <NavLink to="notice_view" className="flex routes gap-4 items-center">
+                                <AiOutlineTeam className='text-xl' />
+                                List
+                            </NavLink>
+                        </li>
+                        <li className="text-left  mx-5">
+                            <NavLink to="notice_create" className="flex gap-4 routes items-center">
+                                <AiOutlineUserAdd className='text-xl' />
+                                Add
+                            </NavLink>
+                        </li>
                         <li className="text-left mt-5 mx-5">
                             <Link onClick={handleLogOut} className="flex gap-4 routes items-center ">
                                 <CiLogout className='text-xl' />

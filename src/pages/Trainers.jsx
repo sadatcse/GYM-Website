@@ -33,7 +33,7 @@ const Trainers = () => {
             viewport={{ once: false, amount: 0.2 }}
             className='h2 text-center'
           >
-           Our Trainer 
+           Our Team 
           </motion.h2>
           <motion.p
             variants={fadeIn('up', 0.6)}
@@ -42,11 +42,12 @@ const Trainers = () => {
             viewport={{ once: false, amount: 0.2 }}
             className='max-w-[600px] mx-auto text-center'
           >
-            Meet the Trainer
+            Meet the dedicated professionals driving your fitness journey forward.
+
           </motion.p>
         </div>
         <Helmet>
-        <title>Trainer - Multigym Premium</title>
+        <title>Team - Multigym Premium</title>
         <meta name="description" content="Discover our professional trainers at Multigym Premium. Learn more about their expertise and how they can help you achieve your fitness goals." />
     </Helmet>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">

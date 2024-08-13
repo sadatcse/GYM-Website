@@ -31,7 +31,10 @@ import Blog_edit from "../pages/Dashboard/Pages/Blog_edit";
 import Team_edit from "../pages/Dashboard/Pages/Team_edit";
 import Testimonial_edit from "../pages/Dashboard/Pages/Testimonial_edit";
 import AdminRoute from "./AdminRoute";
-
+import Notice_create from "../pages/Dashboard/Pages/Notice_create";
+import Notice_list from "../pages/Dashboard/Pages/Notice_list";
+import Notice from './../pages/Notice';
+import Notice_edit from './../pages/Dashboard/Pages/Notice_edit';
 export const router = createBrowserRouter([
 
   {
@@ -51,7 +54,7 @@ export const router = createBrowserRouter([
       {
         path: '/trainers/:name',
         element: <Trainers_Details />,
-        loader: ({ params }) => fetch(`https://api.multigympremium.com/trainer/get-name/${params.name}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/trainer/get-name/${params.name}`)
       },
       {
         path: "/service",
@@ -82,7 +85,7 @@ export const router = createBrowserRouter([
       {
         path: "/blog/:id",
         element: <NewsDetails />,
-        loader: ({ params }) => fetch(`https://api.multigympremium.com/news/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/news/get-id/${params.id}`)
       },
       {
         path: "/legal/appprivacypolicy",
@@ -113,6 +116,10 @@ export const router = createBrowserRouter([
         path: "/under",
         element: <UnderConstruction />  //
       },
+      {
+        path: "/notice",
+        element: <Notice />  //
+      },
   
        
     ]
@@ -129,6 +136,14 @@ export const router = createBrowserRouter([
       {
         path:"dashboard",
         element:<Panel></Panel>
+      },
+      {
+        path:"notice_view",
+        element:<AdminRoute><Notice_list></Notice_list></AdminRoute>
+      },
+      {
+        path:"notice_create",
+        element:<AdminRoute><Notice_create></Notice_create></AdminRoute>
       },
       {
         path:"blog_view",
@@ -157,18 +172,24 @@ export const router = createBrowserRouter([
       {
         path:"team_edit/:id",
         element: <AdminRoute><Team_edit></Team_edit></AdminRoute>,
-        loader: ({ params }) => fetch(`https://api.multigympremium.com/trainer/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/trainer/get-id/${params.id}`)
       },
       {
         path:"blog_edit/:id",
         element: <AdminRoute><Blog_edit></Blog_edit></AdminRoute>,
-        loader: ({ params }) => fetch(`https://api.multigympremium.com/news/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/news/get-id/${params.id}`)
       },
       {
         path:"testimonial_edit/:id",
         element: <AdminRoute><Testimonial_edit></Testimonial_edit></AdminRoute>,
-        loader: ({ params }) => fetch(`https://api.multigympremium.com/testimonial/get-id/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/testimonial/get-id/${params.id}`)
       },
+      {
+        path:"notice_edit/:id",
+        element: <AdminRoute><Notice_edit></Notice_edit></AdminRoute>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/notice/get-id/${params.id}`)
+      }
+
     ]
 
   },

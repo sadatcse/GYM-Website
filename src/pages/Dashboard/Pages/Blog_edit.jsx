@@ -60,9 +60,10 @@ const Blog_edit = () => {
         e.preventDefault();
         const id = _id;
         formData.image=imageurl;
+        console.log(formData);
     
         try {
-            const response = await axiosSecure.put(`/news/put/${id}`, updatedFormData);
+            const response = await axiosSecure.put(`/news/put/${id}`, formData);
             if (response.data.modifiedCount > 0) {
                 await Swal.fire({
                     icon: 'success',

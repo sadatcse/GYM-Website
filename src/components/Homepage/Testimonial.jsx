@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Marquee from "react-fast-marquee";
 import Title from "./Title";
 import Spinner from "../Utility/Spinner"; 
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+
 const Testimonial = () => {
   const [testimonialData, setTestimonialData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,17 +13,8 @@ const Testimonial = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const cachedData = JSON.parse(localStorage.getItem("testimonialData"));
-        if (cachedData) {
-          setTestimonialData(cachedData);
-          setLoading(false);
-          return;
-        }
-
-        const response = await axios.get('https://api.multigympremium.com/testimonial/get-all' );
+        const response = await axiosPublic.get('/testimonial/get-all');
         const newData = response.data;
-        localStorage.setItem("testimonialData", JSON.stringify(newData));
-
         setTestimonialData(newData);
         setLoading(false);
       } catch (error) {
@@ -33,7 +24,7 @@ const Testimonial = () => {
     };
 
     fetchData();
-  }, []);
+  }, [axiosPublic]);
 
   return (
     <div className="py-10 container mx-auto mt-5">

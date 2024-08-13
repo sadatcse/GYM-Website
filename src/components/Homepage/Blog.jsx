@@ -20,16 +20,8 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const cachedData = JSON.parse(localStorage.getItem('blogData'));
-        if (cachedData) {
-          setBlogData(cachedData);
-          setLoading(false);
-          return;
-        }
-        const response = await axios.get('https://api.multigympremium.com/news/get-all/');
+        const response = await axiosPublic.get('/news/get-all/');
         const newData = response.data;
-        localStorage.setItem('blogData', JSON.stringify(newData));
-
         setBlogData(newData);
         setLoading(false);
       } catch (error) {
@@ -39,7 +31,7 @@ const Blog = () => {
     };
 
     fetchBlogData();
-  }, []);
+  }, [axiosPublic]);
 
   return (
     <section className='bg-primary-300 text-white py-24' id='blog'>

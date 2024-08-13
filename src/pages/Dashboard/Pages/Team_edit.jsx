@@ -4,33 +4,30 @@ import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
-import axios from "axios";
 import ImageUpload from '../../../components/Utility/ImageUploadcpanel';
-const Team_edit = () => {
+
+const TeamEdit = () => {
     const {
         Instagram, certification, bio, email, facebook, full_name, image_url, mobile, position_title, role, short_name, _id
-
     } = useLoaderData();
+
     const axiosSecure = UseAxioSecure();
-    const axiosPublic = useAxiosPublic();
-    const [imageurl, setimageurl] = useState('');
+    const [imageurl, setImageUrl] = useState(image_url);
     const [previewImageUrl, setPreviewImageUrl] = useState(image_url);
     const [formData, setFormData] = useState({
-        full_name: full_name,
-        short_name: short_name,
-        image_url: image_url,
-        bio: bio,
-        certification: certification,
-        email: email,
-        Instagram: Instagram,
-        facebook: facebook,
-        mobile: mobile,
-        role: role,
-        position_title: position_title,
+        full_name,
+        short_name,
+        image_url,
+        bio,
+        certification,
+        email,
+        Instagram,
+        facebook,
+        mobile,
+        role,
+        position_title,
         date: new Date(),
     });
-
-
 
     const handleChange = (e) => {
         setFormData({
@@ -39,23 +36,14 @@ const Team_edit = () => {
         });
     };
 
-    const handleDateChange = (date) => {
-        setFormData({
-            ...formData,
-            date: date,
-        });
-    };
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         const id = _id;
-
-        formData.image_url=imageurl;
+        formData.image_url = imageurl;
 
         try {
-            const response = await axiosSecure.put(`/trainer/put/${id}`, updatedFormData);
+            const response = await axiosSecure.put(`/trainer/put/${id}`, formData);
             if (response.data.modifiedCount > 0) {
                 await Swal.fire({
                     icon: 'success',
@@ -64,9 +52,9 @@ const Team_edit = () => {
                 });
             } else {
                 await Swal.fire({
-                    icon: 'info',
-                    title: 'No changes detected',
-                    text: 'No updates were made to the trainer details.',
+                    icon: 'success',
+                    title: 'No Major Updates',
+                    text: 'No major updates were made to the trainer details.',
                 });
             }
         } catch (error) {
@@ -83,17 +71,15 @@ const Team_edit = () => {
             <Helmet>
                 <title>Edit Team Member</title>
             </Helmet>
-            {/* Top content */}
             <div className="flex justify-between">
                 <div>
                     <p className='text-2xl font-bold'>Edit Team</p>
-                    {/* breadcrumbs */}
                     <div className="breadcrumbs mt-2 text-xs text-black">
                         <ul>
                             <li className='text-gray-400'><a>Home</a></li>
-                            <li className='text-gray-400'><a>admin</a></li>
-                            <li className='text-gray-400'>team</li>
-                            <li className='text-gray-500'>edit</li>
+                            <li className='text-gray-400'><a>Admin</a></li>
+                            <li className='text-gray-400'>Team</li>
+                            <li className='text-gray-500'>Edit</li>
                         </ul>
                     </div>
                 </div>
@@ -109,8 +95,8 @@ const Team_edit = () => {
                             type="text"
                             value={formData.full_name}
                             onChange={handleChange}
-                            placeholder='Full name'
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder='Full Name'
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                     </div>
@@ -118,11 +104,11 @@ const Team_edit = () => {
                         <input
                             id="short_name"
                             name="short_name"
-                            placeholder='Short name'
+                            placeholder='Short Name'
                             type="text"
                             value={formData.short_name}
                             onChange={handleChange}
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                         <input
@@ -132,7 +118,7 @@ const Team_edit = () => {
                             placeholder='Certification'
                             value={formData.certification}
                             onChange={handleChange}
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
 
@@ -144,7 +130,7 @@ const Team_edit = () => {
                             placeholder='Facebook'
                             value={formData.facebook}
                             onChange={handleChange}
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <input
                             id="Instagram"
@@ -153,7 +139,7 @@ const Team_edit = () => {
                             placeholder='Instagram'
                             value={formData.Instagram}
                             onChange={handleChange}
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
                     <div className="flex gap-3 mt-5">
@@ -164,17 +150,17 @@ const Team_edit = () => {
                             placeholder='Email'
                             value={formData.email}
                             onChange={handleChange}
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                         <input
                             id="mobile"
                             name="mobile"
                             type="text"
-                            placeholder='Mobile no'
+                            placeholder='Mobile No'
                             value={formData.mobile}
                             onChange={handleChange}
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                     </div>
@@ -183,17 +169,17 @@ const Team_edit = () => {
                             id="position_title"
                             name="position_title"
                             type="text"
-                            placeholder='Position title'
+                            placeholder='Position Title'
                             value={formData.position_title}
                             onChange={handleChange}
-                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <select
                             id="role"
                             name="role"
                             value={formData.role}
                             onChange={handleChange}
-                            className="appearance-none text-gray-400 text-sm border shadow-sm rounded-xl  w-full py-4 px-3  leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none text-gray-400 text-sm border shadow-sm rounded-xl w-full py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         >
                             <option value="" disabled>Select Role</option>
@@ -215,9 +201,9 @@ const Team_edit = () => {
                         </select>
                     </div>
 
-                    <div className="flex  items-center gap-5">
+                    <div className="flex items-center gap-5">
                         <div className='w-1/2'>
-                        <ImageUpload setImageUrl={setimageurl} setPreviewImageUrl={setPreviewImageUrl} />
+                            <ImageUpload setImageUrl={setImageUrl} setPreviewImageUrl={setPreviewImageUrl} />
                         </div>
                         <div className='w-1/2'>
                             <input
@@ -226,8 +212,8 @@ const Team_edit = () => {
                                 name="image"
                                 value={imageurl}
                                 onChange={handleChange}
-                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700  focus:outline-none focus:shadow-outline"
-                                placeholder="Enter image URL"
+                                className="appearance-none text-sm border shadow-sm rounded-xl w-full py-4 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                                placeholder="Enter Image URL"
                             />
                         </div>
                     </div>
@@ -239,7 +225,7 @@ const Team_edit = () => {
                             value={formData.bio}
                             onChange={handleChange}
                             placeholder='Bio'
-                            className="appearance-none text-gray-700 text-sm border shadow-sm h-36 rounded-xl  w-full py-4 px-3 resize-none  leading-tight focus:outline-none focus:shadow-outline:shadow-outline"
+                            className="appearance-none text-gray-700 text-sm border shadow-sm h-36 rounded-xl w-full py-4 px-3 resize-none leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                     </div>
@@ -258,4 +244,4 @@ const Team_edit = () => {
     );
 };
 
-export default Team_edit;
+export default TeamEdit;

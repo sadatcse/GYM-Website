@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { FaFacebook, FaInstagram, FaMobileAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Title from './Title';
 import CustomButton from './CustomButton';
 import Spinner from "../Utility/Spinner";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+
 const Team = () => {
   const [trainerData, setTrainerData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,8 +14,10 @@ const Team = () => {
   useEffect(() => {
     const fetchTrainerData = async () => {
       try {
-        const response = await axios.get('https://api.multigympremium.com/trainer/get-all');
-        setTrainerData(response.data); 
+        const response = await axiosPublic.get('/trainer/get-all');
+        // Filter the trainers with the role "Trainer"
+        // const filteredTrainers = response.data.filter(trainer => trainer.role === 'Trainer');
+        setTrainerData(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching trainer data:', error);
@@ -24,7 +26,7 @@ const Team = () => {
     };
 
     fetchTrainerData();
-  }, []);
+  }, [axiosPublic]);
 
   const sliceText = (text, count) => {
     const words = text.split(' ');
@@ -34,7 +36,6 @@ const Team = () => {
     return text;
   };
 
-  // const shuffledData = trainerData.sort(() => 0.5 - Math.random());
   const selectedTrainers = trainerData.slice(0, 4);
 
   return (
@@ -50,10 +51,18 @@ const Team = () => {
               <div className='flex flex-col items-center text-center' key={trainer._id}>
                 {/* image */}
                 <div className='relative mx-auto'>
-                  <Link to={`/trainers/${trainer.short_name}`}><img src={trainer.image_url} alt={trainer.full_name} className='rounded-lg bg-gray-50 w-full border h-96' /></Link>
+                  <Link to={`/trainers/${trainer.short_name}`}>
+                    <img 
+                      src={trainer.image_url} 
+                      alt={trainer.full_name} 
+                      className='rounded-lg bg-gray-50 w-full border h-96' 
+                    />
+                  </Link>
                 </div>
                 {/* name */}
-                <Link to={`/trainers/${trainer.short_name}`}><h4 className='h4 mt-1 mb-2'>{trainer.full_name}</h4></Link>
+                <Link to={`/trainers/${trainer.short_name}`}>
+                  <h4 className='h4 mt-1 mb-2'>{trainer.full_name}</h4>
+                </Link>
                 {/* role */}
                 <p className='uppercase text-xs tracking-[3px] mb-2'>Fitness Trainer</p>
                 {/* certifications */}
@@ -61,25 +70,32 @@ const Team = () => {
                 {/* socials */}
                 <div className='flex justify-center gap-5'>
                   {trainer.Instagram && (
-                    <div>
-                      <a href={`https://www.instagram.com/${trainer.Instagram}`} target='_blank' rel='noopener noreferrer' className='hover:text-accent transition-all'>
-                        <FaInstagram className='text-2xl' />
-                      </a>
-                    </div>
+                    <a 
+                      href={`https://www.instagram.com/${trainer.Instagram}`} 
+                      target='_blank' 
+                      rel='noopener noreferrer' 
+                      className='hover:text-accent transition-all'
+                    >
+                      <FaInstagram className='text-2xl' />
+                    </a>
                   )}
                   {trainer.facebook && (
-                    <div>
-                      <a href={`https://www.facebook.com/${trainer.facebook}`} target='_blank' rel='noopener noreferrer' className='hover:text-accent transition-all'>
-                        <FaFacebook className='text-2xl' />
-                      </a>
-                    </div>
+                    <a 
+                      href={`https://www.facebook.com/${trainer.facebook}`} 
+                      target='_blank' 
+                      rel='noopener noreferrer' 
+                      className='hover:text-accent transition-all'
+                    >
+                      <FaFacebook className='text-2xl' />
+                    </a>
                   )}
                   {trainer.mobile && (
-                    <div>
-                      <a href={`tel:${trainer.mobile}`} className='hover:text-accent transition-all'>
-                        <FaMobileAlt className='text-2xl' />
-                      </a>
-                    </div>
+                    <a 
+                      href={`tel:${trainer.mobile}`} 
+                      className='hover:text-accent transition-all'
+                    >
+                      <FaMobileAlt className='text-2xl' />
+                    </a>
                   )}
                 </div>
               </div>

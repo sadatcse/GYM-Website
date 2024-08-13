@@ -1,12 +1,12 @@
-import axios from 'axios';
-export const axiosSecure = axios.create({
-    // baseURL: 'https:/multigym-premium-server.vercel.app/'
-    baseURL: 'https://api.multigympremium.com'
-})
-const UseAxioSecure = () => {
-    axiosSecure.defaults.withCredentials = true ;
-    return axiosSecure;
 
+import axios from "axios";
+
+const axiosSecure = axios.create({
+    baseURL: `${import.meta.env.VITE_BACKEND_URL}`
+})
+
+const UseAxioSecure = () => {
+    return axiosSecure;
 };
 
 export default UseAxioSecure;
