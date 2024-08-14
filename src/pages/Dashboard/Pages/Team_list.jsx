@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
-import useAxiosPublic from './../../../Hook/useAxiosPublic';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { TfiSearch } from 'react-icons/tfi';
@@ -9,8 +8,9 @@ import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { BiMessageSquareDetail } from 'react-icons/bi';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { FiEdit3 } from 'react-icons/fi';
+import UseAxioSecure from '../../../Hook/UseAxioSecure';
 const Team_list = () => {
-    const axiosSecure = useAxiosPublic();
+    const axiosSecure = UseAxioSecure();
     const [usersData, setUsersData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
@@ -41,35 +41,36 @@ const Team_list = () => {
         const endIndex = startIndex + itemsPerPage;
         return usersData.slice(startIndex, endIndex);
     };
-    const handleDelete = async (postId) => {
+    const handleDelete = async (id) => {
         try {
             const result = await Swal.fire({
                 title: 'Are you sure?',
-                text: 'You will not be able to recover this trainer!',
+                text: 'You will not be able to recover this testimonial!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
             });
-    
+
             if (result.isConfirmed) {
-                await axiosSecure.delete(`/trainer/delete/${postId}`);
-                const res = await axiosSecure.get('/trainer/get-all');
-                setUsersData(res.data);
-                setCount(res.data.length);
+                await axiosSecure.delete(`/trainer/delete/${id}`);
                 Swal.fire(
                     'Deleted!',
-                    'The trainer has been deleted.',
+                    'The testimonial has been deleted.',
                     'success'
                 );
+
+                const res = await axiosSecure.get('/trainer/get-all');
+                setTestimonials(res.data);
+                setCount(res.data.length);
             }
         } catch (error) {
-            console.error('Error deleting trainer:', error);
+            console.error('Error deleting testimonial:', error);
             setIsError(true);
             Swal.fire(
                 'Error!',
-                'Failed to delete the trainer.',
+                'Failed to delete the testimonial.',
                 'error'
             );
         }

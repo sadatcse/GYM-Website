@@ -6,7 +6,7 @@ import withReactContent from 'sweetalert2-react-content';
 import { AuthContext } from './../providers/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 const WebLogin = () => {
-    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ const WebLogin = () => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        signInUser(email, password)
+        signIn(email, password)
             .then((result) => {
                 MySwal.fire({
                     icon: 'success',

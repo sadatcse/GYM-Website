@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import useAxiosPublic from '../../../Hook/useAxiosPublic';
+import UseAxioSecure from '../../../Hook/UseAxioSecure';
 import Swal from 'sweetalert2';
 import { FiEdit3 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -10,7 +10,7 @@ import { TfiSearch } from "react-icons/tfi";
 import { useNavigate } from 'react-router-dom';
 
 const Notice_list = () => {
-    const axiosSecure = useAxiosPublic();
+    const axiosSecure = UseAxioSecure();
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [noticesData, setNoticesData] = useState([]);
