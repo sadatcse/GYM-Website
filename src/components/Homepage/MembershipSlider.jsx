@@ -25,10 +25,10 @@ const membershipData = [
         icon: MdClose,
         text: 'Includes membership',
       },
-      {
-        icon: FaCheck,
-        text: 'Access to all gym facilities',
-      },
+      // {
+      //   icon: FaCheck,
+      //   text: 'Access to all gym facilities',
+      // },
       {
         icon: MdClose,
         text: 'Diet plan included',
@@ -59,10 +59,10 @@ const membershipData = [
         icon: MdClose,
         text: 'Includes membership',
       },
-      {
-        icon: FaCheck,
-        text: 'Access to all gym facilities',
-      },
+      // {
+      //   icon: FaCheck,
+      //   text: 'Access to all gym facilities',
+      // },
       {
         icon: FaCheck,
         text: 'Diet plan included',
@@ -93,10 +93,10 @@ const membershipData = [
         icon: FaCheck,
         text: 'Includes membership',
       },
-      {
-        icon: FaCheck,
-        text: 'Access to all gym facilities',
-      },
+      // {
+      //   icon: FaCheck,
+      //   text: 'Access to all gym facilities',
+      // },
       {
         icon: FaCheck,
         text: 'Diet plan included',
