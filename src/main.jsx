@@ -11,7 +11,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ScrollToTop from './components/Utility/ScrollToTop';
 
-// Initialize AOS library
+// Initialize AOS library for some work 
 AOS.init();
 
 
