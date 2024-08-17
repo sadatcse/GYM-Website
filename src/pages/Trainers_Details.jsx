@@ -45,7 +45,7 @@ const Trainers_Details = () => {
                                 {paragraph}
                                 <br />
                             </React.Fragment>
-                        )) : 'No bio available.'}
+                        )) : 'Loading ..............'}
                     </p>
                     <div className='flex gap-5 mt-5 md:text-2xl justify-center md:justify-start text-xl'>
                         {facebook && (

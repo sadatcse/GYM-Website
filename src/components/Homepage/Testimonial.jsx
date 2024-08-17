@@ -14,6 +14,7 @@ const Testimonial = () => {
     const fetchData = async () => {
       try {
         const response = await axiosPublic.get('/testimonial/get-all');
+        console.log(response);
         const newData = response.data;
         setTestimonialData(newData);
         setLoading(false);

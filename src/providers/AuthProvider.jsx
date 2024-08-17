@@ -33,14 +33,14 @@ const AuthProvider = ({ children }) => {
             const userEmail = currentUser?.email || user?.email;
             const loggedUser = { email: userEmail };
             setUser(currentUser);
-            console.log('current user', currentUser);
+        
             setLoading(false);
             // if user exists then issue a token
             if (currentUser) {
-              console.log('current', user, currentUser);
+           
                 axios.post(`${import.meta.env.VITE_BACKEND_URL}/jwt`, loggedUser, { withCredentials: true })
                     .then(res => {
-                        console.log('token response', res.data);
+                       
                     })
             }
             else {

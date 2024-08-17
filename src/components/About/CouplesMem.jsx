@@ -16,35 +16,40 @@ const CouplesMem = () => {
                         <thead>
                             <tr>
                                 <th className={`${headClass}`}>DURATION</th>
-                                <th className={`${headClass}`}>REGULAR PRICE</th>
-                                <th className={`${headClass}`}>PROMO/INTRO PRICE</th>
+                                <th className={`${headClass}`}>PRICE</th>
+                                <th className={`${headClass}`}>PERSON</th>
                             </tr>
                         </thead>
                         <tbody className='border'>
                             {/* row 2 */}
                             <tr>
-                                <th className={`${rowClass}`}>3 MONTH</th>
-                                <th className={`${rowClass}`}>BDT. 40000</th>
-                                <th className={`${rowClass}`}>BDT. 8K OFF 32000</th>
+                                <th className={`${rowClass}`}>6 MONTH</th>
+                                <th className={`${rowClass}`}>BDT. 30,000</th>
+                                <th className={`${rowClass}`}>2 PERSON</th>
                             </tr>
                             {/* row 3 */}
                             <tr>
-                                <th className={`${rowClass}`}>6 MONTH</th>
-                                <th className={`${rowClass}`}>BDT. 72000</th>
-                                <th className={`${rowClass}`}>BDT. 20K OFF 52000</th>
+                            <th className={`${rowClass}`}>6 MONTH</th>
+                                <th className={`${rowClass}`}>BDT. 70,000</th>
+                                <th className={`${rowClass}`}>5 PERSON</th>
                             </tr>
                             {/* row 4 */}
                             <tr>
-                                <th className={`${rowClass}`}>1 YEAR</th>
-                                <th className={`${rowClass}`}>BDT. 120000</th>
-                                <th className={`${rowClass}`}>BDT. 30K OFF 90000</th>
+                            <th className={`${rowClass}`}>12 MONTH</th>
+                                <th className={`${rowClass}`}>BDT. 1,80,000</th>
+                                <th className={`${rowClass}`}>7 PERSON</th>
+                            </tr>
+                            <tr>
+                            <th className={`${rowClass}`}>12 MONTH</th>
+                                <th className={`${rowClass}`}>BDT. 2,00,000</th>
+                                <th className={`${rowClass}`}>9 PERSON</th>
                             </tr>
                             
                         </tbody>
                     </table>
                 </div>
 
-                <p className="text-center font-semibold text-lg mt-5 text-gray-600">Note: Prices do not include VAT</p>
+                <p className="text-center font-semibold text-lg mt-5 text-gray-600">Note: Prices include VAT</p>
             </div>
         </div>
     );

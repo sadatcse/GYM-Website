@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-    baseURL: `${import.meta.env.VITE_BACKEND_URL}`,
+    baseURL: `https://images.multigympremium.com/api`,
     withCredentials: true, // This ensures cookies are sent with the request
 
 })

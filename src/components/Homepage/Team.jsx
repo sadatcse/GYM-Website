@@ -12,21 +12,32 @@ const Team = () => {
   const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
+    let timeoutId;
+
     const fetchTrainerData = async () => {
       try {
         const response = await axiosPublic.get('/trainer/get-all');
-        // Filter the trainers with the role "Trainer"
-        // const filteredTrainers = response.data.filter(trainer => trainer.role === 'Trainer');
         setTrainerData(response.data);
         setLoading(false);
+        clearTimeout(timeoutId); // Clear the timeout if data loads successfully
       } catch (error) {
         console.error('Error fetching trainer data:', error);
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
     fetchTrainerData();
-  }, [axiosPublic]);
+
+    // Set a timeout to refetch the data if it doesn't load within 3 seconds
+    timeoutId = setTimeout(() => {
+      if (loading) {
+        fetchTrainerData();
+      }
+    }, 3000);
+
+    // Clean up the timeout when the component unmounts
+    return () => clearTimeout(timeoutId);
+  }, [axiosPublic, loading]);
 
   const sliceText = (text, count) => {
     const words = text.split(' ');

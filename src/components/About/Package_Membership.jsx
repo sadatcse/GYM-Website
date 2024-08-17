@@ -1,7 +1,9 @@
 import React from 'react';
+
 const Package_Membership = () => {
-    const rowClass = "border text-center font-normal py-4"
-    const headClass = "border bg-red-600 text-white font-semibold text-center md:text-base poppins"
+    const rowClass = "border text-center font-normal py-4";
+    const headClass = "border bg-red-600 text-white font-semibold text-center md:text-base poppins";
+
     return (
         <div className='md:py-16'>
             <div className='mx-auto w-[90%]'>
@@ -24,35 +26,50 @@ const Package_Membership = () => {
                             </tr>
                         </thead>
                         <tbody className='border'>
+                            {/* Admission Fee */}
+                            <tr>
+                                <th className={`${rowClass}`}>ADMISSION FEE</th>
+                                <th className={`${rowClass}`} colSpan="2">BDT. 3500</th>
+                            </tr>
+                            {/* Regular Monthly Fee */}
+                            <tr>
+                                <th className={`${rowClass}`}>REGULAR MONTHLY FEE</th>
+                                <th className={`${rowClass}`} colSpan="2">BDT. 2500</th>
+                            </tr>
                             {/* row 2 */}
                             <tr>
-                                <th className={`${rowClass}`}>WEEKLY</th>
-                                <th className={`${rowClass}`}>BDT. 4000</th>
-                                <th className={`${rowClass}`}>BDT. 1K OFF 3000</th>
+                                <th className={`${rowClass}`}>DAILY (NO ADMISSION FEES)</th>
+                                <th className={`${rowClass}`}>BDT. 600</th>
+                                <th className={`${rowClass}`}>BDT. 0 OFF 600</th>
+                            </tr>
+                            <tr>
+                                <th className={`${rowClass}`}>WEEKLY (NO ADMISSION FEES)</th>
+                                <th className={`${rowClass}`}>BDT. 2500</th>
+                                <th className={`${rowClass}`}>BDT. 500 OFF 2000</th>
                             </tr>
                             {/* row 3 */}
                             <tr>
-                                <th className={`${rowClass}`}>MONTHLY</th>
-                                <th className={`${rowClass}`}>BDT. 8000</th>
-                                <th className={`${rowClass}`}>BDT. 2K OFF 6000</th>
+                                <th className={`${rowClass}`}>MONTHLY (NO ADMISSION FEES)</th>
+                                <th className={`${rowClass}`}>BDT. 6000</th>
+                                <th className={`${rowClass}`}>BDT. 1K OFF 5000</th>
                             </tr>
                             {/* row 4 */}
                             <tr>
-                                <th className={`${rowClass}`}>3 MONTH</th>
-                                <th className={`${rowClass}`}>BDT. 21000</th>
-                                <th className={`${rowClass}`}>BDT. 4K OFF 17000</th>
+                                <th className={`${rowClass}`}>3 MONTH (NO ADMISSION FEES)</th>
+                                <th className={`${rowClass}`}>BDT. 9000</th>
+                                <th className={`${rowClass}`}>BDT. 0K OFF 9000</th>
                             </tr>
                             {/* row 5 */}
                             <tr>
-                                <th className={`${rowClass}`}>6 MONTH</th>
-                                <th className={`${rowClass}`}>BDT. 38000</th>
-                                <th className={`${rowClass}`}>BDT. 10K OFF 28000</th>
+                                <th className={`${rowClass}`}>6 MONTH (NO ADMISSION FEES)</th>
+                                <th className={`${rowClass}`}>BDT. 16000</th>
+                                <th className={`${rowClass}`}>BDT. 0K OFF 16000</th>
                             </tr>
-                            {/* row 5 */}
+                            {/* row 6 */}
                             <tr>
-                                <th className={`${rowClass}`}>1 YEAR</th>
-                                <th className={`${rowClass}`}>BDT. 70000</th>
-                                <th className={`${rowClass}`}>BDT. 20K OFF 50000</th>
+                                <th className={`${rowClass}`}>1 YEAR (NO ADMISSION FEES)</th>
+                                <th className={`${rowClass}`}>BDT. 28000</th>
+                                <th className={`${rowClass}`}>BDT. 0K OFF 28000</th>
                             </tr>
                         </tbody>
                     </table>
