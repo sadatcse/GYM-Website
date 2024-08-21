@@ -1,14 +1,16 @@
-
 import axios from "axios";
+import { useMemo } from "react";
 
-const axiosSecure = axios.create({
-    baseURL: `https://images.multigympremium.com/api`,
-    withCredentials: true, // This ensures cookies are sent with the request
+const UseAxiosSecure = () => {
+  const axiosSecure = useMemo(
+    () =>
+      axios.create({
+        baseURL: `${import.meta.env.VITE_BACKEND_URL}`,
+      }),
+    []
+  );
 
-})
-
-const UseAxioSecure = () => {
-    return axiosSecure;
+  return axiosSecure;
 };
 
-export default UseAxioSecure;
+export default UseAxiosSecure;

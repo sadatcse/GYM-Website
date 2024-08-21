@@ -87,7 +87,7 @@ const membershipData = [
   },
   {
     title: 'Semi-Yearly',
-    price: '15000',
+    price: '16000',
     benefits: [
       {
         icon: FaCheck,
@@ -107,7 +107,7 @@ const membershipData = [
       },
       {
         icon: FaCheck,
-        text: 'Monday-Friday gym access',
+        text: 'Everyday gym access',
       },
       {
         icon: FaCheck,

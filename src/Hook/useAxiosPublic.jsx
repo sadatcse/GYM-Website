@@ -1,11 +1,12 @@
 import axios from "axios";
-
+//
 const axiosPublic = axios.create({
-    baseURL: `https://images.multigympremium.com/api`
-})
+
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}`,
+});
 
 const useAxiosPublic = () => {
-    return axiosPublic;
+  return axiosPublic;
 };
 
 export default useAxiosPublic;
