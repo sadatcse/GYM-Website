@@ -67,7 +67,11 @@ const Blog = () => {
                         </Link>
                         <div className='flex flex-col items-start'>
                           <p className='max-w-[380px] uppercase text-[12px] tracking-[3px] mb-1'>
-                            {post.date}
+                            {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
                           </p>
                           <Link
                             className='hover:text-accent transition-all duration-300'

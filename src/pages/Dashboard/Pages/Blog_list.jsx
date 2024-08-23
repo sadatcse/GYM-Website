@@ -199,7 +199,11 @@ const Blog_list = () => {
                                         <tr key={post._id} >
                                             <td className="px-4 py-3 text-left">{index + 1}</td>
                                             <td className="px-4 py-3">{post.title}</td>
-                                            <td className="px-4 py-3">{post.date}</td>
+                                            <td className="px-4 py-3">                          {new Date(post.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}</td>
                                             <td className="px-4 py-3">{post.category}</td>
                                             <td className="flex gap-3 text-base">
                                                 <button

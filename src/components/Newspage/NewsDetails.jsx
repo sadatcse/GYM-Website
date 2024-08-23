@@ -80,7 +80,11 @@ const NewsDetails = () => {
                     <div className="col-span-2 pr-20">
                         <p className="text-4xl font-semibold mb-5 poppins">{ob.title}</p>
                         <p className="text-2xl mb-2 font-bold">
-                            {ob.date} <FaClock className="inline-block ml-2 mr-1" /> {readingTime} min read
+                        {new Date(ob.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })} <FaClock className="inline-block ml-2 mr-1" /> {readingTime} min read
                         </p>
                         <div dangerouslySetInnerHTML={createMarkup(ob.description)} className="text-2xl font-thin leading-8 mt-3" />
                         <p className="text-red-500 mt-3 text-lg font-thin cursor-pointer max-w-fit" onClick={() => navigate(-1)}>Go Back</p>

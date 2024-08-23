@@ -13,7 +13,8 @@ const Notice = () => {
         const fetchNotices = async () => {
             try {
                 const response = await axiosPublic.get('/notice/get-all');
-                setNotices(response.data);
+                const sortedNotices = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                setNotices(sortedNotices);
             } catch (error) {
                 console.error('Error fetching notices:', error);
             }
@@ -120,7 +121,7 @@ const Notice = () => {
                 {notices.length > 0 && (
                     <>
                         {/* First Notice */}
-                        <div className=" col-span-full bg-white shadow-lg rounded-lg overflow-hidden mb-6 flex flex-col lg:flex-row">
+                        <div className=" col-span-full bg-white shadow-lg rounded-lg overflow-hidden mb-6 flex flex-col lg:flex-row   ">
                             <img
                                 src={notices[0].image}
                                 alt={notices[0].title}
@@ -153,39 +154,45 @@ const Notice = () => {
 
                         {/* Other Notices */}
                         <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                            {notices.slice(1).map((notice, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-base-100 border shadow rounded-lg overflow-hidden flex"
-                                >
-                                    <img
-                                        src={notice.image}
-                                        alt={notice.title}
-                                        className="w-1/3 h-auto object-cover"
-                                    />
-                                    <div className="p-4 w-2/3 flex flex-col justify-between">
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2">{notice.title}</h3>
-                                            <p className="text-gray-600 text-sm mb-2">{notice.description}</p>
-                                        </div>
-                                        <div className="mt-auto">
-                                            <div className="text-xs text-gray-500 flex items-center mb-1">
-                                                <AiOutlineCalendar className="mr-2" />
-                                                Posted on: {notice.date}
-                                            </div>
-                                            <div className="text-xs text-gray-500 flex items-center mb-1">
-                                                <AiOutlineUser className="mr-2" />
-                                                Author: {notice.author}
-                                            </div>
-                                            <div className="text-xs text-gray-500 flex items-center">
-                                                <AiOutlineTag className="mr-2" />
-                                                Category: {notice.category}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+  {notices.slice(1).map((notice, index) => (
+    <div
+      key={index}
+      className="bg-base-100 border shadow rounded-lg overflow-hidden flex"
+    >
+      <img
+        src={notice.image}
+        alt={notice.title}
+        className="w-1/3 h-32 object-cover"
+      />
+      <div className="p-4 w-2/3 flex flex-col justify-between">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">{notice.title}</h3>
+          <p className="text-gray-600 text-sm mb-2">
+            {notice.description.replace(/<[^>]+>/g, '').slice(0, 200)}{notice.description.length > 200 ? '...' : ''}
+          </p>
+        </div>
+        <div className="mt-auto">
+          <div className="text-xs text-gray-500 flex items-center mb-1">
+            <AiOutlineCalendar className="mr-2" />
+            Posted on: {new Date(notice.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </div>
+          <div className="text-xs text-gray-500 flex items-center mb-1">
+            <AiOutlineUser className="mr-2" />
+            Author: {notice.author}
+          </div>
+          <div className="text-xs text-gray-500 flex items-center">
+            <AiOutlineTag className="mr-2" />
+            Category: {notice.category}
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
 
                     </>
                 )}
