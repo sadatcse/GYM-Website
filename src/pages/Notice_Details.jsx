@@ -23,7 +23,7 @@ const Notice_Details = () => {
     }, [axiosPublic]);
     return (
         <section className="bg-slate-50">
-            <div className="flex px-40 gap-6 py-4 justify-between">
+            <div className="flex flex-col-reverse md:flex-row md:px-40 gap-6 py-4 justify-between">
                 {/* routes */}
                 <section className="min-w-80 max-h-min p-5 pr-0 border-r rounded">
                     <div className="flex flex-col">
@@ -33,10 +33,10 @@ const Notice_Details = () => {
                                     to={`/notice/${item._id}`}
                                     className={({ isActive }) =>
                                         `my-1 font-normal first-letter:uppercase lowercase
-            ${isActive ? 'text-green-500 border-r-2 border-green-500 font-semibold' : 'text-gray-700'}
-            px-2 py-1 transition-colors duration-300 ease-in-out
-            ${isActive ? 'border-r-2 border-green-500' : 'border-r-0'}
-            `
+                                        ${isActive ? 'text-yellow-500 border-r-2 border-yellow-500 font-semibold' : 'text-gray-700'}
+                                        px-2 py-1 transition-colors duration-300 ease-in-out
+                                        ${isActive ? 'border-r-2 border-yellow-500' : 'border-r-0'}
+                                        `
                                     }
                                 >
                                     {item.title}
