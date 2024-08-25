@@ -23,6 +23,19 @@ const Notice_Details = () => {
     }, [axiosPublic]);
     return (
         <section className="bg-slate-50">
+            <div className="relative h-64">
+                <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: "url('https://www.teambath.com/wp-content/uploads/2023/11/Gym-landscape-for-facilities-page-2023.jpg')" }}
+                ></div>
+                <div className="absolute inset-0 bg-black opacity-70"></div>
+                <div className="relative flex items-center justify-center h-full">
+                    <div className='flex flex-col items-center gap-4'>
+                        <h1 className="text-custom-yellow text-4xl font-bold">Notice </h1>
+                        <p className="text-center text-white font-semibold text-xl">Stay informed with the latest updates, announcements, and important notices. Keep track of what’s happening!</p>
+                    </div>
+                </div>
+            </div>
             <div className="flex flex-col-reverse md:flex-row md:px-40 gap-6 py-4 justify-between">
                 {/* routes */}
                 <section className="min-w-80 max-h-min p-5 pr-0 border-r rounded">
