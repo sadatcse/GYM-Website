@@ -15,6 +15,7 @@ const Notice = () => {
                 const response = await axiosPublic.get('/notice/get-all');
                 const sortedNotices = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
                 setNotices(sortedNotices);
+                console.log(sortedNotices)
             } catch (error) {
                 console.error('Error fetching notices:', error);
             }
@@ -22,72 +23,6 @@ const Notice = () => {
 
         fetchNotices();
     }, [axiosPublic]);
-
-    // const notices = [
-    //     {
-    //         "_id": "66b9f3172bda247a314a6c0b",
-    //         "title": "Important Update on Office Hours",
-    //         "description": "The office will be closed on Friday for maintenance. Please plan accordingly. The office will be closed on Friday for maintenance. Please plan accordingly. The office will be closed on Friday for maintenance. Please plan accordingly. ",
-    //         "date": "2024-08-12",
-    //         "author": "HR Department",
-    //         "category": "General",
-    //         "image": "https://www.lswgcpa.com/wp-content/uploads/2021/10/IMPORTANT-UPDATE.jpg"
-    //     },
-    //     {
-    //         "_id": "66b9f3172bda247a314a6c0c",
-    //         "title": "Annual General Meeting Announcement",
-    //         "description": "The Annual General Meeting will take place on August 20, 2024. Attendance is mandatory.",
-    //         "date": "2024-08-10",
-    //         "author": "Management",
-    //         "category": "Event",
-    //         "image": "https://relinconsultants.com/wp-content/uploads/2023/03/Annual-General-Meeting-under-the-Company-Act-of-Bangladesh-768x398.jpg"
-    //     },
-    //     {
-    //         "_id": "66b9f3172bda247a314a6c0d",
-    //         "title": "New Health and Safety Guidelines",
-    //         "description": "Please review the new health and safety guidelines effective immediately.",
-    //         "date": "2024-08-05",
-    //         "author": "Safety Committee",
-    //         "category": "Policy",
-    //         "image": "https://www.deenscollege.com/wp-content/uploads/2018/11/Safety-guidelines.jpg"
-    //     },
-    //     {
-    //         "_id": "66b9f3172bda247a314a6c0e",
-    //         "title": "IT System Maintenance",
-    //         "description": "The IT systems will undergo maintenance on Saturday from 10 AM to 2 PM. Please save your work.",
-    //         "date": "2024-08-08",
-    //         "author": "IT Department",
-    //         "category": "Maintenance",
-    //         "image": "https://anarsolutions.com/wp-content/uploads/2016/12/Maintenance-300x200.jpg"
-    //     },
-    //     {
-    //         "_id": "66b9f3172bda247a314a6c0f",
-    //         "title": "Team Building Activity",
-    //         "description": "Join us for a team-building activity on August 15th. It's going to be fun and engaging!",
-    //         "date": "2024-08-07",
-    //         "author": "HR Department",
-    //         "category": "Event",
-    //         "image": "https://relinconsultants.com/wp-content/uploads/2023/03/Annual-General-Meeting-under-the-Company-Act-of-Bangladesh-768x398.jpg"
-    //     },
-    //     {
-    //         "_id": "66b9f3172bda247a314a6c10",
-    //         "title": "New Office Dress Code",
-    //         "description": "A new dress code policy will be implemented starting September 1st. Please adhere to the guidelines.",
-    //         "date": "2024-08-14",
-    //         "author": "Management",
-    //         "category": "Policy",
-    //         "image": "https://www.deenscollege.com/wp-content/uploads/2018/11/Safety-guidelines.jpg"
-    //     },
-    //     {
-    //         "_id": "66b9f3172bda247a314a6c11",
-    //         "title": "Software Update Notice",
-    //         "description": "All systems will be updated on August 18th. Ensure your devices are ready.",
-    //         "date": "2024-08-09",
-    //         "author": "IT Department",
-    //         "category": "Maintenance",
-    //         "image": "https://anarsolutions.com/wp-content/uploads/2016/12/Maintenance-300x200.jpg"
-    //     }
-    // ];
 
     const Header = () => {
         return (
@@ -100,7 +35,7 @@ const Notice = () => {
                 <div className="relative flex items-center justify-center h-full">
                     <div className='flex flex-col items-center gap-4'>
                         <h1 className="text-custom-yellow text-4xl font-bold">Notice </h1>
-                        <p className="text-center text-accent font-semibold text-xl">Stay informed with the latest updates, announcements, and important notices. Keep track of what’s happening!</p>
+                        <p className="text-center text-white font-semibold text-xl">Stay informed with the latest updates, announcements, and important notices. Keep track of what’s happening!</p>
                     </div>
                 </div>
             </div>
@@ -110,89 +45,73 @@ const Notice = () => {
 
     return (
         <div className="">
-<Helmet>
-    <title>Notice Board - Multigym Premium</title>
-    <meta name="description" content="Stay updated with the latest notices, announcements, and important information from Multigym Premium. Keep track of everything you need to know." />
-</Helmet>
-<Header />
+            <Helmet>
+                <title>Notice Board - Multigym Premium</title>
+                <meta name="description" content="Stay updated with the latest notices, announcements, and important information from Multigym Premium. Keep track of everything you need to know." />
+            </Helmet>
+            <Header />
 
             {/* Notice List */}
             <section className=" m-10 gap-5 grid items-center justify-center w-4/5 mx-auto">
                 {notices.length > 0 && (
                     <>
                         {/* First Notice */}
-                        <div className=" col-span-full bg-white shadow-lg rounded-lg overflow-hidden mb-6 flex flex-col lg:flex-row   ">
+                        <div className=" col-span-full gap-3 overflow-hidden mb-28 flex flex-col lg:flex-row   ">
                             <img
                                 src={notices[0].image}
                                 alt={notices[0].title}
-                                className="w-full lg:w-1/2 h-64 lg:h-auto object-cover mr-5"
+                                className="w-full lg:w-1/2 h-64 lg:h-auto  rounded-xl object-cover mr-5"
                             />
                             <div className="flex flex-col justify-between lg:w-1/2">
                                 <div>
-                                    <h2 className="text-4xl font-bold mb-4">{notices[0].title}</h2>
+                                    <h2 className="text-2xl font-semibold mb-4">{notices[0].title}</h2>
+                                    <div className='border-b border-gray-300 mb-4'></div>
                                     <p
-    className="text-gray-700 text-base lg:text-lg mb-4"
-    dangerouslySetInnerHTML={{ __html: notices[0].description }}
-></p>                                </div>
-                                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mr-5">
+                                        className="text-gray-700 lg:text-lg mb-4"
+                                        dangerouslySetInnerHTML={{ __html: notices[0].description }}
+                                    ></p>                                </div>
+                                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-1">
                                     <div className=" text-gray-500 flex items-center mb-2 lg:mb-0">
                                         <AiOutlineCalendar className="mr-2" />
-                                        <span>Posted on: {new Date(notices[0].date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                        <span className='text-sm'>Posted on: {new Date(notices[0].date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                                     </div>
                                     <div className=" text-gray-500 flex items-center mb-2 lg:mb-0">
                                         <AiOutlineUser className="mr-2" />
-                                        <span>Author: {notices[0].author}</span>
+                                        <span className='text-sm'>Author: {notices[0].author}</span>
                                     </div>
                                     <div className=" text-gray-500 flex items-center">
                                         <AiOutlineTag className="mr-2" />
-                                        <span>Category: {notices[0].category}</span>
+                                        <span className='text-sm'>Category: {notices[0].category}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
 
-                        {/* Other Notices */}
                         <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-  {notices.slice(1).map((notice, index) => (
-    <div
-      key={index}
-      className="bg-base-100 border shadow rounded-lg overflow-hidden flex"
-    >
-      <img
-        src={notice.image}
-        alt={notice.title}
-        className="w-1/3 h-32 object-cover"
-      />
-      <div className="p-4 w-2/3 flex flex-col justify-between">
-        <div>
-          <h3 className="text-lg font-semibold mb-2">{notice.title}</h3>
-          <p className="text-gray-600 text-sm mb-2">
-            {notice.description.replace(/<[^>]+>/g, '').slice(0, 200)}{notice.description.length > 200 ? '...' : ''}
-          </p>
-        </div>
-        <div className="mt-auto">
-          <div className="text-xs text-gray-500 flex items-center mb-1">
-            <AiOutlineCalendar className="mr-2" />
-            Posted on: {new Date(notice.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </div>
-          <div className="text-xs text-gray-500 flex items-center mb-1">
-            <AiOutlineUser className="mr-2" />
-            Author: {notice.author}
-          </div>
-          <div className="text-xs text-gray-500 flex items-center">
-            <AiOutlineTag className="mr-2" />
-            Category: {notice.category}
-          </div>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+                            {notices.slice(1).map((notice, index) => (
+                                <div
+                                    key={index}
+                                    className="flex flex-col justify-between h-full shadow rounded-lg overflow-hidden"
+                                >
+                                    <img
+                                        src={notice.image}
+                                        alt={notice.title}
+                                        className="w-full h-60 object-cover"
+                                    />
+                                    <div className="flex flex-col flex-grow">
+                                        <h3 className="text-lg text-center font-semibold px-2 mb-1 mt-5 text-yellow-600">{notice.title}</h3>
+                                        <p className="text-gray-600 text-center text-sm mt-2 px-4">
+                                            {notice.description.replace(/<[^>]+>/g, '').slice(0, 200)}{notice.description.length > 200 ? '...' : ''}
+                                        </p>
+                                    </div>
+                                    <div className='p-4 '>
+                                        <button className="btn hover:bg-custom-yellow bg-yellow-500 text-white w-full mt-3">Details</button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
 
                     </>
                 )}
