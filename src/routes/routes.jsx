@@ -35,6 +35,7 @@ import Notice_create from "../pages/Dashboard/Pages/Notice_create";
 import Notice_list from "../pages/Dashboard/Pages/Notice_list";
 import Notice from './../pages/Notice';
 import Notice_edit from './../pages/Dashboard/Pages/Notice_edit';
+import Notice_Details from "../pages/Notice_Details";
 export const router = createBrowserRouter([
 
   {
@@ -88,6 +89,11 @@ export const router = createBrowserRouter([
         loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/news/get-id/${params.id}`)
       },
       {
+        path: "/notice/:id",
+        element: <Notice_Details /> ,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_BACKEND_URL}/notice/get-id/${params.id}`)
+      },
+      {
         path: "/legal/appprivacypolicy",
         element: <PrivacyPolicy />
       },
@@ -120,6 +126,7 @@ export const router = createBrowserRouter([
         path: "/notice",
         element: <Notice />  //
       },
+      
   
        
     ]

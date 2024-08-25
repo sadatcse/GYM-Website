@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineCalendar, AiOutlineUser, AiOutlineTag } from 'react-icons/ai';
 import useAxiosPublic from '../Hook/useAxiosPublic';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const Notice = () => {
     const [notices, setNotices] = useState([]);
@@ -296,7 +297,8 @@ const Notice = () => {
                                         </p>
                                     </div>
                                     <div className='p-4 '>
-                                        <button className="btn hover:bg-custom-yellow bg-yellow-500 text-white w-full mt-3">Details</button>
+                                        <Link to={`/notice/${notice._id  }`}><button className="btn hover:bg-custom-yellow bg-yellow-500 text-white w-full mt-3">Details</button></Link>
+                                        
                                     </div>
                                 </div>
                             ))}
@@ -310,7 +312,7 @@ const Notice = () => {
                 )}
             </section>
             {notices.length === 0 && (
-                <div className="space-y-5 mx-28 mt-5">
+                <div className="space-y-5 mx-28 my-5 mb-8">
                     {/* Skeleton for the First Notice */}
                     <div className="col-span-full gap-3 overflow-hidden mb-19 flex flex-col lg:flex-row animate-pulse">
                         <div className="w-full lg:w-1/2 bg-gray-300 h-64 lg:h-auto"></div>
