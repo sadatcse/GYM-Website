@@ -1,6 +1,11 @@
-
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import app from "../firebase/firebase.config";
 import axios from "axios";
 
@@ -8,68 +13,75 @@ export const AuthContext = createContext();
 const auth = app;
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [isAdmin, setIsAdmin] = useState(false);
-    const adminEmail = import.meta.env.VITE_adminEmail ;
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const adminEmail = import.meta.env.VITE_adminEmail;
 
-    const createUser = (email, password) => {
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
-    }
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    const signIn = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
-    }
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth);
-    }
+  const logOut = () => {
+    setLoading(true);
+    localStorage.removeItem("token");
+    return signOut(auth);
+  };
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            const userEmail = currentUser?.email || user?.email;
-            const loggedUser = { email: userEmail };
-            setUser(currentUser);
-        
-            setLoading(false);
-            // if user exists then issue a token
-            if (currentUser) {
-           
-                axios.post(`${import.meta.env.VITE_BACKEND_URL}/jwt`, loggedUser, { withCredentials: true })
-                    .then(res => {
-                       
-                    })
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      setUser(currentUser);
+
+      setLoading(false);
+      // if user exists then issue a token
+      if (currentUser) {
+        axios
+          .post(
+            `${import.meta.env.VITE_BACKEND_URL}/auth/sign-in`,
+            loggedUser,
+            {
+              withCredentials: true,
             }
-            else {
-                axios.post(`${import.meta.env.VITE_BACKEND_URL}/logout`, loggedUser, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        console.log(res.data);
-                    })
-            }
-        });
-        return () => {
-            return unsubscribe();
-        }
-    }, [])
+          )
+          .then((res) => {
+            console.log(res, "res 5244");
 
-    const authInfo = {
-        user,
-        loading,
-        createUser,
-        signIn,
-        logOut
-    }
+            localStorage.setItem("token", res.data.token);
+          });
+      } else {
+        axios
+          .post(`${import.meta.env.VITE_BACKEND_URL}/logout`, loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
+    });
+    return () => {
+      return unsubscribe();
+    };
+  }, []);
 
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    signIn,
+    logOut,
+  };
+
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
