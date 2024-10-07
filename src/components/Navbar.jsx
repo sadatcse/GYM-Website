@@ -54,9 +54,9 @@ const Navbar = () => {
   const buttons = (
     <div>
       {/* desktop sign up button */}
-      <Link to="/under"><button className="btn hidden md:block md:px-6 md:font-medium text-white bg-red-600 rounded-md border-none hover:text-red-600 hover:bg-white hover:border-red-600 poppins">Sign Up</button></Link>
+      <Link to="/signup"><button className="btn hidden md:block md:px-6 md:font-medium text-white bg-red-600 rounded-md border-none hover:text-red-600 hover:bg-white hover:border-red-600 poppins">Sign Up</button></Link>
       {/* mobile sign up button */}
-      <Link to="/under"><button className="block md:hidden py-2 px-4 text-xs md:text-sm md:font-medium text-white bg-red-600 rounded-md border-none poppins">Sign Up</button></Link>
+      <Link to="/signup"><button className="block md:hidden py-2 px-4 text-xs md:text-sm md:font-medium text-white bg-red-600 rounded-md border-none poppins">Sign Up</button></Link>
     </div>
   );
 
@@ -83,11 +83,11 @@ const Navbar = () => {
             )}
           </div>
           <Link to="/" className="btn btn-ghost text-xl z-50">
-  <img className='h-24 w-26 hidden md:block' src={Logo} alt="Logo" />
-</Link>
-<Link to="/" className="btn btn-ghost text-xl z-50">
-  <img className='w-10 block md:hidden' src={Logo} alt="Logo" />
-</Link>
+            <img className='h-24 w-26 hidden md:block' src={Logo} alt="Logo" />
+          </Link>
+          <Link to="/" className="btn btn-ghost text-xl z-50">
+            <img className='w-10 block md:hidden' src={Logo} alt="Logo" />
+          </Link>
         </div>
         <div className="flex navbar-end w-full justify-end ">
           <div className="hidden lg:flex ">

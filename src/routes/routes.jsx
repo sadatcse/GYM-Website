@@ -36,6 +36,7 @@ import Notice_list from "../pages/Dashboard/Pages/Notice_list";
 import Notice from './../pages/Notice';
 import Notice_edit from './../pages/Dashboard/Pages/Notice_edit';
 import Notice_Details from "../pages/Notice_Details";
+import Signup from "../components/Authentication/Signup";
 export const router = createBrowserRouter([
 
   {
@@ -203,6 +204,10 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: <RedirectToShopify />  //
+  },
+  {
+    path: "/signup",
+    element: <Signup></Signup> //
   },
 ]
 );
