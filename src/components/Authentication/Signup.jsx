@@ -93,8 +93,13 @@ const Signup = () => {
     };
 
     return (
-        <article className="w-full md:p-8 flex items-center justify-center ">
-            <form className="w-full max-w-4xl border rounded-xl py-6 px-6 shadow" onSubmit={handleSubmit(onSubmit)}>
+        <article
+            className="w-full text-white h-screen bg-cover bg-center flex items-center justify-center"
+            style={{
+                backgroundImage: `url('https://images.unsplash.com/photo-1526401485004-46910ecc8e51?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+            }}
+        >
+            <form className="md:w-full w-[95%] max-w-4xl scrollbar-thin max-h-[95vh] overflow-y-auto bg-black bg-opacity-50 backdrop-blur-lg  rounded-xl py-6 px-6 shadow" onSubmit={handleSubmit(onSubmit)}>
                 <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                     <p className="text-2xl text-center px-4 py-2 rounded-xl font-semibold my-4 mt-2 lg:col-span-3 md:col-span-2">
                         Sign Up Now
@@ -301,7 +306,7 @@ const Signup = () => {
 
                 <button
                     type="submit"
-                    className="mt-5 bg-yellow-500 rounded-xl w-full text-white px-4 py-2 btn hover:bg-yellow-600"
+                    className="mt-5 bg-yellow-500 border-none rounded-xl w-full text-white px-4 py-2 btn hover:bg-yellow-600"
                 >
                     Sign up
                 </button>

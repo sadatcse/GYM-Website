@@ -151,3 +151,16 @@ select:hover {
     transform: rotate(180deg);
 }
 
+.scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #fbbf24; /* Yellow scrollbar thumb */
+    border-radius: 10px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: black;
+  }
+  
