@@ -31,7 +31,7 @@ const Signup = () => {
         const signUpUser = async (userData) => {
             try {
                 console.log(userData)
-                const response = await axios.post('http://localhost:8000/api/users/signup', userData);
+                const response = await axios.post('https://multigym-management-server-dmmji.ondigitalocean.app/api/users/signup', userData);
                 alert("done")
                 console.log('User created successfully:', response.data);
             } catch (error) {
