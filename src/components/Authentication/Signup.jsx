@@ -122,8 +122,8 @@ const Signup = () => {
         // console.log(data)
         const signUpUser = async (userData) => {
             try {
-                const response = await axios.post('http://localhost:8000/api/users/signup', userData);
-                // const response = await axios.post('https://multigym-management-server-dmmji.ondigitalocean.app/api/users/signup', userData);
+                // const response = await axios.post('http://localhost:8000/api/users/signup', userData);
+                const response = await axios.post('https://multigym-management-server-dmmji.ondigitalocean.app/api/users/signup', userData);
 
                 if (response.data.message === "User with this email already exists." || response.data.message === "User with this mobile already exists.") {
                     Swal.fire({
