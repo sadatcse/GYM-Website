@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Swal from 'sweetalert2'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MemberRegisterInput from './components/MemberRegisterInput';
@@ -15,53 +16,91 @@ const validationSchema = yup.object().shape({
         .string()
         .required('Full Name is required')
         .matches(/^[a-zA-Z\s]+$/, 'Full Name must be only letters')
-        .min(4, 'Full Name must be at least 4 words'),
+        .min(4, 'Full Name must be at least 4 characters'),
+    member_type: yup
+        .string()
+        .required('Member Type is required'),
+        // .oneOf(['Standard', 'Premium', 'Other'], 'Invalid Member Type'),
+    branch: yup
+        .string()
+        .required('Branch is required'),
     contact_no: yup
         .string()
         .required('Contact Number is required')
         .matches(/^[0-9]+$/, 'Contact Number must be numeric')
         .min(11, 'Contact Number must be at least 11 digits'),
+    nickname: yup
+        .string()
+        .required('Nickname is required')
+        .matches(/^[a-zA-Z\s]+$/, 'Nickname must be only letters'),
+    date_of_birth: yup
+        .date()
+        .required('Date of Birth is required')
+        .typeError('Invalid Date of Birth'),
     nid_number: yup
         .string()
-        .required('NID is required')
-        .matches(/^[0-9]+$/, 'NID must be numeric')
-        .min(10, 'NID must be at least 10 digits'),
+        .required('National ID is required')
+        .matches(/^[0-9]+$/, 'National ID must be numeric')
+        .min(10, 'National ID must be at least 10 digits'),
     address: yup
         .string()
         .required('Address is required')
-        // .matches(/^[a-zA-Z\s]+$/, 'Address cannot contain numbers')
-        .min(5, 'Address must be at least 5 words'),
+        .min(5, 'Address must be at least 5 characters'),
+    status: yup
+        .string()
+        .required('Marital Status is required')
+        .oneOf(['Married', 'Unmarried', 'Divorced', "Don't say"], 'Invalid Marital Status'),
+    gender: yup
+        .string()
+        .required('Gender is required')
+        .oneOf(['Male', 'Female'], 'Invalid Gender'),
+    religion: yup
+        .string()
+        .required('Religion is required')
+        .oneOf(['Islam', 'Hindu', 'Christian', 'Buddhism', 'Other'], 'Invalid Religion'),
     email: yup
         .string()
-        .email('Invalid email format')
         .required('Email is required')
-        .matches(
-            /^(?=.*@(gmail|yahoo|hotmail|outlook)\.com$)/,
-            'Use a valid email adress'
-        ),
+        .email('Invalid email format'),
+    emergency_contact_name: yup
+        .string()
+        .required('Emergency Contact Name is required')
+        .matches(/^[a-zA-Z\s]+$/, 'Emergency Contact Name must be only letters'),
     emergency_contact_number: yup
         .string()
-        .matches(/^[0-9]+$/, 'Emergency Contact must be numeric')
+        .required('Emergency Contact Number is required')
+        .matches(/^[0-9]+$/, 'Emergency Contact Number must be numeric')
         .min(10, 'Emergency Contact Number must be at least 10 digits'),
     fb_id: yup
         .string()
-        .matches(/^[a-zA-Z0-9]+$/, 'FB ID must not contain spaces')
-        .nullable(),
-    profession: yup
+        .required('FB ID is required')
+        .matches(/^[a-zA-Z0-9]+$/, 'FB ID must not contain spaces'),
+    blood_group: yup
         .string()
-        .matches(/^[a-zA-Z\s]+$/, 'Profession cannot contain numbers')
-        .required('Profession is required'),
+        .required('Blood Group is required')
+        .oneOf(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'], 'Invalid Blood Group'),
+    height: yup
+        .string()
+        .required('Height is required'),
     weight: yup
         .number()
+        .required('Weight is required')
         .typeError('Weight must be a number')
         .max(700, 'Weight cannot exceed 700 kg'),
+    profession: yup
+        .string()
+        .required('Profession is required')
+        .matches(/^[a-zA-Z\s]+$/, 'Profession must be only letters'),
 });
+
+
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm({
         resolver: yupResolver(validationSchema),
     });
     const [age, setAge] = useState('');
+    const [branches] = useState(['shia', 'lalmatia']);
     const [memberTypes] = useState(['Monthly', 'Weekly', 'Daily', 'Package']);
     const [bloodGroups] = useState(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']);
     const navigate = useNavigate();
@@ -80,13 +119,36 @@ const Signup = () => {
     }, [dateOfBirth]);
 
     const onSubmit = (data) => {
+        // console.log(data)
         const signUpUser = async (userData) => {
             try {
-                const response = await axios.post('https://multigym-management-server-dmmji.ondigitalocean.app/api/users/signup', userData);
-                toast.success('User created successfully');
-                navigate("/", { replace: true });
+                const response = await axios.post('http://localhost:8000/api/users/signup', userData);
+                // const response = await axios.post('https://multigym-management-server-dmmji.ondigitalocean.app/api/users/signup', userData);
+
+                if (response.data.message === "User with this email already exists." || response.data.message === "User with this mobile already exists.") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: response.data.message,
+                    });
+                } else {
+                    Swal.fire({
+                        position: "middle",
+                        icon: "success",
+                        title: "User created successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // navigate("/", { replace: true });
+                }
             } catch (error) {
-                toast.error(error.response ? error.response.data : 'An error occurred');
+                console.log(error.response.data)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.response ? error.response.data.error : 'An error occurred',
+                });
+
             }
         };
         signUpUser(data);
@@ -100,8 +162,8 @@ const Signup = () => {
             }}
         >
             <form className="md:w-full w-[95%] max-w-4xl scrollbar-thin max-h-[95vh] overflow-y-auto bg-black bg-opacity-50 backdrop-blur-lg  rounded-xl py-6 px-6 shadow" onSubmit={handleSubmit(onSubmit)}>
-                <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <p className="text-2xl text-center px-4 py-2 rounded-xl font-semibold my-4 mt-2 lg:col-span-3 md:col-span-2">
+                <div className="md:grid md:grid-cols-2 gap-3">
+                    <p className="text-2xl text-center px-4 py-2 rounded-xl font-semibold my-4 mt-2 md:col-span-2">
                         Sign Up Now
                     </p>
 
@@ -129,6 +191,21 @@ const Signup = () => {
                         ))}
                     </MemberRegisterSelect>
 
+                    <MemberRegisterSelect
+                        label="Branch"
+                        register={register}
+                        error={errors}
+                        name="branch"
+                        isRequired={true}
+                    >
+                        <option value="">Select Branch</option>
+                        {branches.map((item, index) => (
+                            <option className='capitalize' value={item} key={index}>
+                                {item}
+                            </option>
+                        ))}
+                    </MemberRegisterSelect>
+
                     <MemberRegisterInput
                         type="text"
                         label="Contact Number"
@@ -144,7 +221,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="nickname"
-                        isRequired={false}
+                        isRequired={true}
                     />
 
                     <MemberRegisterInput
@@ -153,7 +230,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="date_of_birth"
-                        isRequired={false}
+                        isRequired={true}
                     />
 
                     <MemberRegisterInput
@@ -171,7 +248,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="address"
-                        isRequired={false}
+                        isRequired={true}
                     />
 
                     <MemberRegisterSelect
@@ -179,7 +256,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="status"
-                        isRequired={false}
+                        isRequired={true}
                     >
                         <option value="">Select Marital Status</option>
                         <option value="Married">Married</option>
@@ -205,7 +282,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="religion"
-                        isRequired={false}
+                        isRequired={true}
                     >
                         <option value="">Select Religion</option>
                         <option value="Islam">Islam</option>
@@ -230,7 +307,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="emergency_contact_name"
-                        isRequired={false}
+                        isRequired={true}
                     />
 
                     <MemberRegisterInput
@@ -239,7 +316,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="emergency_contact_number"
-                        isRequired={false}
+                        isRequired={true}
                     />
 
                     <MemberRegisterInput
@@ -248,7 +325,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="fb_id"
-                        isRequired={false}
+                        isRequired={true}
                     />
 
                     <MemberRegisterSelect
@@ -271,7 +348,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="height"
-                        isRequired={false}
+                        isRequired={true}
                     >
                         <option value="">Select Height</option>
                         {Array.from({ length: 97 }, (_, i) => {
@@ -291,7 +368,7 @@ const Signup = () => {
                         register={register}
                         error={errors}
                         name="weight"
-                        isRequired={false}
+                        isRequired={true}
                     />
 
                     <MemberRegisterInput
