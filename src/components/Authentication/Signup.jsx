@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
     member_type: yup
         .string()
         .required('Member Type is required'),
-        // .oneOf(['Standard', 'Premium', 'Other'], 'Invalid Member Type'),
+    // .oneOf(['Standard', 'Premium', 'Other'], 'Invalid Member Type'),
     branch: yup
         .string()
         .required('Branch is required'),
@@ -124,7 +124,7 @@ const Signup = () => {
             try {
                 // const response = await axios.post('http://localhost:8000/api/users/signup', userData);
                 const response = await axios.post('https://multigym-management-server-dmmji.ondigitalocean.app/api/users/signup', userData);
-
+                console.log(response.data)
                 if (response.data.message === "User with this email already exists." || response.data.message === "User with this mobile already exists.") {
                     Swal.fire({
                         icon: "error",
@@ -139,7 +139,7 @@ const Signup = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    // navigate("/", { replace: true });
+                    navigate("/", { replace: true });
                 }
             } catch (error) {
                 console.log(error.response.data)
@@ -161,103 +161,48 @@ const Signup = () => {
                 backgroundImage: `url('https://images.unsplash.com/photo-1526401485004-46910ecc8e51?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
             }}
         >
-            <form className="md:w-full w-[95%] max-w-4xl scrollbar-thin max-h-[95vh] overflow-y-auto bg-black bg-opacity-50 backdrop-blur-lg  rounded-xl py-6 px-6 shadow" onSubmit={handleSubmit(onSubmit)}>
+            <form className="md:w-full w-[95%] max-w-4xl scrollbar-thin max-h-[95vh] overflow-y-auto bg-black bg-opacity-50 backdrop-blur-lg rounded-xl py-6 px-6 shadow" onSubmit={handleSubmit(onSubmit)}>
                 <div className="md:grid md:grid-cols-2 gap-3">
                     <p className="text-2xl text-center px-4 py-2 rounded-xl font-semibold my-4 mt-2 md:col-span-2">
                         Sign Up Now
                     </p>
 
-                    <MemberRegisterInput
-                        type="text"
-                        label="Full Name"
-                        register={register}
-                        error={errors}
-                        name="full_name"
-                        isRequired={true}
-                    />
+                    {/* Membership Details */}
 
-                    <MemberRegisterSelect
-                        label="Member Type"
-                        register={register}
-                        error={errors}
-                        name="member_type"
-                        isRequired={true}
-                    >
-                        <option value="">Select Member Type</option>
-                        {memberTypes.map((item, index) => (
-                            <option value={item} key={index}>
-                                {item}
-                            </option>
-                        ))}
-                    </MemberRegisterSelect>
-
-                    <MemberRegisterSelect
-                        label="Branch"
-                        register={register}
-                        error={errors}
-                        name="branch"
-                        isRequired={true}
-                    >
+                    <MemberRegisterSelect label="Branch" register={register} error={errors} name="branch" isRequired={true}>
                         <option value="">Select Branch</option>
                         {branches.map((item, index) => (
-                            <option className='capitalize' value={item} key={index}>
-                                {item}
-                            </option>
+                            <option className="capitalize" value={item} key={index}>{item}</option>
                         ))}
                     </MemberRegisterSelect>
 
-                    <MemberRegisterInput
-                        type="text"
-                        label="Contact Number"
-                        register={register}
-                        error={errors}
-                        name="contact_no"
-                        isRequired={true}
-                    />
 
-                    <MemberRegisterInput
-                        type="text"
-                        label="Nickname"
-                        register={register}
-                        error={errors}
-                        name="nickname"
-                        isRequired={true}
-                    />
 
-                    <MemberRegisterInput
-                        type="date"
-                        label="Date of Birth"
-                        register={register}
-                        error={errors}
-                        name="date_of_birth"
-                        isRequired={true}
-                    />
+                    <MemberRegisterSelect label="Member Type" register={register} error={errors} name="member_type" isRequired={true}>
+                        <option value="">Select Member Type</option>
+                        {memberTypes.map((item, index) => (
+                            <option value={item} key={index}>{item}</option>
+                        ))}
+                    </MemberRegisterSelect>
 
-                    <MemberRegisterInput
-                        type="text"
-                        label="National ID"
-                        register={register}
-                        error={errors}
-                        name="nid_number"
-                        isRequired={true}
-                    />
 
-                    <MemberRegisterInput
-                        type="text"
-                        label="Address"
-                        register={register}
-                        error={errors}
-                        name="address"
-                        isRequired={true}
-                    />
 
-                    <MemberRegisterSelect
-                        label="Marital Status"
-                        register={register}
-                        error={errors}
-                        name="status"
-                        isRequired={true}
-                    >
+
+                    {/* Personal Information */}
+                    <MemberRegisterInput type="text" label="Full Name" register={register} error={errors} name="full_name" isRequired={true} />
+                    <MemberRegisterInput type="text" label="Nickname" register={register} error={errors} name="nickname" isRequired={true} />
+                    <MemberRegisterInput type="date" label="Date of Birth" register={register} error={errors} name="date_of_birth" isRequired={true} />
+                    <MemberRegisterInput type="text" label="National ID" register={register} error={errors} name="nid_number" isRequired={true} />
+                    <MemberRegisterInput type="text" label="Contact Number" register={register} error={errors} name="contact_no" isRequired={true} />
+                    <MemberRegisterInput type="email" label="Email" register={register} error={errors} name="email" isRequired={true} />
+                    <MemberRegisterInput type="text" label="Address" register={register} error={errors} name="address" isRequired={true} />
+
+
+
+                    <MemberRegisterInput type="text" label="Profession" register={register} error={errors} name="profession" isRequired={true} />
+
+                    {/* Demographic Information */}
+                    <MemberRegisterSelect label="Marital Status" register={register} error={errors} name="status" isRequired={true}>
                         <option value="">Select Marital Status</option>
                         <option value="Married">Married</option>
                         <option value="Unmarried">Unmarried</option>
@@ -265,25 +210,13 @@ const Signup = () => {
                         <option value="Don't say">Don't Say</option>
                     </MemberRegisterSelect>
 
-                    <MemberRegisterSelect
-                        label="Gender"
-                        register={register}
-                        error={errors}
-                        name="gender"
-                        isRequired={true}
-                    >
+                    <MemberRegisterSelect label="Gender" register={register} error={errors} name="gender" isRequired={true}>
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </MemberRegisterSelect>
 
-                    <MemberRegisterSelect
-                        label="Religion"
-                        register={register}
-                        error={errors}
-                        name="religion"
-                        isRequired={true}
-                    >
+                    <MemberRegisterSelect label="Religion" register={register} error={errors} name="religion" isRequired={true}>
                         <option value="">Select Religion</option>
                         <option value="Islam">Islam</option>
                         <option value="Hindu">Hindu</option>
@@ -292,64 +225,14 @@ const Signup = () => {
                         <option value="Other">Other</option>
                     </MemberRegisterSelect>
 
-                    <MemberRegisterInput
-                        type="email"
-                        label="Email"
-                        register={register}
-                        error={errors}
-                        name="email"
-                        isRequired={true}
-                    />
-
-                    <MemberRegisterInput
-                        type="text"
-                        label="Emergency Contact Name"
-                        register={register}
-                        error={errors}
-                        name="emergency_contact_name"
-                        isRequired={true}
-                    />
-
-                    <MemberRegisterInput
-                        type="text"
-                        label="Emergency Contact Number"
-                        register={register}
-                        error={errors}
-                        name="emergency_contact_number"
-                        isRequired={true}
-                    />
-
-                    <MemberRegisterInput
-                        type="text"
-                        label="FB ID"
-                        register={register}
-                        error={errors}
-                        name="fb_id"
-                        isRequired={true}
-                    />
-
-                    <MemberRegisterSelect
-                        label="Blood Group"
-                        register={register}
-                        error={errors}
-                        name="blood_group"
-                        isRequired={true}
-                    >
+                    <MemberRegisterSelect label="Blood Group" register={register} error={errors} name="blood_group" isRequired={true}>
                         <option value="">Choose...</option>
                         {bloodGroups.map((item, index) => (
-                            <option value={item} key={index}>
-                                {item}
-                            </option>
+                            <option value={item} key={index}>{item}</option>
                         ))}
                     </MemberRegisterSelect>
 
-                    <MemberRegisterSelect
-                        label="Height"
-                        register={register}
-                        error={errors}
-                        name="height"
-                        isRequired={true}
-                    >
+                    <MemberRegisterSelect label="Height" register={register} error={errors} name="height" isRequired={true}>
                         <option value="">Select Height</option>
                         {Array.from({ length: 97 }, (_, i) => {
                             const feet = Math.floor(i / 12) + 3;
@@ -362,32 +245,21 @@ const Signup = () => {
                         })}
                     </MemberRegisterSelect>
 
-                    <MemberRegisterInput
-                        type="text"
-                        label="Weight (Kg)"
-                        register={register}
-                        error={errors}
-                        name="weight"
-                        isRequired={true}
-                    />
+                    <MemberRegisterInput type="text" label="Weight (Kg)" register={register} error={errors} name="weight" isRequired={true} />
 
-                    <MemberRegisterInput
-                        type="text"
-                        label="Profession"
-                        register={register}
-                        error={errors}
-                        name="profession"
-                        isRequired={true}
-                    />
+                    {/* Emergency Contact Information */}
+                    <MemberRegisterInput type="text" label="Emergency Contact Name" register={register} error={errors} name="emergency_contact_name" isRequired={true} />
+                    <MemberRegisterInput type="text" label="Emergency Contact Number" register={register} error={errors} name="emergency_contact_number" isRequired={true} />
+
+                    {/* Social Media */}
+                    <MemberRegisterInput type="text" label="FB ID" register={register} error={errors} name="fb_id" isRequired={true} />
                 </div>
 
-                <button
-                    type="submit"
-                    className="mt-5 bg-yellow-500 border-none rounded-xl w-full text-white px-4 py-2 btn hover:bg-yellow-600"
-                >
+                <button type="submit" className="mt-5 bg-yellow-500 border-none rounded-xl w-full text-white px-4 py-2 btn hover:bg-yellow-600">
                     Sign up
                 </button>
             </form>
+
             <ToastContainer />
         </article>
     );
