@@ -38,7 +38,7 @@ const JoinOurGym = () => {
         >
           <div className="flex items-center justify-center mb-6">
             <Link
-              to="/under"
+              to="/signup"
               className="relative sm:w-20 h-16 mb-5 md:w-32 md:h-32 lg:w-64 lg:h-40"
               style={{ perspective: "700px" }}
             >

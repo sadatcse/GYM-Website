@@ -73,7 +73,7 @@ const HeroSlider = () => {
               whileInView={'show'}
               viewport={{ once: false, amount: 0.2 }}
             >
-              <Link to="/under">
+              <Link to="/signup">
                 <CustomButton
                   text='Start today'
                   containerStyles='w-[196px] h-[62px]'
