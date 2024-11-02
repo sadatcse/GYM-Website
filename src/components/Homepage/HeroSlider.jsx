@@ -9,7 +9,7 @@ import SwiperNavButtons from './SwiperNavButtons';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../../lib/variants';
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+
 const HeroSlider = () => {
   const videoRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
