@@ -100,7 +100,10 @@ const Signup = () => {
         resolver: yupResolver(validationSchema),
     });
     const [age, setAge] = useState('');
-    const [branches] = useState(['shia', 'lalmatia']);
+    const [branches] = useState([
+        { label: 'ShiaMosjid Branch', value: 'shia' },
+        { label: 'Lalmatia Branch', value: 'lalmatia' }
+    ]);
     const [memberTypes] = useState(['Monthly', 'Weekly', 'Daily', 'Package']);
     const [bloodGroups] = useState(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']);
     const navigate = useNavigate();
@@ -170,11 +173,11 @@ const Signup = () => {
                     {/* Membership Details */}
 
                     <MemberRegisterSelect label="Branch" register={register} error={errors} name="branch" isRequired={true}>
-                        <option value="">Select Branch</option>
-                        {branches.map((item, index) => (
-                            <option className="capitalize" value={item} key={index}>{item}</option>
-                        ))}
-                    </MemberRegisterSelect>
+    <option value="">Select Branch</option>
+    {branches.map((item, index) => (
+        <option value={item.value} key={index}>{item.label}</option>
+    ))}
+</MemberRegisterSelect>
 
 
 
